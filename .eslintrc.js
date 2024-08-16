@@ -28,6 +28,8 @@ module.exports = {
   ],
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
+    'no-undef': 0,
+    '@typescript-eslint/no-require-imports': 0,
     'sort-imports': [
       'error',
       {
