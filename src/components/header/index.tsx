@@ -1,6 +1,17 @@
 import React from 'react'
-import { Link } from './styles'
+
+import { Link, Logo } from './styles'
+import { HeaderHome } from '../Menu'
+import { HeaderSettings } from '../Settings'
 
 export function Header() {
-  return <Link>asdasd</Link>
+  return (
+    <Link>
+      <Logo>Modsen Todo list</Logo>
+      <div>
+        <HeaderHome />
+        <HeaderSettings />
+      </div>
+    </Link>
+  )
 }
