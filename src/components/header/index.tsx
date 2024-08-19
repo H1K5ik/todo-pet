@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-import { Link, Logo } from './styles'
-import { HeaderHome } from '../Menu'
-import { HeaderSettings } from '../Settings'
+import { Link, Wrapper, WrapperSettings } from './styles'
+import { Typography } from '../typography'
 
-export function Header() {
+export const Header: FC = () => {
   return (
     <Link>
-      <Logo>Modsen Todo list</Logo>
-      <div>
-        <HeaderHome />
-        <HeaderSettings />
-      </div>
+      <Wrapper>
+        <Typography.Logo text={'Modsen Todo list'} />
+      </Wrapper>
+
+      <Wrapper>
+        <WrapperSettings>
+          <Typography.Header text={'Home'} />
+        </WrapperSettings>
+        <WrapperSettings>
+          <Typography.Header text={'Settings'} />
+        </WrapperSettings>
+      </Wrapper>
     </Link>
   )
 }

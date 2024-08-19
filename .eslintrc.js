@@ -28,6 +28,7 @@ module.exports = {
   ],
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
+    'import/no-unresolved': ['off'],
     'no-undef': 0,
     '@typescript-eslint/no-require-imports': 0,
     'sort-imports': [

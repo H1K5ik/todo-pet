@@ -1,4 +1,3 @@
-// webpack.common.js
 const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -11,6 +10,10 @@ module.exports = {
     clean: true,
   },
   resolve: {
+    alias: {
+      '@const': path.resolve(__dirname, '../src/constants/index'),
+      '@theme': path.resolve(__dirname, '../src/theme/index'),
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
