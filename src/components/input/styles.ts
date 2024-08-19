@@ -9,6 +9,9 @@ export const Block = styled.div`
   display: flex;
   flex-direction: column;
 `
+export const List = styled.div`
+  margin-top: 2vh;
+`
 
 export const InputBox = styled.input`
   width: 557px;

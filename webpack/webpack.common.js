@@ -16,10 +16,14 @@ module.exports = {
       '@const': path.resolve(__dirname, '../src/constants/index'),
       '@theme': path.resolve(__dirname, '../src/theme/index'),
     },
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
   },
   module: {
     rules: [
+      {
+        test: /\.svg$/,
+        use: ['file-loader'], // Или 'url-loader'
+      },
       {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
