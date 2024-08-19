@@ -1,7 +1,9 @@
 const path = require('path')
 
+const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+dotenv.config()
 module.exports = {
   entry: './src/index.tsx',
   output: {

@@ -26,6 +26,7 @@ const Logo = ({ text }: { text: string }) => {
 const Default = ({ text }: { text: string }) => {
   return <DefaultText>{text}</DefaultText>
 }
+
 Typography.Logo = Logo
 Typography.Header = Header
 Typography.Input = Input
