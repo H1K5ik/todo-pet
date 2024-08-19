@@ -1,4 +1,4 @@
-import { colors, spaces } from '@theme'
+import { colors } from '@theme'
 import { styled } from 'styled-components'
 
 export const Link = styled.div`
@@ -6,14 +6,18 @@ export const Link = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  ${spaces.ALLSITEWIDTH}
+  width: 100%;
+  height: 100vh;
+  max-width: 1140px;
+  max-height: 130px;
+  margin: auto;
 
   background-color: ${colors.HEADER_BACK_COLOR};
 `
 export const Wrapper = styled.div`
   display: flex;
-  ${spaces.DEFAULTMARGIN}
+  margin: 1em;
 `
 export const WrapperSettings = styled.div`
-  ${spaces.DEFAULTMARGIN}
+  margin: 1em;
 `
