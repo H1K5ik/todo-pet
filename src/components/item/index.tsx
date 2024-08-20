@@ -5,7 +5,7 @@ import deleteItem from '../../assets/deleteItem.svg'
 import edit from '../../assets/edit.svg'
 import { Typography } from '../typography'
 
-export const Item: FC<{ text: string }> = ({ text }) => {
+export const Item: FC<{ text: string; onDelete: () => void }> = ({ text, onDelete }) => {
   return (
     <ItemForm>
       <Wrapper>
@@ -16,7 +16,7 @@ export const Item: FC<{ text: string }> = ({ text }) => {
           </WrapperText>
         </WrapperCheck>
         <img src={edit} alt='edit-svg' width={'5%'} />
-        <img src={deleteItem} alt='edit-svg' width={'5%'} />
+        <img src={deleteItem} alt='edit-svg' width={'5%'} onClick={onDelete} />
       </Wrapper>
     </ItemForm>
   )

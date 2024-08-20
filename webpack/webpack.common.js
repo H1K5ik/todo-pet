@@ -15,6 +15,8 @@ module.exports = {
     alias: {
       '@const': path.resolve(__dirname, '../src/constants/index'),
       '@theme': path.resolve(__dirname, '../src/theme/index'),
+      '@component': path.resolve(__dirname, '../src/components'),
+      '@utils': path.resolve(__dirname, '../src/utils'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
   },

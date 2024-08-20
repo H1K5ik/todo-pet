@@ -108,7 +108,11 @@
       "@const": ["src/constants"],
       "@const/*": ["src/constants/*"],
       "@theme": ["src/theme"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@component": ["src/components"],
+      "@component/*": ["src/components/*"],
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
