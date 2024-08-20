@@ -1,6 +1,6 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
-import { ChildComponentProps } from '@component/main'
+import { ChildComponentProps } from '@component/listofitems'
 import { Typography } from '@component/typography'
 import { colors } from '@theme'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
@@ -16,6 +16,7 @@ export const Todo: FC<TodoProps> = ({ children }) => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []
   })
+
   const [inputValue, setInputValue] = useState<string>('')
 
   useEffect(() => {
@@ -54,6 +55,7 @@ export const Todo: FC<TodoProps> = ({ children }) => {
           ? React.cloneElement(child, {
               components: components,
               setComponents: setComponents,
+              setInputValue: setInputValue,
             })
           : child,
       )}

@@ -1,22 +1,59 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 import { CheckItem, ItemForm, Wrapper, WrapperCheck, WrapperText } from './styles'
 import deleteItem from '../../assets/deleteItem.svg'
 import edit from '../../assets/edit.svg'
 import { Typography } from '../typography'
 
-export const Item: FC<{ text: string; onDelete: () => void }> = ({ text, onDelete }) => {
+interface ItemProps {
+  text: string
+  onDelete: () => void
+  onSelect: () => void
+  onSave: (newText: string) => void
+  isSelected: boolean
+}
+
+export const Item: FC<ItemProps> = ({ text, onDelete, onSelect, onSave, isSelected }) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [editableText, setEditableText] = useState<string>(text)
+
+  const handleEditClick = () => {
+    setIsEditing(true)
+  }
+
+  const handleSaveClick = () => {
+    onSave(editableText)
+    setIsEditing(false)
+  }
+
+  const handleCancelClick = () => {
+    setEditableText(text)
+    setIsEditing(false)
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEditableText(e.target.value)
+  }
+
   return (
     <ItemForm>
       <Wrapper>
         <WrapperCheck>
-          <CheckItem type='checkbox'></CheckItem>
+          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} />
           <WrapperText>
-            <Typography.Default text={text}></Typography.Default>
+            {isEditing ? (
+              <div>
+                <input type='text' value={editableText} onChange={handleInputChange} />
+                <button onClick={handleSaveClick}>Save</button>
+                <button onClick={handleCancelClick}>Cancel</button>
+              </div>
+            ) : (
+              <Typography.Default text={text} />
+            )}
           </WrapperText>
         </WrapperCheck>
-        <img src={edit} alt='edit-svg' width={'5%'} />
-        <img src={deleteItem} alt='edit-svg' width={'5%'} onClick={onDelete} />
+        <img src={edit} alt='edit-svg' width='5%' onClick={handleEditClick} />
+        <img src={deleteItem} alt='delete-svg' width='5%' onClick={onDelete} />
       </Wrapper>
     </ItemForm>
   )

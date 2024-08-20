@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { ButtonAdapt, ButtonBig } from './styles'
+import { ButtonBig, ButtonMobile } from './styles'
 import { Typography } from '../typography'
 
 export const Button: FC & {
@@ -13,21 +13,23 @@ const ButtonPC = ({
   text,
   color,
   onClick,
+  disabled = false,
 }: {
   text: string
   color: string
   onClick: React.MouseEventHandler<HTMLButtonElement>
+  disabled?: boolean
 }) => {
   return (
-    <ButtonBig backgroundColor={color} onClick={onClick}>
+    <ButtonBig backgroundColor={color} onClick={onClick} style={{ visibility: disabled ? 'hidden' : 'visible' }}>
       <Typography.Input text={text} color={'white'} />
     </ButtonBig>
   )
 }
 
 const ButtonAdaptive = ({ text, color }: { text: string; color: string }) => {
-  return <ButtonAdapt backgroundColor={color}>{text}</ButtonAdapt>
-} // Пока к адаптивной кнопке стили правильно не написал!!
+  return <ButtonMobile backgroundColor={color}>{text}</ButtonMobile>
+} // Пока к мобильным кнопкам стили правильно не писал!!
 
 Button.ButtonPC = ButtonPC
 Button.ButtonAdaptive = ButtonAdaptive

@@ -10,7 +10,7 @@ export const ButtonBig = styled.button<{ backgroundColor: string }>`
 
   background-color: ${(props) => props.backgroundColor};
 `
-export const ButtonAdapt = styled.button<{ backgroundColor: string }>`
+export const ButtonMobile = styled.button<{ backgroundColor: string }>`
   width: 100%;
   height: 100vh;
   max-width: 190px;

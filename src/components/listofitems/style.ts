@@ -1,7 +1,8 @@
 import { styled } from 'styled-components'
 
 export const WrapperButton = styled.div`
-  margin: 1vh 0 0 3vw;
+  max-width: 30%;
+  margin: 2vh auto;
 `
 
 export const Block = styled.div`

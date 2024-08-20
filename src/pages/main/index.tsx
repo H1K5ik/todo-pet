@@ -1,5 +1,5 @@
 import { Header } from '@component/header'
-import { Main } from '@component/main'
+import { ListOfItems } from '@component/listofitems'
 import { Todo } from '@component/todo'
 import React from 'react'
 
@@ -8,7 +8,7 @@ export const MainPage = () => {
     <>
       <Header />
       <Todo>
-        <Main />
+        <ListOfItems />
       </Todo>
     </>
   )

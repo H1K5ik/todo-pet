@@ -24,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.svg$/,
-        use: ['file-loader'], // Или 'url-loader'
+        use: ['file-loader'],
       },
       {
         test: /\.(ts|tsx)$/,
