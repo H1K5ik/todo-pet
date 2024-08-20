@@ -1,9 +1,10 @@
 import { Button } from '@component/button'
 import { Item } from '@component/item'
+import { Typography } from '@component/typography'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
-import { List, WrapperButton } from './style'
+import { List, WrapperButton, WrapperText } from './style'
 
 export interface ChildComponentProps {
   components?: string[]
@@ -61,6 +62,9 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
   return (
     <>
       <List>
+        <WrapperText>
+          <Typography.Logo text={'Task list'} color={'black'} />
+        </WrapperText>
         {components?.map((component, index) => (
           <Item
             text={!component ? 'hello' : component}

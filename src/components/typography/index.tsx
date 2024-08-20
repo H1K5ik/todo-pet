@@ -19,8 +19,8 @@ const Input = ({ text, color }: { text: string; color: string }) => {
   return <InputText color={color}>{text}</InputText>
 }
 
-const Logo = ({ text }: { text: string }) => {
-  return <LogoText>{text}</LogoText>
+const Logo = ({ text, color = 'white' }: { text: string; color?: string }) => {
+  return <LogoText color={color}>{text}</LogoText>
 }
 
 const Default = ({ text }: { text: string }) => {

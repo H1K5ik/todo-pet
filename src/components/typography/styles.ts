@@ -1,8 +1,8 @@
 import { styled } from 'styled-components'
 
-export const LogoText = styled.h1`
-  color: white;
-  font-weight: 500;
+export const LogoText = styled.div<{ color: string }>`
+  color: ${(props) => props.color};
+  font-weight: 400;
   font-size: 36px;
   text-align: left;
 
