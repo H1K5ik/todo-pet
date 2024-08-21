@@ -41,5 +41,3 @@ Layout Reference: [ToDo list](https://www.figma.com/design/vDAg1ykKrPYKJEW4fMO5a
 - Using aliases to import files;
 - Self-configuring webpack for dev and production builds;
 - Design optimization for mobile devices
-
-Translated with DeepL.com (free version)
