@@ -46,3 +46,12 @@ export const InputText = styled.div<{ color: string; isLight: boolean }>`
 
   font-family: Jost, sans-serif;
 `
+export const Settings = styled.div<{ color: string; isLight: boolean }>`
+  color: ${(props: { isLight: boolean; color: string }) =>
+    props.isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+
+  font-family: Jost, sans-serif;
+`

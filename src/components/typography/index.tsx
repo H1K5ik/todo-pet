@@ -8,6 +8,7 @@ export const Typography: FC & {
   Header: typeof Header
   Input: typeof Input
   Default: typeof Default
+  Settings: typeof Settings
 } = () => {
   return <></>
 }
@@ -45,7 +46,17 @@ const Default = ({ text }: { text: string }) => {
   return <DefaultText isLight={isLight}>{text}</DefaultText>
 }
 
+const Settings = ({ text, color = 'white' }: { text: string; color?: string }) => {
+  const { isLight } = useTheme()
+  return (
+    <InputText color={color} isLight={isLight}>
+      {text}
+    </InputText>
+  )
+}
+
 Typography.Logo = Logo
 Typography.Header = Header
 Typography.Input = Input
 Typography.Default = Default
+Typography.Settings = Settings

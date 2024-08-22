@@ -22,10 +22,16 @@ interface IThemeProviderProps {
 }
 
 export const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {
-  const [isLight, setisLight] = useState(true)
-
+  const [isLight, setisLight] = useState(() => {
+    const isLight = localStorage.getItem('isLight')
+    return isLight ? !!JSON.parse(isLight) : true
+  })
   const toggleTheme = () => {
-    setisLight((isLight) => !isLight)
+    setisLight((prevIsLight) => {
+      const newIsLight = !prevIsLight
+      localStorage.setItem('isLight', JSON.stringify(newIsLight))
+      return newIsLight
+    })
   }
 
   return <ThemeContext.Provider value={{ isLight, toggleTheme }}>{children}</ThemeContext.Provider>

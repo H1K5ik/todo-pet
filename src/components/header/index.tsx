@@ -6,12 +6,6 @@ import { Link, Wrapper, WrapperSettings } from './styles'
 import { useTheme } from '../themecontext/index'
 import { Typography } from '../typography'
 
-const ThemeToggleButton = () => {
-  const { isLight, toggleTheme } = useTheme()
-
-  return <button onClick={toggleTheme}>Switch to {!isLight ? 'Light' : 'Dark'} Theme</button>
-}
-
 export const Header: FC = () => {
   const { isLight } = useTheme()
   const themeMode = isLight ? lightTheme : darkTheme
@@ -34,7 +28,6 @@ export const Header: FC = () => {
             <Typography.Header text={'Settings'} path={'/settings'} />
           </WrapperSettings>
         </Wrapper>
-        <ThemeToggleButton />
       </Link>
       <Outlet />
     </>
