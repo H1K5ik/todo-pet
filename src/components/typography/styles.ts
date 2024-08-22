@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 
 export const LogoText = styled.div<{ color: string }>`
@@ -9,13 +10,18 @@ export const LogoText = styled.div<{ color: string }>`
   font-family: Jost;
 `
 
-export const HeaderText = styled.a`
+export const HeaderText = styled(NavLink)`
   color: white;
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
 
   font-family: Jost, sans-serif;
+  text-decoration: none;
+
+  &.active {
+    text-decoration: underline;
+  }
 `
 
 export const DefaultText = styled.div`
