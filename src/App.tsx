@@ -1,5 +1,7 @@
+import { ThemeProvider } from '@component/themecontext'
+import { Global } from '@const'
 import React from 'react'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/header'
 import { MainPage } from './pages/main'
@@ -7,7 +9,8 @@ import { SettingsPage } from './pages/settings'
 
 export const App = () => {
   return (
-    <>
+    <ThemeProvider>
+      <Global />
       <Routes>
         <Route path='/' element={<Header />}>
           <Route index element={<Navigate to={'/home'} replace />} />
@@ -16,6 +19,6 @@ export const App = () => {
           <Route path='*' element={<Navigate to={'/home'} replace />} />
         </Route>
       </Routes>
-    </>
+    </ThemeProvider>
   )
 }

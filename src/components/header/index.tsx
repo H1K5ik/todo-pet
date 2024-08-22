@@ -1,13 +1,28 @@
-import React, { FC } from 'react'
+import { darkTheme, lightTheme } from '@theme'
+import React, { FC, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { Link, Wrapper, WrapperSettings } from './styles'
+import { useTheme } from '../themecontext/index'
 import { Typography } from '../typography'
 
+const ThemeToggleButton = () => {
+  const { isLight, toggleTheme } = useTheme()
+
+  return <button onClick={toggleTheme}>Switch to {!isLight ? 'Light' : 'Dark'} Theme</button>
+}
+
 export const Header: FC = () => {
+  const { isLight } = useTheme()
+  const themeMode = isLight ? lightTheme : darkTheme
+
+  useEffect(() => {
+    document.body.style.backgroundColor = themeMode.background
+  }, [themeMode])
+
   return (
     <>
-      <Link>
+      <Link isLight={isLight}>
         <Wrapper>
           <Typography.Logo text={'Modsen Todo list'} />
         </Wrapper>
@@ -19,6 +34,7 @@ export const Header: FC = () => {
             <Typography.Header text={'Settings'} path={'/settings'} />
           </WrapperSettings>
         </Wrapper>
+        <ThemeToggleButton />
       </Link>
       <Outlet />
     </>

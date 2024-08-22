@@ -1,8 +1,12 @@
+import { colors } from '@theme'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 
-export const LogoText = styled.div<{ color: string }>`
-  color: ${(props) => props.color};
+export const LogoText = styled.div<{ color: string; isLight: boolean }>`
+  background-color: transparent;
+
+  color: ${(props: { isLight: boolean; color: string }) =>
+    props.isLight ? props.color : colors.HEADER_TEXT_COLOR_LOGO_DARK};
   font-weight: 400;
   font-size: 36px;
   text-align: left;
@@ -10,8 +14,8 @@ export const LogoText = styled.div<{ color: string }>`
   font-family: Jost;
 `
 
-export const HeaderText = styled(NavLink)`
-  color: white;
+export const HeaderText = styled(NavLink)<{ isLight: boolean }>`
+  color: ${(props: { isLight: boolean }) => (props.isLight ? 'white' : colors.HEADER_TEXT_COLOR_NAV_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -24,8 +28,8 @@ export const HeaderText = styled(NavLink)`
   }
 `
 
-export const DefaultText = styled.div`
-  color: black;
+export const DefaultText = styled.div<{ isLight: boolean }>`
+  color: ${(props: { isLight: boolean }) => (props.isLight ? 'black' : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
@@ -33,8 +37,9 @@ export const DefaultText = styled.div`
   font-family: Jost, sans-serif;
 `
 
-export const InputText = styled.div<{ color: string }>`
-  color: ${(props) => props.color};
+export const InputText = styled.div<{ color: string; isLight: boolean }>`
+  color: ${(props: { isLight: boolean; color: string }) =>
+    props.isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK};
   font-style: normal;
   font-weight: 400;
   font-size: 24px;

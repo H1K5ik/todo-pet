@@ -1,10 +1,12 @@
+import { useTheme } from '@component/themecontext'
 import React, { FC } from 'react'
 
-import * as styles from './styles'
+import { InputBox } from './styles'
 
 export const Input: FC<{ handleInputChange: React.ChangeEventHandler<HTMLInputElement>; value: string }> = ({
   handleInputChange,
   value,
 }) => {
-  return <styles.InputBox placeholder={'hello'} onChange={handleInputChange} value={value}></styles.InputBox>
+  const { isLight } = useTheme()
+  return <InputBox placeholder={'hello'} onChange={handleInputChange} value={value} isLight={isLight}></InputBox>
 }

@@ -1,6 +1,7 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
 import { ChildComponentProps } from '@component/listofitems'
+import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
 import { colors } from '@theme'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
@@ -39,15 +40,21 @@ export const Todo: FC<TodoProps> = ({ children }) => {
     setInputValue(e.target.value)
   }
 
+  const { isLight } = useTheme()
+
   return (
     <>
       <BlockInput>
         <Block>
-          <Typography.Input text={'Add a new task'} color={colors.HEADER_BACK_COLOR} />
+          <Typography.Input text={'Add a new task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
           <Input handleInputChange={handleInputChange} value={inputValue} />
         </Block>
         <WrapperButton>
-          <Button.ButtonPC text={'Add todo'} color={colors.HEADER_BACK_COLOR} onClick={handleAddTodo} />
+          <Button.ButtonPC
+            text={'Add todo'}
+            color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
+            onClick={handleAddTodo}
+          />
         </WrapperButton>
       </BlockInput>
       {React.Children.map(children, (child) =>

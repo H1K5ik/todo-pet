@@ -7,10 +7,12 @@ export const ItemForm = styled.div`
   margin: 1vh auto;
 `
 
-export const CheckItem = styled.input`
+export const CheckItem = styled.input<{ isLight: boolean }>`
   width: 38px;
   height: 35px;
   border-radius: 5px;
+
+  color: red;
 `
 
 export const WrapperCheck = styled.div`

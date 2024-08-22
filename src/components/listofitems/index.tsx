@@ -5,6 +5,7 @@ import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
 import { List, WrapperButton, WrapperText } from './style'
+import { useTheme } from '@component/themecontext'
 
 export interface ChildComponentProps {
   components?: string[]
@@ -58,7 +59,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
       localStorage.setItem('items', JSON.stringify(newComponents))
     }
   }
-
+  const { isLight } = useTheme()
   return (
     <>
       <List>
@@ -78,7 +79,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
         <WrapperButton>
           <Button.ButtonPC
             text={'Deleted selected'}
-            color={colors.DELETE_BUTTON_COLOR}
+            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_CHECKBOX_COLOR_DARK}
             onClick={handleDeleteSelected}
             disabled={selectedItems.size === 0}
           />
