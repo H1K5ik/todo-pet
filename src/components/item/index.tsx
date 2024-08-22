@@ -1,3 +1,4 @@
+import { useTheme } from '@component/themecontext'
 import React, { FC, useState } from 'react'
 
 import { CheckItem, ItemForm, Wrapper, WrapperCheck, WrapperText } from './styles'
@@ -35,11 +36,12 @@ export const Item: FC<ItemProps> = ({ text, onDelete, onSelect, onSave, isSelect
     setEditableText(e.target.value)
   }
 
+  const { isLight } = useTheme()
   return (
     <ItemForm>
       <Wrapper>
         <WrapperCheck>
-          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} />
+          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} isLight={isLight} />
           <WrapperText>
             {isEditing ? (
               <div>

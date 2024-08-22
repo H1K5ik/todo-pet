@@ -1,3 +1,4 @@
+import { useTheme } from '@component/themecontext'
 import React, { FC } from 'react'
 
 import { DefaultText, HeaderText, InputText, LogoText } from './styles'
@@ -11,20 +12,37 @@ export const Typography: FC & {
   return <></>
 }
 
+// Заменить на интерфейс один и подумать, как сократить
 const Header = ({ text, path }: { text: string; path: string }) => {
-  return <HeaderText to={path}>{text}</HeaderText>
+  const { isLight } = useTheme()
+  return (
+    <HeaderText to={path} isLight={isLight}>
+      {text}
+    </HeaderText>
+  )
 }
 
-const Input = ({ text, color }: { text: string; color: string }) => {
-  return <InputText color={color}>{text}</InputText>
+const Input = ({ text, color = 'white' }: { text: string; color?: string }) => {
+  const { isLight } = useTheme()
+  return (
+    <InputText color={color} isLight={isLight}>
+      {text}
+    </InputText>
+  )
 }
 
 const Logo = ({ text, color = 'white' }: { text: string; color?: string }) => {
-  return <LogoText color={color}>{text}</LogoText>
+  const { isLight } = useTheme()
+  return (
+    <LogoText color={color} isLight={isLight}>
+      {text}
+    </LogoText>
+  )
 }
 
 const Default = ({ text }: { text: string }) => {
-  return <DefaultText>{text}</DefaultText>
+  const { isLight } = useTheme()
+  return <DefaultText isLight={isLight}>{text}</DefaultText>
 }
 
 Typography.Logo = Logo
