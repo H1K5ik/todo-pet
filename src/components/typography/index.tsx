@@ -11,8 +11,8 @@ export const Typography: FC & {
   return <></>
 }
 
-const Header = ({ text }: { text: string }) => {
-  return <HeaderText>{text}</HeaderText>
+const Header = ({ text, path }: { text: string; path: string }) => {
+  return <HeaderText to={path}>{text}</HeaderText>
 }
 
 const Input = ({ text, color }: { text: string; color: string }) => {
