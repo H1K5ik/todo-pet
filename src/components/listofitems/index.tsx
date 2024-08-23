@@ -1,11 +1,11 @@
 import { Button } from '@component/button'
 import { Item } from '@component/item'
+import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
 import { List, WrapperButton, WrapperText } from './style'
-import { useTheme } from '@component/themecontext'
 
 export interface ChildComponentProps {
   components?: string[]
@@ -79,7 +79,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
         <WrapperButton>
           <Button.ButtonPC
             text={'Deleted selected'}
-            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_CHECKBOX_COLOR_DARK}
+            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleDeleteSelected}
             disabled={selectedItems.size === 0}
           />

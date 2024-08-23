@@ -1,9 +1,12 @@
+import { ChangeTheme } from '@component/changetheme'
+import { GithubInfo } from '@component/githubinput'
 import React from 'react'
 
 export const SettingsPage = () => {
   return (
     <>
-      <div></div>
+      <ChangeTheme />
+      <GithubInfo />
     </>
   )
 }
