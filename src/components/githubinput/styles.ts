@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   height: 100vh;
   max-width: 343px;
   max-height: 60px;
-  margin: 10vh 25vw;
+  margin: 7vh 25vw;
 `
 export const Input = styled.input<{ isLight: boolean }>`
   width: 282px;
