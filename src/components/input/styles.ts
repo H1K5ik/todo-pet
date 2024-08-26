@@ -9,7 +9,7 @@ export const InputBox = styled.input<{ isLight: boolean }>`
 
   background: transparent;
 
-  color: ${(props: { isLight: boolean }) => (props.isLight ? 'black' : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 24px;

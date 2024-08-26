@@ -1,5 +1,7 @@
+import { colors } from './colors'
+
 export const lightTheme = {
-  background: 'white',
+  background: colors.WHITE,
 }
 
 export const darkTheme = {

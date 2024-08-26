@@ -8,4 +8,9 @@ export const colors = {
   BORDER_COLOR: '#979797',
   DELETE_BUTTON_COLOR: '#FF4081',
   SWITCH_THEME_COLOR: '#646464',
+  LIGHT: 'light',
+  DARK: 'dark',
+  BLACK: 'black',
+  WHITE: 'wthite',
+  GRAY: 'gray',
 }

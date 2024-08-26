@@ -1,3 +1,4 @@
+import { colors } from '@theme'
 import { styled } from 'styled-components'
 
 export const WrapperSelect = styled.select`
@@ -5,7 +6,7 @@ export const WrapperSelect = styled.select`
   height: 100vh;
   max-width: 343px;
   max-height: 60px;
-  border: 1px solid black;
+  border: 1px solid ${colors.BLACK};
 
   background-color: transparent;
 

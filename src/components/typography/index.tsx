@@ -1,4 +1,5 @@
 import { useTheme } from '@component/themecontext'
+import { colors } from '@theme'
 import React, { FC } from 'react'
 
 import { DefaultText, HeaderText, InputText, LogoText } from './styles'
@@ -13,7 +14,6 @@ export const Typography: FC & {
   return <></>
 }
 
-// Заменить на интерфейс один и подумать, как сократить
 const Header = ({ text, path }: { text: string; path: string }) => {
   const { isLight } = useTheme()
   return (
@@ -23,7 +23,7 @@ const Header = ({ text, path }: { text: string; path: string }) => {
   )
 }
 
-const Input = ({ text, color = 'white' }: { text: string; color?: string }) => {
+const Input = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
   const { isLight } = useTheme()
   return (
     <InputText color={color} isLight={isLight}>
@@ -32,7 +32,7 @@ const Input = ({ text, color = 'white' }: { text: string; color?: string }) => {
   )
 }
 
-const Logo = ({ text, color = 'white' }: { text: string; color?: string }) => {
+const Logo = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
   const { isLight } = useTheme()
   return (
     <LogoText color={color} isLight={isLight}>
@@ -46,7 +46,7 @@ const Default = ({ text }: { text: string }) => {
   return <DefaultText isLight={isLight}>{text}</DefaultText>
 }
 
-const Settings = ({ text, color = 'white' }: { text: string; color?: string }) => {
+const Settings = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
   const { isLight } = useTheme()
   return (
     <InputText color={color} isLight={isLight}>

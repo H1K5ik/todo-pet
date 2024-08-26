@@ -15,7 +15,7 @@ export const Link = styled.div<{ isLight: boolean }>`
   background-color: ${(props: { isLight: boolean }) =>
     props.isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
 
-  color: ${(props: { isLight: boolean }) => (props.isLight ? 'white' : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
 `
 export const Wrapper = styled.div`
   display: flex;

@@ -64,7 +64,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
     <>
       <List>
         <WrapperText>
-          <Typography.Logo text={'Task list'} color={'black'} />
+          <Typography.Logo text={'Task list'} color={colors.BLACK} />
         </WrapperText>
         {components?.map((component, index) => (
           <Item

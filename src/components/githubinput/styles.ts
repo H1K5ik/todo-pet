@@ -13,11 +13,12 @@ export const Input = styled.input<{ isLight: boolean }>`
   height: 60px;
   padding-bottom: 5px;
   border: none;
-  border-bottom: 1px solid ${(props: { isLight: boolean }) => (props.isLight ? 'gray' : colors.HEADER_BACK_COLOR_DARK)};
+  border-bottom: 1px solid
+    ${(props: { isLight: boolean }) => (props.isLight ? colors.GRAY : colors.HEADER_BACK_COLOR_DARK)};
 
   background: transparent;
 
-  color: ${(props: { isLight: boolean }) => (props.isLight ? 'black' : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 18px;

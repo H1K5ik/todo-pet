@@ -15,7 +15,7 @@ export const LogoText = styled.div<{ color: string; isLight: boolean }>`
 `
 
 export const HeaderText = styled(NavLink)<{ isLight: boolean }>`
-  color: ${(props: { isLight: boolean }) => (props.isLight ? 'white' : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 36px;
@@ -29,7 +29,7 @@ export const HeaderText = styled(NavLink)<{ isLight: boolean }>`
 `
 
 export const DefaultText = styled.div<{ isLight: boolean }>`
-  color: ${(props: { isLight: boolean }) => (props.isLight ? 'black' : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
   font-style: normal;
   font-weight: 400;
   font-size: 28px;

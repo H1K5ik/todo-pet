@@ -1,9 +1,10 @@
+import deleteItem from '@assets/deleteItem.svg'
+import edit from '@assets/edit.svg'
+import { Icons } from '@component/Icons'
 import { useTheme } from '@component/themecontext'
 import React, { FC, useState } from 'react'
 
 import { CheckItem, ItemForm, Wrapper, WrapperCheck, WrapperText } from './styles'
-import deleteItem from '../../assets/deleteItem.svg'
-import edit from '../../assets/edit.svg'
 import { Typography } from '../typography'
 
 interface ItemProps {
@@ -54,8 +55,8 @@ export const Item: FC<ItemProps> = ({ text, onDelete, onSelect, onSave, isSelect
             )}
           </WrapperText>
         </WrapperCheck>
-        <img src={edit} alt='edit-svg' width='5%' onClick={handleEditClick} />
-        <img src={deleteItem} alt='delete-svg' width='5%' onClick={onDelete} />
+        <Icons src={edit} alt='edit-svg' width='5%' onClick={handleEditClick} />
+        <Icons src={deleteItem} alt='delete-svg' width='5%' onClick={onDelete} />
       </Wrapper>
     </ItemForm>
   )

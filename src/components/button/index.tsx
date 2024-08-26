@@ -1,3 +1,4 @@
+import { colors } from '@theme'
 import React, { FC } from 'react'
 
 import { ButtonBig, ButtonMobile } from './styles'
@@ -22,14 +23,14 @@ const ButtonPC = ({
 }) => {
   return (
     <ButtonBig backgroundColor={color} onClick={onClick} style={{ visibility: disabled ? 'hidden' : 'visible' }}>
-      <Typography.Input text={text} color={'white'} />
+      <Typography.Input text={text} color={colors.WHITE} />
     </ButtonBig>
   )
 }
 
 const ButtonAdaptive = ({ text, color }: { text: string; color: string }) => {
   return <ButtonMobile backgroundColor={color}>{text}</ButtonMobile>
-} // Пока к мобильным кнопкам стили правильно не писал!!
+}
 
 Button.ButtonPC = ButtonPC
 Button.ButtonAdaptive = ButtonAdaptive
