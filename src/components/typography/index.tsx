@@ -23,7 +23,7 @@ const Header = ({ text, path }: { text: string; path: string }) => {
   )
 }
 
-const Input = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
+const Input = ({ text, color = colors.WHITE }: { text?: string; color?: string }) => {
   const { isLight } = useTheme()
   return (
     <InputText color={color} isLight={isLight}>

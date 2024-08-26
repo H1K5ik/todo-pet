@@ -1,36 +1,23 @@
 import { colors } from '@theme'
 import React, { FC } from 'react'
 
-import { ButtonBig, ButtonMobile } from './styles'
+import { ButtonDesktop } from './styles'
 import { Typography } from '../typography'
 
-export const Button: FC & {
-  ButtonPC: typeof ButtonPC
-  ButtonAdaptive: typeof ButtonAdaptive
-} = () => {
-  return <></>
-}
-const ButtonPC = ({
-  text,
-  color,
-  onClick,
-  disabled = false,
-}: {
+export const Button: FC<{
   text: string
   color: string
   onClick: React.MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
-}) => {
+  width?: string
+}> = ({ text, color, onClick, disabled = false, width }) => {
   return (
-    <ButtonBig backgroundColor={color} onClick={onClick} style={{ visibility: disabled ? 'hidden' : 'visible' }}>
+    <ButtonDesktop
+      backgroundColor={color}
+      onClick={onClick}
+      style={{ visibility: disabled ? 'hidden' : 'visible', width: width }}
+    >
       <Typography.Input text={text} color={colors.WHITE} />
-    </ButtonBig>
+    </ButtonDesktop>
   )
 }
-
-const ButtonAdaptive = ({ text, color }: { text: string; color: string }) => {
-  return <ButtonMobile backgroundColor={color}>{text}</ButtonMobile>
-}
-
-Button.ButtonPC = ButtonPC
-Button.ButtonAdaptive = ButtonAdaptive

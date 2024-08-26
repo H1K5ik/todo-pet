@@ -2,6 +2,7 @@ import { darkTheme, lightTheme } from '@theme'
 import React, { FC, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
+import { config } from './config'
 import { Link, Wrapper, WrapperSettings } from './styles'
 import { useTheme } from '../themecontext/index'
 import { Typography } from '../typography'
@@ -21,12 +22,13 @@ export const Header: FC = () => {
           <Typography.Logo text={'Modsen Todo list'} />
         </Wrapper>
         <Wrapper>
-          <WrapperSettings>
-            <Typography.Header text={'Home'} path={'/home'} />
-          </WrapperSettings>
-          <WrapperSettings>
-            <Typography.Header text={'Settings'} path={'/settings'} />
-          </WrapperSettings>
+          {config
+            ? config.map(({ text, path }) => (
+                <WrapperSettings key={text}>
+                  <Typography.Header text={text} path={path} />
+                </WrapperSettings>
+              ))
+            : ''}
         </Wrapper>
       </Link>
       <Outlet />

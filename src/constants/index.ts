@@ -17,3 +17,4 @@ export const DEFAULT_MESSAGE = 'hello'
 
 export const ITEMS = 'items'
 export const IS_LIGHT = 'isLIght '
+export const MAX_TEXT_LENGTH = 30

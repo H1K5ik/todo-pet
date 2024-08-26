@@ -3,6 +3,7 @@ import { Input } from '@component/input'
 import { ChildComponentProps } from '@component/listofitems'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
+import { MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 
@@ -27,8 +28,8 @@ export const Todo: FC<TodoProps> = ({ children }) => {
   const handleAddTodo = () => {
     const inputText = inputValue.trim()
 
-    if (inputText.length > 30) {
-      setInputValue('Todo task text must be less than 30 characters')
+    if (inputText.length > MAX_TEXT_LENGTH) {
+      setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
       return
     }
 
@@ -50,7 +51,7 @@ export const Todo: FC<TodoProps> = ({ children }) => {
           <Input handleInputChange={handleInputChange} value={inputValue} />
         </Block>
         <WrapperButton>
-          <Button.ButtonPC
+          <Button
             text={'Add todo'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleAddTodo}

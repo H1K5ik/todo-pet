@@ -2,7 +2,7 @@ import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
-import { DEFAULT_MESSAGE, ITEMS } from '@const'
+import { DEFAULT_MESSAGE, ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
@@ -41,8 +41,8 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
     if (components && setComponents && setInputValue) {
       const newComponents = [...components]
 
-      if (newText.length > 30) {
-        setInputValue('Todo task text must be less than 30 characters')
+      if (newText.length > MAX_TEXT_LENGTH) {
+        setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
       } else {
         newComponents[index] = newText
       }
@@ -78,7 +78,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
           />
         ))}
         <WrapperButton>
-          <Button.ButtonPC
+          <Button
             text={'Deleted selected'}
             color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleDeleteSelected}
