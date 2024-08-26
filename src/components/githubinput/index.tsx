@@ -21,8 +21,9 @@ export const GithubInfo: FC = () => {
     try {
       const { data } = await axios.get(process.env.API ?? '')
       setUserImage(data.avatar_url)
-    } catch (error) {
-      console.error('User not found', error)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (e) {
+      // TODO add error in modal window
       setUserImage(null)
     }
   }

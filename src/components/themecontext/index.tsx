@@ -1,3 +1,4 @@
+import { IS_LIGHT } from '@const'
 import React, { FC, ReactNode, createContext, useContext, useState } from 'react'
 
 interface IThemeContext {
@@ -23,13 +24,13 @@ interface IThemeProviderProps {
 
 export const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {
   const [isLight, setisLight] = useState(() => {
-    const isLight = localStorage.getItem('isLight')
+    const isLight = localStorage.getItem(IS_LIGHT)
     return isLight ? !!JSON.parse(isLight) : true
   })
   const toggleTheme = () => {
     setisLight((prevIsLight) => {
       const newIsLight = !prevIsLight
-      localStorage.setItem('isLight', JSON.stringify(newIsLight))
+      localStorage.setItem(IS_LIGHT, JSON.stringify(newIsLight))
       return newIsLight
     })
   }

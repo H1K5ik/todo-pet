@@ -2,6 +2,7 @@ import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
+import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
@@ -32,7 +33,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
     if (setComponents) {
       const newComponents = components?.filter((_, i) => i !== index) || []
       setComponents(newComponents)
-      localStorage.setItem('items', JSON.stringify(newComponents))
+      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
 
@@ -47,7 +48,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
       }
 
       setComponents(newComponents)
-      localStorage.setItem('items', JSON.stringify(newComponents))
+      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
 
@@ -56,7 +57,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
       const newComponents = components.filter((_, index) => !selectedItems.has(index))
       setComponents(newComponents)
       setSelectedItems(new Set())
-      localStorage.setItem('items', JSON.stringify(newComponents))
+      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
   const { isLight } = useTheme()
@@ -68,7 +69,7 @@ export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents
         </WrapperText>
         {components?.map((component, index) => (
           <Item
-            text={!component ? 'hello' : component}
+            text={!component ? DEFAULT_MESSAGE : component}
             key={index}
             onSave={(newText: string) => handleSave(index, newText)}
             isSelected={selectedItems.has(index)}

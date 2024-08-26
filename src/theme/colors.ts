@@ -10,7 +10,7 @@ export const colors = {
   SWITCH_THEME_COLOR: '#646464',
   LIGHT: 'light',
   DARK: 'dark',
-  BLACK: 'black',
-  WHITE: 'wthite',
-  GRAY: 'gray',
+  BLACK: '#000000',
+  WHITE: '#FFFFFF',
+  GRAY: '#808080',
 }

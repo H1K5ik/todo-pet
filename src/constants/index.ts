@@ -12,3 +12,8 @@ export const Global = createGlobalStyle`
     box-sizing: border-box;
   }
 `
+
+export const DEFAULT_MESSAGE = 'hello'
+
+export const ITEMS = 'items'
+export const IS_LIGHT = 'isLIght '
