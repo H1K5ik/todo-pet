@@ -1,4 +1,4 @@
-import { colors } from '@theme'
+import { colors, fontStyle } from '@theme'
 import { styled } from 'styled-components'
 
 export const WrapperSelect = styled.select`
@@ -11,10 +11,7 @@ export const WrapperSelect = styled.select`
   background-color: transparent;
 
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-
-  font-family: Jost, sans-serif;
+  ${fontStyle.s}
 `
 export const Wrapper = styled.div`
   width: 100%;

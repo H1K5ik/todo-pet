@@ -8,5 +8,5 @@ export const config = [
   { path: '/', element: <Navigate to={'/home'} replace /> },
   { path: 'home', element: <MainPage /> },
   { path: 'settings', element: <SettingsPage /> },
-  { path: '*', element: <Navigate to={'/home'} replace /> },
+  { path: '*', element: <Navigate to={'/home'} /> },
 ]

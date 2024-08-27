@@ -1,6 +1,8 @@
-export const fontSize = {
-  s: 'font-weight: 400; font-size: 18px;',
-  m: 'font-weight: 400;  font-size: 24px;',
-  l: 'font-weight: 400;  font-size: 28px;',
-  xl: 'font-weight: 400;  font-size: 36px;',
+const fontWeightAndFamily = 'font-weight: 400; font-family: Jost, sans-serif;'
+
+export const fontStyle = {
+  s: `${fontWeightAndFamily} font-size: 18px;`,
+  m: `${fontWeightAndFamily}  font-size: 24px;`,
+  l: `${fontWeightAndFamily}  font-size: 28px;`,
+  xl: `${fontWeightAndFamily}  font-size: 36px;`,
 }

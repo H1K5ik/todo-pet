@@ -1,4 +1,4 @@
-import { colors } from '@theme'
+import { colors, fontStyle } from '@theme'
 import { styled } from 'styled-components'
 
 export const InputBox = styled.input<{ isLight: boolean }>`
@@ -11,8 +11,5 @@ export const InputBox = styled.input<{ isLight: boolean }>`
 
   color: ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-
-  font-family: Jost, sans-serif;
+  ${fontStyle.s}
 `
