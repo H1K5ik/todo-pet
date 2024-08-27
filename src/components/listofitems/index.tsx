@@ -2,7 +2,7 @@ import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
-import { DEFAULT_MESSAGE, ITEMS, MAX_TEXT_LENGTH } from '@const'
+import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
@@ -12,9 +12,10 @@ export interface IListOfItems {
   components?: string[]
   setComponents?: React.Dispatch<React.SetStateAction<string[]>>
   setInputValue?: React.Dispatch<React.SetStateAction<string>>
+  onEdit?: () => void
 }
 
-export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue }) => {
+export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, onEdit }) => {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set())
 
   const handleSelect = (index: number) => {
@@ -37,20 +38,20 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
     }
   }
 
-  const handleSave = (index: number, newText: string) => {
-    if (components && setComponents && setInputValue) {
-      const newComponents = [...components]
+  // const handleSave = (index: number, newText: string) => {
+  //   if (components && setComponents && setInputValue) {
+  //     const newComponents = [...components]
 
-      if (newText.length > MAX_TEXT_LENGTH) {
-        setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
-      } else {
-        newComponents[index] = newText
-      }
+  //     if (newText.length > MAX_TEXT_LENGTH) {
+  //       setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
+  //     } else {
+  //       newComponents[index] = newText
+  //     }
 
-      setComponents(newComponents)
-      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
-    }
-  }
+  //     setComponents(newComponents)
+  //     localStorage.setItem(ITEMS, JSON.stringify(newComponents))
+  //   }
+  // }
 
   const handleDeleteSelected = () => {
     if (components && setComponents) {
@@ -71,12 +72,12 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
           {components && components.length > 0 ? (
             components.map((component, index) => (
               <Item
-                text={!component ? DEFAULT_MESSAGE : component}
+                text={component ? component : DEFAULT_MESSAGE}
                 key={index}
-                onSave={(newText: string) => handleSave(index, newText)}
                 isSelected={selectedItems.has(index)}
                 onDelete={() => handleDelete(index)}
                 onSelect={() => handleSelect(index)}
+                onEdit={onEdit ? onEdit : () => {}}
               />
             ))
           ) : (

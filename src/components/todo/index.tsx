@@ -20,10 +20,15 @@ export const Todo: FC<ITodo> = ({ children }) => {
   })
 
   const [inputValue, setInputValue] = useState<string>('')
+  const [isEdit, setIsEdit] = useState<boolean>(false)
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(components))
   }, [components])
+
+  const handleEdit = () => {
+    setIsEdit(true)
+  }
 
   const handleAddTodo = () => {
     const inputText = inputValue.trim()
@@ -52,7 +57,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
         </Block>
         <WrapperButton>
           <Button
-            text={'Add todo'}
+            text={!isEdit ? 'Add todo' : 'Edit'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleAddTodo}
             onKeyDown={handleAddTodo}
@@ -65,6 +70,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
               components: components,
               setComponents: setComponents,
               setInputValue: setInputValue,
+              onEdit: handleEdit,
             })
           : child,
       )}
