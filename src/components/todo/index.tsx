@@ -55,6 +55,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
             text={'Add todo'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleAddTodo}
+            onKeyDown={handleAddTodo}
           />
         </WrapperButton>
       </BlockInput>

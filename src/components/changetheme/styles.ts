@@ -20,3 +20,8 @@ export const Wrapper = styled.div`
   max-height: 60px;
   margin: 5vh 25vw;
 `
+
+export const Option = styled.option<{ isLight: boolean }>`
+  background-color: ${(props: { isLight: boolean }) => (!props.isLight ? colors.GRAY : colors.WHITE)};
+  color: ${(props: { isLight: boolean }) => (!props.isLight ? colors.WHITE : colors.GRAY)};
+`
