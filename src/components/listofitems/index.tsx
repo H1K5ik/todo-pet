@@ -45,20 +45,6 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
       onEdit()
     }
   }
-  // const handleSave = (index: number, newText: string) => {
-  //   if (components && setComponents && setInputValue) {
-  //     const newComponents = [...components]
-
-  //     if (newText.length > MAX_TEXT_LENGTH) {
-  //       setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
-  //     } else {
-  //       newComponents[index] = newText
-  //     }
-
-  //     setComponents(newComponents)
-  //     localStorage.setItem(ITEMS, JSON.stringify(newComponents))
-  //   }
-  // }
 
   const handleDeleteSelected = () => {
     if (components && setComponents) {
