@@ -6,7 +6,7 @@ import { DEFAULT_MESSAGE, ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
-import { List, WrapperButton, WrapperText } from './style'
+import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './style'
 
 export interface IListOfItems {
   components?: string[]
@@ -67,22 +67,29 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
         <WrapperText>
           <Typography.Logo text={'Task list'} color={colors.BLACK} />
         </WrapperText>
-        {components?.map((component, index) => (
-          <Item
-            text={!component ? DEFAULT_MESSAGE : component}
-            key={index}
-            onSave={(newText: string) => handleSave(index, newText)}
-            isSelected={selectedItems.has(index)}
-            onDelete={() => handleDelete(index)}
-            onSelect={() => handleSelect(index)}
-          />
-        ))}
+        <WrapperList>
+          {components && components.length > 0 ? (
+            components.map((component, index) => (
+              <Item
+                text={!component ? DEFAULT_MESSAGE : component}
+                key={index}
+                onSave={(newText: string) => handleSave(index, newText)}
+                isSelected={selectedItems.has(index)}
+                onDelete={() => handleDelete(index)}
+                onSelect={() => handleSelect(index)}
+              />
+            ))
+          ) : (
+            <WrapperListText isLight={isLight}>Create your first ToDo</WrapperListText>
+          )}
+        </WrapperList>
         <WrapperButton>
           <Button
             text={'Deleted selected'}
             color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleDeleteSelected}
             disabled={selectedItems.size === 0}
+            onKeyDown={handleDeleteSelected}
           />
         </WrapperButton>
       </List>
