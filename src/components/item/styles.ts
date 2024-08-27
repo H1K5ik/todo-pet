@@ -65,8 +65,6 @@ export const Indicator = styled.div<{ isLight: boolean }>`
 
   &::after {
     display: none;
-    position: absolute;
-
     content: '';
   }
 
