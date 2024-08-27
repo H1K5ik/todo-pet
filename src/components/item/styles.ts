@@ -12,7 +12,8 @@ export const CheckItem = styled.input<{ isLight: boolean }>`
   height: 35px;
   border-radius: 5px;
 
-  color: red;
+  /* TODO fix checkbox styles */
+  accent-color: green;
 `
 
 export const WrapperCheck = styled.div`
