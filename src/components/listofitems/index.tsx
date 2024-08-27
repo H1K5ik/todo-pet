@@ -8,13 +8,13 @@ import React, { FC, useState } from 'react'
 
 import { List, WrapperButton, WrapperText } from './style'
 
-export interface ChildComponentProps {
+export interface IListOfItems {
   components?: string[]
   setComponents?: React.Dispatch<React.SetStateAction<string[]>>
   setInputValue?: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const ListOfItems: FC<ChildComponentProps> = ({ components, setComponents, setInputValue }) => {
+export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue }) => {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set())
 
   const handleSelect = (index: number) => {

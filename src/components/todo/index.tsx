@@ -1,6 +1,6 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
-import { ChildComponentProps } from '@component/listofitems'
+import { IListOfItems } from '@component/listofitems'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
 import { MAX_TEXT_LENGTH } from '@const'
@@ -9,11 +9,11 @@ import React, { FC, ReactElement, useEffect, useState } from 'react'
 
 import { Block, BlockInput, WrapperButton } from './style'
 
-interface TodoProps {
-  children: ReactElement<ChildComponentProps> | ReactElement<ChildComponentProps>[]
+interface ITodo {
+  children: ReactElement<IListOfItems> | ReactElement<IListOfItems>[]
 }
 
-export const Todo: FC<TodoProps> = ({ children }) => {
+export const Todo: FC<ITodo> = ({ children }) => {
   const [components, setComponents] = useState<string[]>(() => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []

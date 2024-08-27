@@ -27,6 +27,7 @@ export const GithubInfo: FC = () => {
       setUserImage(null)
     }
   }
+
   return (
     <Wrapper>
       <Typography.Settings text={'GitHub info'} color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} />

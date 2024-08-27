@@ -14,16 +14,22 @@ export const Typography: FC & {
   return <></>
 }
 
-const Header = ({ text, path }: { text: string; path: string }) => {
+interface IText {
+  text: string
+  path?: string
+  color?: string
+}
+
+const Header = ({ text, path }: IText) => {
   const { isLight } = useTheme()
   return (
-    <HeaderText to={path} isLight={isLight}>
+    <HeaderText to={path || ''} isLight={isLight}>
       {text}
     </HeaderText>
   )
 }
 
-const Input = ({ text, color = colors.WHITE }: { text?: string; color?: string }) => {
+const Input = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
     <InputText color={color} isLight={isLight}>
@@ -32,7 +38,7 @@ const Input = ({ text, color = colors.WHITE }: { text?: string; color?: string }
   )
 }
 
-const Logo = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
+const Logo = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
     <LogoText color={color} isLight={isLight}>
@@ -41,12 +47,12 @@ const Logo = ({ text, color = colors.WHITE }: { text: string; color?: string }) 
   )
 }
 
-const Default = ({ text }: { text: string }) => {
+const Default = ({ text }: IText) => {
   const { isLight } = useTheme()
   return <DefaultText isLight={isLight}>{text}</DefaultText>
 }
 
-const Settings = ({ text, color = colors.WHITE }: { text: string; color?: string }) => {
+const Settings = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
     <InputText color={color} isLight={isLight}>

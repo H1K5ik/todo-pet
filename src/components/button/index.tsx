@@ -4,13 +4,15 @@ import React, { FC } from 'react'
 import { ButtonDesktop } from './styles'
 import { Typography } from '../typography'
 
-export const Button: FC<{
+interface IButton {
   text: string
   color: string
   onClick: React.MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
   width?: string
-}> = ({ text, color, onClick, disabled = false, width }) => {
+}
+
+export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, width }) => {
   return (
     <ButtonDesktop
       backgroundColor={color}

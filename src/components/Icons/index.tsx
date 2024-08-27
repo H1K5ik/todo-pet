@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 
-export const Icons: FC<{
+interface IItems {
   onClick: () => void
   src: string
   alt: string
   width: string
-}> = ({ onClick, src, alt, width }) => {
+}
+
+export const Icons: FC<IItems> = ({ onClick, src, alt, width }) => {
   return <img src={src} onClick={onClick} alt={alt} width={width} />
 }

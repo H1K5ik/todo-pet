@@ -7,7 +7,7 @@ import React, { FC, useState } from 'react'
 import { CheckItem, ItemForm, Wrapper, WrapperCheck, WrapperText } from './styles'
 import { Typography } from '../typography'
 
-interface ItemProps {
+interface IItem {
   text: string
   onDelete: () => void
   onSelect: () => void
@@ -15,7 +15,7 @@ interface ItemProps {
   isSelected: boolean
 }
 
-export const Item: FC<ItemProps> = ({ text, onDelete, onSelect, onSave, isSelected }) => {
+export const Item: FC<IItem> = ({ text, onDelete, onSelect, onSave, isSelected }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editableText, setEditableText] = useState<string>(text)
 

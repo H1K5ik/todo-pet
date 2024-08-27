@@ -7,6 +7,7 @@ import { Typography } from '../typography'
 
 export const ChangeTheme: FC = () => {
   const { isLight, toggleTheme } = useTheme()
+
   return (
     <Wrapper>
       <Typography.Settings text={'Switch Theme'} color={isLight ? colors.SWITCH_THEME_COLOR : colors.BLACK} />
