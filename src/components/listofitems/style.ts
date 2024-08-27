@@ -9,6 +9,10 @@ export const WrapperText = styled.div`
   max-width: 8%;
   margin: 2vh auto;
 `
+export const WrapperList = styled.div`
+  overflow: auto;
+  max-height: 39vh;
+`
 
 export const WrapperListText = styled.div<{ isLight: boolean }>`
   max-width: 25%;
@@ -25,6 +29,7 @@ export const Block = styled.div`
   flex-direction: column;
 `
 export const List = styled.div`
+  overflow: hidden;
   margin-top: 2vh;
 `
 
