@@ -3,7 +3,7 @@ import { Input } from '@component/input'
 import { IListOfItems } from '@component/listofitems'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
-import { MAX_TEXT_LENGTH } from '@const'
+import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 
@@ -18,12 +18,17 @@ export const Todo: FC<ITodo> = ({ children }) => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []
   })
-
   const [inputValue, setInputValue] = useState<string>('')
+  const [isEdit, setIsEdit] = useState<boolean>(false)
+  const [todoId, setTodoId] = useState<number>()
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(components))
   }, [components])
+
+  const handleEdit = () => {
+    setIsEdit(true)
+  }
 
   const handleAddTodo = () => {
     const inputText = inputValue.trim()
@@ -41,20 +46,40 @@ export const Todo: FC<ITodo> = ({ children }) => {
     setInputValue(e.target.value)
   }
 
+  const handleSaveEdit = () => {
+    const newText = inputValue.trim()
+    const index = todoId || 0
+    if (components && setComponents && setInputValue) {
+      const newComponents = [...components]
+
+      if (newText.length > MAX_TEXT_LENGTH) {
+        setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
+      } else {
+        newComponents[index] = newText
+      }
+
+      setComponents(newComponents)
+      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
+    }
+
+    setInputValue('')
+    setIsEdit(false)
+  }
+
   const { isLight } = useTheme()
 
   return (
     <>
       <BlockInput>
         <Block>
-          <Typography.Input text={'Add a new task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
+          <Typography.Input text={!isEdit ? 'Add a new task' : 'Edit task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
           <Input handleInputChange={handleInputChange} value={inputValue} />
         </Block>
         <WrapperButton>
           <Button
-            text={'Add todo'}
+            text={!isEdit ? 'Add todo' : 'Edit'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
-            onClick={handleAddTodo}
+            onClick={!isEdit ? handleAddTodo : handleSaveEdit}
             onKeyDown={handleAddTodo}
           />
         </WrapperButton>
@@ -65,6 +90,8 @@ export const Todo: FC<ITodo> = ({ children }) => {
               components: components,
               setComponents: setComponents,
               setInputValue: setInputValue,
+              onEdit: handleEdit,
+              setTodoId: setTodoId,
             })
           : child,
       )}

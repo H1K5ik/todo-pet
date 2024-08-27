@@ -17,7 +17,7 @@ export const Label = styled.label<{ isLight: boolean }>`
   border-top: 1px solid ${colors.BORDER_COLOR};
   border-bottom: 1px solid ${colors.BORDER_COLOR};
 
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease-in;
 
   user-select: none;
 
@@ -77,7 +77,7 @@ export const Indicator = styled.div<{ isLight: boolean }>`
     height: 25px;
     margin-left: 10px;
     border: solid ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.WHITE)};
-    border-width: 0 0.2em 0.2em 0;
+    border-width: 0 3px 3px 0;
 
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
