@@ -4,7 +4,7 @@ import { Icons } from '@component/Icons'
 import { useTheme } from '@component/themecontext'
 import React, { FC, useState } from 'react'
 
-import { CheckItem, ItemForm, Wrapper, WrapperCheck, WrapperText } from './styles'
+import { CheckItem, Indicator, ItemForm, Label, Wrapper, WrapperText } from './styles'
 import { Typography } from '../typography'
 
 interface IItem {
@@ -41,8 +41,9 @@ export const Item: FC<IItem> = ({ text, onDelete, onSelect, onSave, isSelected }
   return (
     <ItemForm>
       <Wrapper>
-        <WrapperCheck>
+        <Label isLight={isLight}>
           <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} isLight={isLight} />
+          <Indicator isLight={isLight} />
           <WrapperText>
             {isEditing ? (
               <div>
@@ -54,7 +55,7 @@ export const Item: FC<IItem> = ({ text, onDelete, onSelect, onSave, isSelected }
               <Typography.Default text={text} />
             )}
           </WrapperText>
-        </WrapperCheck>
+        </Label>
         <Icons src={edit} alt='edit-svg' width='5%' onClick={handleEditClick} />
         <Icons src={deleteItem} alt='delete-svg' width='5%' onClick={onDelete} />
       </Wrapper>

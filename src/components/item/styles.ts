@@ -1,5 +1,5 @@
 import { colors } from '@theme'
-import { styled } from 'styled-components'
+import { keyframes, styled } from 'styled-components'
 
 export const ItemForm = styled.div`
   width: 100vw;
@@ -7,23 +7,33 @@ export const ItemForm = styled.div`
   margin: 1vh auto;
 `
 
-export const CheckItem = styled.input<{ isLight: boolean }>`
-  width: 38px;
-  height: 35px;
-  border-radius: 5px;
-
-  /* TODO fix checkbox styles */
-  accent-color: green;
-`
-
-export const WrapperCheck = styled.div`
+export const Label = styled.label<{ isLight: boolean }>`
   display: flex;
-  align-items: center;
 
   width: 80%;
-  height: 70px;
+  height: 66px;
+  margin: 2px;
+  padding-left: 2px;
   border-top: 1px solid ${colors.BORDER_COLOR};
   border-bottom: 1px solid ${colors.BORDER_COLOR};
+
+  transition: box-shadow 0.2s ease;
+
+  user-select: none;
+
+  &:hover {
+    box-shadow: 0 1px 15px ${(props: { isLight: boolean }) => (props.isLight ? colors.GRAY : colors.BORDER_COLOR)};
+    cursor: pointer;
+  }
+`
+
+export const CheckItem = styled.input<{ isLight: boolean }>`
+  z-index: -1;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
 `
 
 export const Wrapper = styled.div`
@@ -31,4 +41,46 @@ export const Wrapper = styled.div`
 `
 export const WrapperText = styled.div`
   margin: 1em;
+`
+const rotate = keyframes`
+ from {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+`
+
+export const Indicator = styled.div<{ isLight: boolean }>`
+  width: 35px;
+  height: 35px;
+  margin-top: 1em;
+  border: 1px solid ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.BORDER_COLOR)};
+  border-radius: 5px;
+
+  background: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.THEME_DARK)};
+
+  &::after {
+    display: none;
+    position: absolute;
+
+    content: '';
+  }
+
+  ${CheckItem}:checked + &::after {
+    display: block;
+
+    width: 8px;
+    height: 25px;
+    margin-left: 10px;
+    border: solid ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.WHITE)};
+    border-width: 0 0.2em 0.2em 0;
+
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-name: ${rotate};
+  }
 `

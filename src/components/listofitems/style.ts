@@ -11,7 +11,7 @@ export const WrapperText = styled.div`
 `
 export const WrapperList = styled.div`
   overflow: auto;
-  max-height: 39vh;
+  max-height: 35vh;
 `
 
 export const WrapperListText = styled.div<{ isLight: boolean }>`
