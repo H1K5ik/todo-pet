@@ -13,9 +13,10 @@ export interface IListOfItems {
   setComponents?: React.Dispatch<React.SetStateAction<string[]>>
   setInputValue?: React.Dispatch<React.SetStateAction<string>>
   onEdit?: () => void
+  setTodoId?: React.Dispatch<React.SetStateAction<number | undefined>>
 }
 
-export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, onEdit }) => {
+export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue, onEdit, setTodoId }) => {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set())
 
   const handleSelect = (index: number) => {
@@ -37,7 +38,13 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, onEdi
       localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
-
+  const handleEdit = (index: number) => {
+    if (setTodoId && onEdit && components && setInputValue) {
+      setTodoId(index)
+      setInputValue(components[index])
+      onEdit()
+    }
+  }
   // const handleSave = (index: number, newText: string) => {
   //   if (components && setComponents && setInputValue) {
   //     const newComponents = [...components]
@@ -77,7 +84,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, onEdi
                 isSelected={selectedItems.has(index)}
                 onDelete={() => handleDelete(index)}
                 onSelect={() => handleSelect(index)}
-                onEdit={onEdit ? onEdit : () => {}}
+                onEdit={() => handleEdit(index)}
               />
             ))
           ) : (
