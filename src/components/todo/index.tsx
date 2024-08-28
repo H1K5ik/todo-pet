@@ -9,7 +9,7 @@ import { colors } from '@theme'
 import { keygen } from '@utils/keygen'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 
-import { Block, BlockInput, WrapperButton } from './style'
+import { Block, BlockInput, WrapperButton } from './styles'
 
 interface ITodo {
   children: ReactElement<IListOfItems> | ReactElement<IListOfItems>[]

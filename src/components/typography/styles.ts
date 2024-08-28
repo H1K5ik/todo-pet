@@ -17,12 +17,14 @@ export const LogoText = styled.div<{ color: string; isLight: boolean }>`
 export const HeaderText = styled(NavLink)<{ isLight: boolean }>`
   color: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
   font-style: normal;
+
   ${fontStyle.xl}
 
   text-decoration: none;
 
   &.active {
-    text-decoration: underline;
+    border-bottom: 2px solid
+      ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
   }
 `
 

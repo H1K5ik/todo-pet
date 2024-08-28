@@ -7,7 +7,7 @@ import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
-import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './style'
+import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
 
 export interface IListOfItems {
   components?: IComponents[]
@@ -84,7 +84,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
         <WrapperText>
           <Typography.Logo text={'Task list'} color={colors.BLACK} />
         </WrapperText>
-        <WrapperList>
+        <WrapperList isLight={isLight}>
           {components && components.length > 0 ? (
             components.map(({ id, text }) => (
               <Item
