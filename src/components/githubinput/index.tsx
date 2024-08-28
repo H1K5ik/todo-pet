@@ -19,11 +19,10 @@ export const GithubInfo: FC = () => {
 
   const handleSearch = async () => {
     try {
-      const { data } = await axios.get(process.env.API ?? '')
+      const { data } = await axios.get(`${process.env.API}${username}` ?? '')
       setUserImage(data.avatar_url)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
-      // TODO add error in modal window
+      alert(e)
       setUserImage(null)
     }
   }
