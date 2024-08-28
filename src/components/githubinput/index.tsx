@@ -1,11 +1,12 @@
 import find from '@assets/find.svg'
 import { Icons } from '@component/Icons'
+import { Input } from '@component/input'
 import { useTheme } from '@component/themecontext'
 import { colors } from '@theme'
 import axios from 'axios'
 import React, { FC, useState } from 'react'
 
-import { Input, Wrapper } from './styles'
+import { Wrapper, WrapperGithub } from './styles'
 import { Typography } from '../typography'
 
 export const GithubInfo: FC = () => {
@@ -19,21 +20,22 @@ export const GithubInfo: FC = () => {
 
   const handleSearch = async () => {
     try {
-      const { data } = await axios.get(process.env.API ?? '')
+      const { data } = await axios.get(`${process.env.API}${username}` ?? '')
       setUserImage(data.avatar_url)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
-      // TODO add error in modal window
+      alert(e)
       setUserImage(null)
     }
   }
 
   return (
     <Wrapper>
-      <Typography.Settings text={'GitHub info'} color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} />
-      <Input isLight={isLight} value={username} onChange={handleInputChange} />
+      <WrapperGithub>
+        <Typography.Settings text={'GitHub info'} color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} />
+        <Input value={username} handleInputChange={handleInputChange} onKeyDown={handleSearch} width={'282px'} />
+        <Icons src={find} alt='edit-svg' width='15%' onClick={handleSearch} />
+      </WrapperGithub>
 
-      <Icons src={find} alt='edit-svg' width='15%' onClick={handleSearch} />
       {userImage && <img src={userImage} alt='User avatar' />}
     </Wrapper>
   )
