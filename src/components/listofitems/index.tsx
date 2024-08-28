@@ -18,7 +18,24 @@ export interface IListOfItems {
 }
 
 export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue, onEdit, setTodoId }) => {
-  const [selectedItems, setSelectedItems] = useState<Set<number>>(new Set())
+  const { isLight } = useTheme()
+  const [selectedItems, setSelectedItems] = useState<Set<number>>(() => {
+    const savedItems = localStorage.getItem('items')
+    if (savedItems) {
+      const parsedItems = JSON.parse(savedItems) as Array<{ id: number; selected: boolean }>
+      const selItems = parsedItems.filter((obj) => obj.selected).map((obj) => obj.id)
+      return new Set(selItems)
+    }
+    return new Set()
+  })
+
+  const toggleComponentSelection = (index: number) => {
+    if (setComponents && components) {
+      const updatedComponents = components.map((obj) => (obj.id === index ? { ...obj, selected: !obj.selected } : obj))
+      setComponents(updatedComponents)
+      localStorage.setItem(ITEMS, JSON.stringify(updatedComponents))
+    }
+  }
 
   const handleSelect = (index: number) => {
     setSelectedItems((prev) => {
@@ -28,6 +45,9 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
       } else {
         newSelection.add(index)
       }
+
+      toggleComponentSelection(index)
+
       return newSelection
     })
   }
@@ -39,6 +59,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
       localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
+
   const handleEdit = (index: number) => {
     if (setTodoId && onEdit && components && setInputValue) {
       const foundItem = components.find((obj) => obj.id === index)
@@ -56,7 +77,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
       localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
-  const { isLight } = useTheme()
+
   return (
     <>
       <List>

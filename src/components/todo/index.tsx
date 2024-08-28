@@ -17,6 +17,7 @@ interface ITodo {
 export interface IComponents {
   id: number
   text: string
+  selected: boolean
 }
 
 export const Todo: FC<ITodo> = ({ children }) => {
@@ -34,7 +35,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const closeModal = () => setIsModalOpen(false)
 
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(components))
+    localStorage.setItem(ITEMS, JSON.stringify(components))
   }, [components])
 
   const handleEdit = () => {
@@ -52,7 +53,11 @@ export const Todo: FC<ITodo> = ({ children }) => {
 
     setComponents([
       ...components,
-      { id: keygen(components.length ? components[components.length - 1].id : 1), text: inputText || 'hello' },
+      {
+        id: keygen(components.length ? components[components.length - 1].id : 1),
+        text: inputText || 'hello',
+        selected: false,
+      },
     ])
     setInputValue('')
   }

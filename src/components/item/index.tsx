@@ -17,7 +17,6 @@ interface IItem {
 
 export const Item: FC<IItem> = ({ text, onDelete, onSelect, isSelected, onEdit }) => {
   const { isLight } = useTheme()
-
   return (
     <ItemForm>
       <Wrapper>
