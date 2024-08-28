@@ -9,4 +9,8 @@ export const ButtonDesktop = styled.button<{ backgroundColor: string }>`
   border-radius: 10px;
 
   background-color: ${(props) => props.backgroundColor};
+
+  *:hover {
+    cursor: pointer;
+  }
 `

@@ -27,8 +27,8 @@ export const Item: FC<IItem> = ({ text, onDelete, onSelect, isSelected, onEdit }
             <Typography.Default text={text} />
           </WrapperText>
         </Label>
-        <Icons src={edit} alt='edit-svg' width='5%' onClick={onEdit} />
-        <Icons src={deleteItem} alt='delete-svg' width='5%' onClick={onDelete} />
+        <Icons src={edit} alt='edit-svg' onClick={onEdit} />
+        <Icons src={deleteItem} alt='delete-svg' onClick={onDelete} />
       </Wrapper>
     </ItemForm>
   )
