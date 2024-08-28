@@ -17,9 +17,9 @@ export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, wi
   const { isLight } = useTheme()
   return (
     <ButtonDesktop
-      backgroundColor={color}
+      $backgroundColor={color}
       onClick={onClick}
-      isLight={isLight}
+      $isLight={isLight}
       style={{ visibility: disabled ? 'hidden' : 'visible', width: width }}
     >
       <Typography.Input text={text} color={colors.WHITE} />

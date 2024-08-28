@@ -1,7 +1,7 @@
 import { colors } from '@theme'
 import { styled } from 'styled-components'
 
-export const Link = styled.div<{ isLight: boolean }>`
+export const Link = styled.div<{ $isLight: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,10 +12,10 @@ export const Link = styled.div<{ isLight: boolean }>`
   max-height: 130px;
   margin: auto;
 
-  background-color: ${(props: { isLight: boolean }) =>
-    props.isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
+  background-color: ${(props: { $isLight: boolean }) =>
+    props.$isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
 
-  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
 `
 export const Wrapper = styled.div`
   display: flex;

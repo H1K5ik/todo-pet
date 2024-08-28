@@ -20,9 +20,9 @@ export const Item: FC<IItem> = ({ text, onDelete, onSelect, isSelected, onEdit }
   return (
     <ItemForm>
       <Wrapper>
-        <Label isLight={isLight}>
-          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} isLight={isLight} />
-          <Indicator isLight={isLight} />
+        <Label $isLight={isLight}>
+          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} />
+          <Indicator $isLight={isLight} />
           <WrapperText>
             <Typography.Default text={text} />
           </WrapperText>

@@ -1,3 +1,4 @@
+import { useTheme } from '@component/themecontext'
 import React, { FC, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
@@ -7,10 +8,9 @@ interface IModal {
   isOpen: boolean
   onClose: () => void
   children: React.ReactNode
-  isLight: boolean
 }
 
-export const Toast: FC<IModal> = ({ isOpen, onClose, children, isLight }) => {
+export const Toast: FC<IModal> = ({ isOpen, onClose, children }) => {
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(onClose, 2000)
@@ -19,9 +19,9 @@ export const Toast: FC<IModal> = ({ isOpen, onClose, children, isLight }) => {
       }
     }
   }, [isOpen, onClose])
-
+  const { isLight } = useTheme()
   return ReactDOM.createPortal(
-    <ToastWrapper isOpen={isOpen} isLight={isLight}>
+    <ToastWrapper $isOpen={isOpen} $isLight={isLight}>
       {children}
     </ToastWrapper>,
     document.getElementById('modal-root') as HTMLElement,
