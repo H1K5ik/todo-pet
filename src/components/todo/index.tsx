@@ -50,7 +50,6 @@ export const Todo: FC<ITodo> = ({ children }) => {
       openModal()
       return
     }
-
     setComponents([
       ...components,
       {
@@ -91,18 +90,17 @@ export const Todo: FC<ITodo> = ({ children }) => {
     <>
       <BlockInput>
         <Toast isOpen={isModalOpen} onClose={closeModal} isLight={isLight}>
-          <div>Todo task text must be less than {MAX_TEXT_LENGTH} characters</div>
+          {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
         <Block>
           <Typography.Input text={!isEdit ? 'Add a new task' : 'Edit task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
-          <Input handleInputChange={handleInputChange} value={inputValue} />
+          <Input handleInputChange={handleInputChange} value={inputValue} onKeyDown={handleAddTodo} />
         </Block>
         <WrapperButton>
           <Button
             text={!isEdit ? 'Add todo' : 'Edit'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={!isEdit ? handleAddTodo : handleSaveEdit}
-            onKeyDown={handleAddTodo}
           />
         </WrapperButton>
       </BlockInput>
