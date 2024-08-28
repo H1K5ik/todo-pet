@@ -1,6 +1,7 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
 import { IListOfItems } from '@component/listofitems'
+import { Toast } from '@component/modalwindow'
 import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
@@ -14,6 +15,7 @@ interface ITodo {
 }
 
 export const Todo: FC<ITodo> = ({ children }) => {
+  const { isLight } = useTheme()
   const [components, setComponents] = useState<string[]>(() => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []
@@ -21,6 +23,10 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const [inputValue, setInputValue] = useState<string>('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [todoId, setTodoId] = useState<number>()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(components))
@@ -34,7 +40,8 @@ export const Todo: FC<ITodo> = ({ children }) => {
     const inputText = inputValue.trim()
 
     if (inputText.length > MAX_TEXT_LENGTH) {
-      setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
+      setInputValue(``)
+      openModal()
       return
     }
 
@@ -53,7 +60,8 @@ export const Todo: FC<ITodo> = ({ children }) => {
       const newComponents = [...components]
 
       if (newText.length > MAX_TEXT_LENGTH) {
-        setInputValue(`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`)
+        setInputValue(``)
+        openModal()
       } else {
         newComponents[index] = newText
       }
@@ -66,11 +74,12 @@ export const Todo: FC<ITodo> = ({ children }) => {
     setIsEdit(false)
   }
 
-  const { isLight } = useTheme()
-
   return (
     <>
       <BlockInput>
+        <Toast isOpen={isModalOpen} onClose={closeModal} isLight={isLight}>
+          <div>Todo task text must be less than {MAX_TEXT_LENGTH} characters</div>
+        </Toast>
         <Block>
           <Typography.Input text={!isEdit ? 'Add a new task' : 'Edit task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
           <Input handleInputChange={handleInputChange} value={inputValue} />
