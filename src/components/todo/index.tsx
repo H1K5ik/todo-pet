@@ -75,7 +75,11 @@ export const Todo: FC<ITodo> = ({ children }) => {
         setInputValue(``)
         openModal()
       } else {
-        newComponents[index].text = newText
+        newComponents.forEach((obj) => {
+          if (obj.id == index) {
+            obj.text = newText
+          }
+        })
       }
 
       setComponents(newComponents)
