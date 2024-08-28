@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-import { ToastWrapper } from './style'
+import { ToastWrapper } from './styles'
 
 interface IModal {
   isOpen: boolean
