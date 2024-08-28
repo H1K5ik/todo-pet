@@ -1,7 +1,7 @@
 import { colors, fontStyle } from '@theme'
 import { styled } from 'styled-components'
 
-export const WrapperSelect = styled.select`
+export const WrapperSelect = styled.select<{ isLight: boolean }>`
   width: 100%;
   height: 100vh;
   max-width: 343px;
@@ -12,6 +12,13 @@ export const WrapperSelect = styled.select`
 
   font-style: normal;
   ${fontStyle.s}
+
+  transition: box-shadow 0.2s ease-in;
+
+  &:hover {
+    box-shadow: 0 1px 15px ${(props: { isLight: boolean }) => (props.isLight ? colors.GRAY : colors.BORDER_COLOR)};
+    cursor: pointer;
+  }
 `
 export const Wrapper = styled.div`
   width: 100%;
