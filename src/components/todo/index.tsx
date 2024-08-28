@@ -6,6 +6,7 @@ import { useTheme } from '@component/themecontext'
 import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
+import { keygen } from '@utils/keygen'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
 
 import { Block, BlockInput, WrapperButton } from './style'
@@ -13,10 +14,14 @@ import { Block, BlockInput, WrapperButton } from './style'
 interface ITodo {
   children: ReactElement<IListOfItems> | ReactElement<IListOfItems>[]
 }
+export interface IComponents {
+  id: number
+  text: string
+}
 
 export const Todo: FC<ITodo> = ({ children }) => {
   const { isLight } = useTheme()
-  const [components, setComponents] = useState<string[]>(() => {
+  const [components, setComponents] = useState<IComponents[]>(() => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []
   })
@@ -45,7 +50,10 @@ export const Todo: FC<ITodo> = ({ children }) => {
       return
     }
 
-    setComponents([...components, inputText])
+    setComponents([
+      ...components,
+      { id: keygen(components.length ? components[components.length - 1].id : 1), text: inputText || 'hello' },
+    ])
     setInputValue('')
   }
 
@@ -63,7 +71,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
         setInputValue(``)
         openModal()
       } else {
-        newComponents[index] = newText
+        newComponents[index].text = newText
       }
 
       setComponents(newComponents)

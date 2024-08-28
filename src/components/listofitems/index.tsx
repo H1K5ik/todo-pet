@@ -1,6 +1,7 @@
 import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themecontext'
+import { IComponents } from '@component/todo'
 import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
@@ -9,8 +10,8 @@ import React, { FC, useState } from 'react'
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './style'
 
 export interface IListOfItems {
-  components?: string[]
-  setComponents?: React.Dispatch<React.SetStateAction<string[]>>
+  components?: IComponents[]
+  setComponents?: React.Dispatch<React.SetStateAction<IComponents[]>>
   setInputValue?: React.Dispatch<React.SetStateAction<string>>
   onEdit?: () => void
   setTodoId?: React.Dispatch<React.SetStateAction<number | undefined>>
@@ -33,22 +34,23 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
 
   const handleDelete = (index: number) => {
     if (setComponents) {
-      const newComponents = components?.filter((_, i) => i !== index) || []
+      const newComponents = components?.filter((obj) => obj.id !== index) || []
       setComponents(newComponents)
       localStorage.setItem(ITEMS, JSON.stringify(newComponents))
     }
   }
   const handleEdit = (index: number) => {
     if (setTodoId && onEdit && components && setInputValue) {
+      const foundItem = components.find((obj) => obj.id === index)
       setTodoId(index)
-      setInputValue(components[index])
+      setInputValue(foundItem!.text)
       onEdit()
     }
   }
 
   const handleDeleteSelected = () => {
     if (components && setComponents) {
-      const newComponents = components.filter((_, index) => !selectedItems.has(index))
+      const newComponents = components.filter((obj) => !selectedItems.has(obj.id))
       setComponents(newComponents)
       setSelectedItems(new Set())
       localStorage.setItem(ITEMS, JSON.stringify(newComponents))
@@ -63,14 +65,14 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
         </WrapperText>
         <WrapperList>
           {components && components.length > 0 ? (
-            components.map((component, index) => (
+            components.map(({ id, text }) => (
               <Item
-                text={component ? component : DEFAULT_MESSAGE}
-                key={index}
-                isSelected={selectedItems.has(index)}
-                onDelete={() => handleDelete(index)}
-                onSelect={() => handleSelect(index)}
-                onEdit={() => handleEdit(index)}
+                text={text ? text : DEFAULT_MESSAGE}
+                key={id}
+                isSelected={selectedItems.has(id)}
+                onDelete={() => handleDelete(id)}
+                onSelect={() => handleSelect(id)}
+                onEdit={() => handleEdit(id)}
               />
             ))
           ) : (
