@@ -7,7 +7,7 @@ export const ItemForm = styled.div`
   margin: 1vh auto;
 `
 
-export const Label = styled.label<{ isLight: boolean }>`
+export const Label = styled.label<{ $isLight: boolean }>`
   display: flex;
 
   width: 80%;
@@ -22,12 +22,12 @@ export const Label = styled.label<{ isLight: boolean }>`
   user-select: none;
 
   &:hover {
-    box-shadow: 0 1px 15px ${(props: { isLight: boolean }) => (props.isLight ? colors.GRAY : colors.BORDER_COLOR)};
+    box-shadow: 0 1px 15px ${(props: { $isLight: boolean }) => (props.$isLight ? colors.GRAY : colors.BORDER_COLOR)};
     cursor: pointer;
   }
 `
 
-export const CheckItem = styled.input<{ isLight: boolean }>`
+export const CheckItem = styled.input`
   z-index: -1;
 
   width: 0;
@@ -54,14 +54,14 @@ const rotate = keyframes`
   }
 `
 
-export const Indicator = styled.div<{ isLight: boolean }>`
+export const Indicator = styled.div<{ $isLight: boolean }>`
   width: 35px;
   height: 35px;
   margin-top: 1em;
-  border: 1px solid ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.BORDER_COLOR)};
+  border: 1px solid ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.BORDER_COLOR)};
   border-radius: 5px;
 
-  background: ${(props: { isLight: boolean }) => (props.isLight ? colors.WHITE : colors.THEME_DARK)};
+  background: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.WHITE : colors.THEME_DARK)};
 
   &::after {
     display: none;
@@ -74,7 +74,7 @@ export const Indicator = styled.div<{ isLight: boolean }>`
     width: 8px;
     height: 25px;
     margin-left: 10px;
-    border: solid ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.WHITE)};
+    border: solid ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.WHITE)};
     border-width: 0 3px 3px 0;
 
     animation-duration: 0.3s;

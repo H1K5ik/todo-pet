@@ -1,8 +1,8 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
 import { IListOfItems } from '@component/listofitems'
-import { Toast } from '@component/modalwindow'
 import { useTheme } from '@component/themecontext'
+import { Toast } from '@component/toastwindow'
 import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
@@ -75,7 +75,11 @@ export const Todo: FC<ITodo> = ({ children }) => {
         setInputValue(``)
         openModal()
       } else {
-        newComponents[index].text = newText
+        newComponents.forEach((obj) => {
+          if (obj.id == index) {
+            obj.text = newText
+          }
+        })
       }
 
       setComponents(newComponents)
@@ -89,7 +93,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
   return (
     <>
       <BlockInput>
-        <Toast isOpen={isModalOpen} onClose={closeModal} isLight={isLight}>
+        <Toast isOpen={isModalOpen} onClose={closeModal}>
           {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
         <Block>

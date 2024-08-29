@@ -9,22 +9,22 @@ export const WrapperText = styled.div`
   max-width: 8%;
   margin: 2vh auto;
 `
-export const WrapperList = styled.div<{ isLight: boolean }>`
+export const WrapperList = styled.div<{ $isLight: boolean }>`
   overflow: auto;
 
   max-height: 35vh;
 
-  scrollbar-color: ${(props: { isLight: boolean }) =>
-    props.isLight
+  scrollbar-color: ${(props: { $isLight: boolean }) =>
+    props.$isLight
       ? `${colors.WHITE} ${colors.SCROLL_LIGHT}`
       : `${colors.HEADER_TEXT_COLOR_DEFAULT_DARK} ${colors.SCROLL_DARK}`};
 `
 
-export const WrapperListText = styled.div<{ isLight: boolean }>`
+export const WrapperListText = styled.div<{ $isLight: boolean }>`
   max-width: 25%;
   margin: 5vh auto;
 
-  color: ${(props: { isLight: boolean }) => (props.isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_LOGO_DARK)};
+  color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_LOGO_DARK)};
 
   opacity: 0.3;
   ${fontStyle.xxl};

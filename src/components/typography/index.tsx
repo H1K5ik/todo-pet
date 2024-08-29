@@ -23,7 +23,7 @@ interface IText {
 const Header = ({ text, path }: IText) => {
   const { isLight } = useTheme()
   return (
-    <HeaderText to={path || ''} isLight={isLight}>
+    <HeaderText to={path || ''} $isLight={isLight}>
       {text}
     </HeaderText>
   )
@@ -32,7 +32,7 @@ const Header = ({ text, path }: IText) => {
 const Input = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
-    <InputText color={color} isLight={isLight}>
+    <InputText color={color} $isLight={isLight}>
       {text}
     </InputText>
   )
@@ -41,7 +41,7 @@ const Input = ({ text, color = colors.WHITE }: IText) => {
 const Logo = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
-    <LogoText color={color} isLight={isLight}>
+    <LogoText color={color} $isLight={isLight}>
       {text}
     </LogoText>
   )
@@ -49,13 +49,13 @@ const Logo = ({ text, color = colors.WHITE }: IText) => {
 
 const Default = ({ text }: IText) => {
   const { isLight } = useTheme()
-  return <DefaultText isLight={isLight}>{text}</DefaultText>
+  return <DefaultText $isLight={isLight}>{text}</DefaultText>
 }
 
 const Settings = ({ text, color = colors.WHITE }: IText) => {
   const { isLight } = useTheme()
   return (
-    <InputText color={color} isLight={isLight}>
+    <InputText color={color} $isLight={isLight}>
       {text}
     </InputText>
   )

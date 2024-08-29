@@ -84,7 +84,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
         <WrapperText>
           <Typography.Logo text={'Task list'} color={colors.BLACK} />
         </WrapperText>
-        <WrapperList isLight={isLight}>
+        <WrapperList $isLight={isLight}>
           {components && components.length > 0 ? (
             components.map(({ id, text }) => (
               <Item
@@ -97,7 +97,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
               />
             ))
           ) : (
-            <WrapperListText isLight={isLight}>Create your first ToDo</WrapperListText>
+            <WrapperListText $isLight={isLight}>Create your first ToDo</WrapperListText>
           )}
         </WrapperList>
         <WrapperButton>

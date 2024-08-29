@@ -11,10 +11,10 @@ export const ChangeTheme: FC = () => {
   return (
     <Wrapper>
       <Typography.Settings text={'Switch Theme'} color={isLight ? colors.SWITCH_THEME_COLOR : colors.BLACK} />
-      <WrapperSelect value={isLight ? colors.LIGHT : colors.DARK} onChange={toggleTheme} isLight={isLight}>
+      <WrapperSelect value={isLight ? colors.LIGHT : colors.DARK} onChange={toggleTheme} $isLight={isLight}>
         {allOptions
           ? allOptions.map(({ value, text }) => (
-              <Option key={value} value={value} isLight={isLight}>
+              <Option key={value} value={value} $isLight={isLight}>
                 {text}
               </Option>
             ))

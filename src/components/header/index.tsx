@@ -17,7 +17,7 @@ export const Header: FC = () => {
 
   return (
     <>
-      <Link isLight={isLight}>
+      <Link $isLight={isLight}>
         <Wrapper>
           <Typography.Logo text={'Modsen Todo list'} />
         </Wrapper>

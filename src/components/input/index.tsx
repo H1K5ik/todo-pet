@@ -28,7 +28,7 @@ export const Input: FC<IInput> = ({
       width={width}
       color={color}
       value={value}
-      isLight={isLight}
+      $isLight={isLight}
       onKeyDown={(event) => {
         if (event?.key === 'Enter') {
           onKeyDown(event)

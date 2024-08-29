@@ -12,7 +12,7 @@ interface IItems {
 export const Icons: FC<IItems> = ({ onClick, src, alt }) => {
   const { isLight } = useTheme()
   return (
-    <WrapperIcons isLight={isLight}>
+    <WrapperIcons $isLight={isLight}>
       <img src={src} onClick={onClick} alt={alt} />
     </WrapperIcons>
   )
