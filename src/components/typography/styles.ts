@@ -33,6 +33,8 @@ export const DefaultText = styled.div<{ $isLight: boolean }>`
 `
 
 export const InputText = styled.div<{ color: string; $isLight: boolean }>`
+  margin: 0;
+
   color: ${(props: { $isLight: boolean; color: string }) =>
     props.$isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK};
   font-style: normal;

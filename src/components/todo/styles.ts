@@ -7,6 +7,8 @@ export const WrapperButton = styled.div`
 export const Block = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin: 0;
 `
 export const List = styled.div`
   margin-top: 2vh;

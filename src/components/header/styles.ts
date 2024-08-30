@@ -6,7 +6,7 @@ export const Link = styled.div<{ $isLight: boolean; $windowWidth: number }>`
   align-items: center;
   justify-content: space-between;
 
-  width: ${(props: { $windowWidth: number }) => (props.$windowWidth > 770 ? `${props.$windowWidth - 10}px;` : 'none')};
+  width: ${(props) => (props.$windowWidth > 1140 ? `1140px;` : 'none')};
   height: 100vh;
   max-height: 130px;
   margin: auto;
