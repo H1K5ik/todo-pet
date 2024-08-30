@@ -6,6 +6,7 @@ import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
+import { useMedia } from 'react-media-hook'
 
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
 
@@ -28,6 +29,8 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
     }
     return new Set()
   })
+  const isMobile = useMedia('(max-width: 600px)')?.matches
+  const isTablet = useMedia('(max-width: 770px)')?.matches
 
   const toggleComponentSelection = (index: number) => {
     if (setComponents && components) {
@@ -82,7 +85,11 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
     <>
       <List>
         <WrapperText>
-          <Typography.Logo text={'Task list'} color={colors.BLACK} />
+          {isMobile ? (
+            <Typography.Logo text={'Task list'} color={colors.BLACK} />
+          ) : (
+            <Typography.Logo text={'Task list'} color={colors.BLACK} />
+          )}
         </WrapperText>
         <WrapperList $isLight={isLight}>
           {components && components.length > 0 ? (
@@ -97,15 +104,18 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
               />
             ))
           ) : (
-            <WrapperListText $isLight={isLight}>Create your first ToDo</WrapperListText>
+            <WrapperListText $isLight={isLight} $isTablet={isTablet ?? false}>
+              Create your first ToDo
+            </WrapperListText>
           )}
         </WrapperList>
-        <WrapperButton>
+        <WrapperButton $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
           <Button
             text={'Deleted selected'}
             color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleDeleteSelected}
             disabled={selectedItems.size === 0}
+            $isMobile={isMobile ?? false}
           />
         </WrapperButton>
       </List>

@@ -2,6 +2,7 @@ import { useTheme } from '@component/themecontext'
 import { DEFAULT_MESSAGE } from '@const'
 import { colors } from '@theme'
 import React, { FC } from 'react'
+import { useMedia } from 'react-media-hook'
 
 import { InputBox } from './styles'
 
@@ -11,6 +12,7 @@ interface IInput {
   onKeyDown: React.KeyboardEventHandler<HTMLInputElement>
   width?: string
   color?: string
+  $isMobile?: boolean
 }
 
 export const Input: FC<IInput> = ({
@@ -19,8 +21,10 @@ export const Input: FC<IInput> = ({
   onKeyDown,
   width = '557px',
   color = `${colors.BLACK}`,
+  $isMobile,
 }) => {
   const { isLight } = useTheme()
+  const isTablet = useMedia('(max-width: 770px)')?.matches
   return (
     <InputBox
       placeholder={DEFAULT_MESSAGE}
@@ -34,6 +38,8 @@ export const Input: FC<IInput> = ({
           onKeyDown(event)
         }
       }}
+      $isTablet={isTablet || false}
+      $isMobile={$isMobile ?? false}
     />
   )
 }

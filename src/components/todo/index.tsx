@@ -8,6 +8,7 @@ import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import { keygen } from '@utils/keygen'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
+import { useMedia } from 'react-media-hook'
 
 import { Block, BlockInput, WrapperButton } from './styles'
 
@@ -30,6 +31,9 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [todoId, setTodoId] = useState<number>()
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const isMobile = useMedia('(max-width: 600px)')?.matches
+  const isTablet = useMedia('(max-width: 770px)')?.matches
 
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
@@ -89,22 +93,27 @@ export const Todo: FC<ITodo> = ({ children }) => {
     setInputValue('')
     setIsEdit(false)
   }
-
   return (
     <>
-      <BlockInput>
+      <BlockInput $isTablet={isTablet ?? false} $isMobile={isMobile ?? false}>
         <Toast isOpen={isModalOpen} onClose={closeModal}>
           {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
         <Block>
           <Typography.Input text={!isEdit ? 'Add a new task' : 'Edit task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
-          <Input handleInputChange={handleInputChange} value={inputValue} onKeyDown={handleAddTodo} />
+          <Input
+            handleInputChange={handleInputChange}
+            value={inputValue}
+            onKeyDown={handleAddTodo}
+            $isMobile={isMobile}
+          />
         </Block>
         <WrapperButton>
           <Button
             text={!isEdit ? 'Add todo' : 'Edit'}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={!isEdit ? handleAddTodo : handleSaveEdit}
+            $isMobile={isMobile ?? false}
           />
         </WrapperButton>
       </BlockInput>

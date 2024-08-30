@@ -3,11 +3,11 @@ import { createGlobalStyle } from 'styled-components'
 
 export const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
-export const Global = createGlobalStyle`
-  *{
-    margin: 0;
+export const Global = createGlobalStyle<{ $windowWidth: number }>`
+  * {
+    max-width: ${(props) => (props.$windowWidth > 1140 ? `1140px;` : 'none')};
+    margin: 0 auto;
     padding: 0;
-
 
     box-sizing: border-box;
   }

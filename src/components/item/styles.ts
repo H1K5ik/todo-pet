@@ -5,15 +5,16 @@ export const ItemForm = styled.div`
   width: 100vw;
   max-width: 650px;
   margin: 1vh auto;
+
+  overflow-wrap: break-word;
 `
 
 export const Label = styled.label<{ $isLight: boolean }>`
   display: flex;
 
-  width: 80%;
+  width: 557px;
   height: 66px;
-  margin: 2px;
-  padding-left: 2px;
+  margin: 0;
   border-top: 1px solid ${colors.BORDER_COLOR};
   border-bottom: 1px solid ${colors.BORDER_COLOR};
 
@@ -32,6 +33,7 @@ export const CheckItem = styled.input`
 
   width: 0;
   height: 0;
+  margin: 0;
 
   opacity: 0;
 `
@@ -57,6 +59,7 @@ const rotate = keyframes`
 export const Indicator = styled.div<{ $isLight: boolean }>`
   width: 35px;
   height: 35px;
+  margin: 0;
   margin-top: 1em;
   border: 1px solid ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.BORDER_COLOR)};
   border-radius: 5px;

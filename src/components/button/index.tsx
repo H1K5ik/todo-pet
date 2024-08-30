@@ -11,9 +11,10 @@ interface IButton {
   onClick: React.MouseEventHandler<HTMLButtonElement>
   disabled?: boolean
   width?: string
+  $isMobile: boolean
 }
 
-export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, width }) => {
+export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, width, $isMobile }) => {
   const { isLight } = useTheme()
   return (
     <ButtonDesktop
@@ -21,6 +22,7 @@ export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, wi
       onClick={onClick}
       $isLight={isLight}
       style={{ visibility: disabled ? 'hidden' : 'visible', width: width }}
+      $isMobile={$isMobile}
     >
       <Typography.Input text={text} color={colors.WHITE} />
     </ButtonDesktop>

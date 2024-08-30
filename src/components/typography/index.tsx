@@ -18,6 +18,7 @@ interface IText {
   text: string
   path?: string
   color?: string
+  isopen?: boolean
 }
 
 const Header = ({ text, path }: IText) => {
@@ -29,10 +30,10 @@ const Header = ({ text, path }: IText) => {
   )
 }
 
-const Input = ({ text, color = colors.WHITE }: IText) => {
+const Input = ({ text, color = colors.WHITE, isopen = false, path }: IText) => {
   const { isLight } = useTheme()
   return (
-    <InputText color={color} $isLight={isLight}>
+    <InputText color={color} $isLight={isLight} $isopen={isopen} path={path || ''}>
       {text}
     </InputText>
   )
