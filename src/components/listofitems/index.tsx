@@ -8,6 +8,7 @@ import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
+import { useMedia } from 'react-media-hook'
 
 export interface IListOfItems {
   components?: IComponents[]
@@ -28,6 +29,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
     }
     return new Set()
   })
+  const isMobile = useMedia('(max-width: 600px)')?.matches
 
   const toggleComponentSelection = (index: number) => {
     if (setComponents && components) {
@@ -106,6 +108,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
             color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             onClick={handleDeleteSelected}
             disabled={selectedItems.size === 0}
+            $isMobile={isMobile ?? false}
           />
         </WrapperButton>
       </List>

@@ -12,6 +12,7 @@ interface IInput {
   onKeyDown: React.KeyboardEventHandler<HTMLInputElement>
   width?: string
   color?: string
+  $isMobile?: boolean
 }
 
 export const Input: FC<IInput> = ({
@@ -20,6 +21,7 @@ export const Input: FC<IInput> = ({
   onKeyDown,
   width = '557px',
   color = `${colors.BLACK}`,
+  $isMobile,
 }) => {
   const { isLight } = useTheme()
   const isTablet = useMedia('(max-width: 770px)')?.matches
@@ -37,6 +39,7 @@ export const Input: FC<IInput> = ({
         }
       }}
       $isTablet={isTablet || false}
+      $isMobile={$isMobile ?? false}
     />
   )
 }

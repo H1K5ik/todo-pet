@@ -1,10 +1,10 @@
 import { colors } from '@theme'
 import { styled } from 'styled-components'
 
-export const ButtonDesktop = styled.button<{ $backgroundColor: string; $isLight: boolean }>`
+export const ButtonDesktop = styled.button<{ $backgroundColor: string; $isLight: boolean; $isMobile: boolean }>`
   width: 100vw;
   height: 100vh;
-  max-width: 190px;
+  max-width: ${(props: { $isMobile: boolean }) => (!props.$isMobile ? '200px' : '320px')};
   max-height: 67px;
   border: 1px solid;
   border-radius: 10px;
