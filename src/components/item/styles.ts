@@ -5,6 +5,8 @@ export const ItemForm = styled.div`
   width: 100vw;
   max-width: 650px;
   margin: 1vh auto;
+
+  overflow-wrap: break-word;
 `
 
 export const Label = styled.label<{ $isLight: boolean }>`
