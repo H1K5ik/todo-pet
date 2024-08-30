@@ -29,7 +29,7 @@ export const WrapperList = styled.div<{ $isLight: boolean }>`
 `
 
 export const WrapperListText = styled.div<{ $isLight: boolean; $isTablet: boolean }>`
-  max-width: 50%;
+  max-width: 40%;
   margin: 5vh auto;
 
   color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_LOGO_DARK)};

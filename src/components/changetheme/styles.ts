@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   height: 100vh;
   max-width: 343px;
   max-height: 60px;
-  margin: 5vh 25vw;
+  margin: 20px 0;
 `
 
 export const Option = styled.option<{ $isLight: boolean }>`

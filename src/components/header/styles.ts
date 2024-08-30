@@ -24,6 +24,7 @@ export const Wrapper = styled.div<{ $isopen?: boolean }>`
   flex-direction: ${(props) => (props.$isopen ? 'column' : 'row')};
 
   margin: 20px 0;
+  padding: 0 20px;
 
   box-sizing: border-box;
 `
