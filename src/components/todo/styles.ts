@@ -12,9 +12,9 @@ export const List = styled.div`
   margin-top: 2vh;
 `
 
-export const BlockInput = styled.div`
+export const BlockInput = styled.div<{ $isTablet: boolean }>`
   display: flex;
 
-  max-width: 800px;
+  width: ${(props: { $isTablet: boolean }) => (!props.$isTablet ? '780px' : '550px')};
   margin: 5em auto;
 `

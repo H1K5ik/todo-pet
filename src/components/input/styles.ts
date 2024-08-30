@@ -1,8 +1,8 @@
 import { colors, fontStyle } from '@theme'
 import { styled } from 'styled-components'
 
-export const InputBox = styled.input<{ $isLight: boolean; width: string; color: string }>`
-  width: ${(props: { width: string }) => props.width};
+export const InputBox = styled.input<{ $isLight: boolean; width: string; color: string; $isTablet: boolean }>`
+  width: ${(props: { $isTablet: boolean; width: string }) => (props.$isTablet ? '350px' : '557px')};
   border: none;
   border-bottom: 2px solid
     ${(props: { $isLight: boolean; color: string }) =>

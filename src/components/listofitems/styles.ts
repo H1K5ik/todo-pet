@@ -6,13 +6,13 @@ export const WrapperButton = styled.div`
   margin: 2vh auto;
 `
 export const WrapperText = styled.div`
-  max-width: 8%;
+  width: 150px;
   margin: 2vh auto;
 `
 export const WrapperList = styled.div<{ $isLight: boolean }>`
   overflow: auto;
 
-  max-height: 35vh;
+  max-height: 320px;
 
   scrollbar-color: ${(props: { $isLight: boolean }) =>
     props.$isLight

@@ -10,8 +10,6 @@ export const LogoText = styled.div<{ color: string; $isLight: boolean }>`
   ${fontStyle.xl}
 
   text-align: left;
-
-  font-family: Jost;
 `
 
 export const HeaderText = styled(NavLink)<{ $isLight: boolean }>`

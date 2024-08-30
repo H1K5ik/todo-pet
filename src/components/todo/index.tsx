@@ -8,6 +8,7 @@ import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import { keygen } from '@utils/keygen'
 import React, { FC, ReactElement, useEffect, useState } from 'react'
+import { useMedia } from 'react-media-hook'
 
 import { Block, BlockInput, WrapperButton } from './styles'
 
@@ -30,6 +31,8 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [todoId, setTodoId] = useState<number>()
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const isTablet = useMedia('(max-width: 770px)')?.matches
 
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
@@ -89,10 +92,9 @@ export const Todo: FC<ITodo> = ({ children }) => {
     setInputValue('')
     setIsEdit(false)
   }
-
   return (
     <>
-      <BlockInput>
+      <BlockInput $isTablet={isTablet ?? false}>
         <Toast isOpen={isModalOpen} onClose={closeModal}>
           {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
