@@ -31,6 +31,8 @@ module.exports = {
     'import/no-unresolved': ['off'],
     'no-undef': 0,
     '@typescript-eslint/no-require-imports': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    'no-console': 'error',
     'sort-imports': [
       'error',
       {

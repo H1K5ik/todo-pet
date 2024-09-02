@@ -1,3 +1,5 @@
+import { useTheme } from '@component/themecontext'
+import { colors } from '@theme'
 import React, { FC } from 'react'
 
 import { DefaultText, HeaderText, InputText, LogoText } from './styles'
@@ -7,27 +9,61 @@ export const Typography: FC & {
   Header: typeof Header
   Input: typeof Input
   Default: typeof Default
+  Settings: typeof Settings
 } = () => {
   return <></>
 }
 
-const Header = ({ text }: { text: string }) => {
-  return <HeaderText>{text}</HeaderText>
+interface IText {
+  text: string
+  path?: string
+  color?: string
+  isopen?: boolean
 }
 
-const Input = ({ text, color }: { text: string; color: string }) => {
-  return <InputText color={color}>{text}</InputText>
+const Header = ({ text, path }: IText) => {
+  const { isLight } = useTheme()
+  return (
+    <HeaderText to={path || ''} $isLight={isLight}>
+      {text}
+    </HeaderText>
+  )
 }
 
-const Logo = ({ text }: { text: string }) => {
-  return <LogoText>{text}</LogoText>
+const Input = ({ text, color = colors.WHITE, isopen = false, path }: IText) => {
+  const { isLight } = useTheme()
+  return (
+    <InputText color={color} $isLight={isLight} $isopen={isopen} path={path || ''}>
+      {text}
+    </InputText>
+  )
 }
 
-const Default = ({ text }: { text: string }) => {
-  return <DefaultText>{text}</DefaultText>
+const Logo = ({ text, color = colors.WHITE }: IText) => {
+  const { isLight } = useTheme()
+  return (
+    <LogoText color={color} $isLight={isLight}>
+      {text}
+    </LogoText>
+  )
+}
+
+const Default = ({ text }: IText) => {
+  const { isLight } = useTheme()
+  return <DefaultText $isLight={isLight}>{text}</DefaultText>
+}
+
+const Settings = ({ text, color = colors.WHITE }: IText) => {
+  const { isLight } = useTheme()
+  return (
+    <InputText color={color} $isLight={isLight}>
+      {text}
+    </InputText>
+  )
 }
 
 Typography.Logo = Logo
 Typography.Header = Header
 Typography.Input = Input
 Typography.Default = Default
+Typography.Settings = Settings
