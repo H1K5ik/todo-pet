@@ -1,10 +1,7 @@
 import { IS_LIGHT } from '@const'
-import React, { FC, ReactNode, createContext, useContext, useState } from 'react'
+import React, { FC, createContext, useContext, useState } from 'react'
 
-interface IThemeContext {
-  isLight: boolean
-  toggleTheme: () => void
-}
+import { IThemeContext, IThemeProviderProps } from './interfaces'
 
 export const ThemeContext = createContext<IThemeContext | undefined>(undefined)
 
@@ -16,10 +13,6 @@ export const useTheme = () => {
   }
 
   return context
-}
-
-interface IThemeProviderProps {
-  children: ReactNode
 }
 
 export const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {

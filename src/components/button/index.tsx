@@ -2,17 +2,9 @@ import { useTheme } from '@component/themecontext'
 import { colors } from '@theme'
 import React, { FC } from 'react'
 
+import { IButton } from './interfaces'
 import { ButtonDesktop } from './styles'
 import { Typography } from '../typography'
-
-interface IButton {
-  text: string
-  color: string
-  onClick: React.MouseEventHandler<HTMLButtonElement>
-  disabled?: boolean
-  width?: string
-  $isMobile: boolean
-}
 
 export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, width, $isMobile }) => {
   const { isLight } = useTheme()

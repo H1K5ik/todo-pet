@@ -1,5 +1,5 @@
 import find from '@assets/find.svg'
-import { Icons } from '@component/Icons'
+import { Icons } from '@component/icon'
 import { Input } from '@component/input'
 import { useTheme } from '@component/themecontext'
 import { colors } from '@theme'

@@ -1,22 +1,14 @@
 import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themecontext'
-import { IComponents } from '@component/todo'
 import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
+import { IListOfItems } from './interfaces'
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
-
-export interface IListOfItems {
-  components?: IComponents[]
-  setComponents?: React.Dispatch<React.SetStateAction<IComponents[]>>
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>
-  onEdit?: () => void
-  setTodoId?: React.Dispatch<React.SetStateAction<number | undefined>>
-}
 
 export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue, onEdit, setTodoId }) => {
   const { isLight } = useTheme()

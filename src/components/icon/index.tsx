@@ -1,13 +1,8 @@
 import { useTheme } from '@component/themecontext'
 import React, { FC } from 'react'
 
+import { IItems } from './interfaces'
 import { WrapperIcons } from './styles'
-
-interface IItems {
-  onClick: () => void
-  src: string
-  alt: string
-}
 
 export const Icons: FC<IItems> = ({ onClick, src, alt }) => {
   const { isLight } = useTheme()

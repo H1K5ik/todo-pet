@@ -2,13 +2,8 @@ import { useTheme } from '@component/themecontext'
 import React, { FC, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
+import { IModal } from './interfaces'
 import { ToastWrapper } from './styles'
-
-interface IModal {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-}
 
 export const Toast: FC<IModal> = ({ isOpen, onClose, children }) => {
   useEffect(() => {

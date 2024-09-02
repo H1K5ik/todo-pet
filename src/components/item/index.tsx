@@ -1,19 +1,12 @@
 import deleteItem from '@assets/deleteItem.svg'
 import edit from '@assets/edit.svg'
-import { Icons } from '@component/Icons'
+import { Icons } from '@component/icon'
 import { useTheme } from '@component/themecontext'
 import React, { FC } from 'react'
 
+import { IItem } from './interfaces'
 import { CheckItem, Indicator, ItemForm, Label, Wrapper, WrapperText } from './styles'
 import { Typography } from '../typography'
-
-interface IItem {
-  text: string
-  onDelete: () => void
-  onSelect: () => void
-  onEdit: () => void
-  isSelected: boolean
-}
 
 export const Item: FC<IItem> = ({ text, onDelete, onSelect, isSelected, onEdit }) => {
   const { isLight } = useTheme()

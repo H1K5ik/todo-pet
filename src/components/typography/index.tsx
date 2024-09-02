@@ -2,6 +2,7 @@ import { useTheme } from '@component/themecontext'
 import { colors } from '@theme'
 import React, { FC } from 'react'
 
+import { IText } from './interfaces'
 import { DefaultText, HeaderText, InputText, LogoText } from './styles'
 
 export const Typography: FC & {
@@ -12,13 +13,6 @@ export const Typography: FC & {
   Settings: typeof Settings
 } = () => {
   return <></>
-}
-
-interface IText {
-  text: string
-  path?: string
-  color?: string
-  isopen?: boolean
 }
 
 const Header = ({ text, path }: IText) => {

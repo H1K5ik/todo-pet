@@ -4,16 +4,8 @@ import { colors } from '@theme'
 import React, { FC } from 'react'
 import { useMedia } from 'react-media-hook'
 
+import { IInput } from './interfaces'
 import { InputBox } from './styles'
-
-interface IInput {
-  handleInputChange?: React.ChangeEventHandler<HTMLInputElement>
-  value: string
-  onKeyDown: React.KeyboardEventHandler<HTMLInputElement>
-  width?: string
-  color?: string
-  $isMobile?: boolean
-}
 
 export const Input: FC<IInput> = ({
   handleInputChange,

@@ -1,25 +1,16 @@
 import { Button } from '@component/button'
 import { Input } from '@component/input'
-import { IListOfItems } from '@component/listofitems'
 import { useTheme } from '@component/themecontext'
 import { Toast } from '@component/toastwindow'
 import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import { keygen } from '@utils/keygen'
-import React, { FC, ReactElement, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
+import { IComponents, ITodo } from './interfaces'
 import { Block, BlockInput, WrapperButton } from './styles'
-
-interface ITodo {
-  children: ReactElement<IListOfItems> | ReactElement<IListOfItems>[]
-}
-export interface IComponents {
-  id: number
-  text: string
-  selected: boolean
-}
 
 export const Todo: FC<ITodo> = ({ children }) => {
   const { isLight } = useTheme()
