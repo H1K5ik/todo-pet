@@ -1,9 +1,9 @@
+import { getGuthubAccount } from '@api'
 import find from '@assets/find.svg'
 import { Icons } from '@component/icon'
 import { Input } from '@component/input'
 import { useTheme } from '@component/themeContext'
 import { colors } from '@theme'
-import axios from 'axios'
 import React, { FC, useState } from 'react'
 
 import { Wrapper, WrapperGithub, WrapperInput } from './styles'
@@ -21,8 +21,8 @@ export const GithubInfo: FC = () => {
 
   const handleSearch = async () => {
     try {
-      const { data } = await axios.get(`${process.env.API}${username}`)
-      setUserImage(data.avatar_url)
+      const avatar = await getGuthubAccount(username)
+      setUserImage(avatar)
     } catch (e) {
       alert(e)
       setUserImage(null)

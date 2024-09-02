@@ -12,7 +12,7 @@ import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
 
 export const Header: FC = () => {
-  const [isopen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const { isLight } = useTheme()
   const themeMode = isLight ? lightTheme : darkTheme
@@ -25,17 +25,17 @@ export const Header: FC = () => {
   const isMobile = useMedia('(max-width: 600px)')?.matches
 
   const toggleMenu = () => {
-    setIsOpen(!isopen)
+    setIsOpen(!isOpen)
   }
 
   return (
     <>
       <WrapperHeader $isLight={isLight}>
-        <Link $isLight={isLight} $isopen={isopen} $windowWidth={windowWidth}>
-          <Wrapper $isopen={isopen}>
+        <Link $isLight={isLight} $isopen={isOpen} $windowWidth={windowWidth}>
+          <Wrapper $isopen={isOpen}>
             {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
           </Wrapper>
-          <Wrapper $isopen={isopen}>
+          <Wrapper $isopen={isOpen}>
             {config && !isMobile ? (
               config.map(({ path, text }) => (
                 <WrapperSettings key={text}>
@@ -43,13 +43,13 @@ export const Header: FC = () => {
                 </WrapperSettings>
               ))
             ) : (
-              <IconBurger onClick={toggleMenu}>{isopen ? <FaTimes /> : <FaBars />}</IconBurger>
+              <IconBurger onClick={toggleMenu}>{isOpen ? <FaTimes /> : <FaBars />}</IconBurger>
             )}
             {config &&
               isMobile &&
               config.map(({ path, text }) => (
-                <WrapperBurger $isopen={isopen} key={text}>
-                  <Typography.Input isopen={isopen} path={path} text={text} />
+                <WrapperBurger $isopen={isOpen} key={text}>
+                  <Typography.Input isopen={isOpen} path={path} text={text} />
                 </WrapperBurger>
               ))}
           </Wrapper>

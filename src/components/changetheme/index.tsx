@@ -13,13 +13,11 @@ export const ChangeTheme: FC = () => {
     <Wrapper>
       <Typography.Settings color={isLight ? colors.SWITCH_THEME_COLOR : colors.BLACK} text={'Switch Theme'} />
       <WrapperSelect $isLight={isLight} onChange={toggleTheme} value={isLight ? colors.LIGHT : colors.DARK}>
-        {allOptions
-          ? allOptions.map(({ text, value }) => (
-              <Option $isLight={isLight} key={value} value={value}>
-                {text}
-              </Option>
-            ))
-          : ''}
+        {allOptions.map(({ text, value }) => (
+          <Option $isLight={isLight} key={value} value={value}>
+            {text}
+          </Option>
+        ))}
       </WrapperSelect>
     </Wrapper>
   )

@@ -25,6 +25,7 @@ module.exports = {
       '@component': path.resolve(__dirname, '../src/components'),
       '@utils': path.resolve(__dirname, '../src/utils'),
       '@assets': path.resolve(__dirname, '../src/assets'),
+      '@api': path.resolve(__dirname, '../src/api'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
   },
