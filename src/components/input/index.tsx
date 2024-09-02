@@ -8,30 +8,33 @@ import { IInput } from './interfaces'
 import { InputBox } from './styles'
 
 export const Input: FC<IInput> = ({
-  handleInputChange,
-  value,
-  onKeyDown,
-  width = '557px',
-  color = `${colors.BLACK}`,
   $isMobile,
+  color = `${colors.BLACK}`,
+  handleInputChange,
+  onKeyDown,
+  value,
+  width = '557px',
 }) => {
   const { isLight } = useTheme()
   const isTablet = useMedia('(max-width: 770px)')?.matches
+
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event?.key === 'Enter') {
+      onKeyDown(event)
+    }
+  }
+
   return (
     <InputBox
-      placeholder={DEFAULT_MESSAGE}
-      onChange={handleInputChange}
-      width={width}
-      color={color}
-      value={value}
       $isLight={isLight}
-      onKeyDown={(event) => {
-        if (event?.key === 'Enter') {
-          onKeyDown(event)
-        }
-      }}
-      $isTablet={isTablet || false}
       $isMobile={$isMobile ?? false}
+      $isTablet={isTablet ?? false}
+      color={color}
+      onChange={handleInputChange}
+      onKeyDown={handleOnKeyDown}
+      placeholder={DEFAULT_MESSAGE}
+      value={value}
+      width={width}
     />
   )
 }

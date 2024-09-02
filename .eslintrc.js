@@ -19,16 +19,30 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
   ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys'],
   rules: {
-    'import/no-unresolved': ['off'],
+    'react/sort-comp': [
+      'error',
+      {
+        order: ['static-methods', 'instance-variables', 'lifecycle', 'everything-else', 'render'],
+      },
+    ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'sort-destructure-keys/sort-destructure-keys': [
+      'error',
+      {
+        caseSensitive: false,
+      },
+    ],
+    'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
+    'react/sort-comp': 'off', // Временно отключаем это правило
+    'import/no-unresolved': 'off',
     'no-undef': 0,
     '@typescript-eslint/no-require-imports': 0,
     '@typescript-eslint/no-explicit-any': 0,
@@ -54,8 +68,14 @@ module.exports = {
         },
       },
     ],
+    'react/jsx-sort-props': [
+      'error',
+      {
+        ignoreCase: true,
+        shorthandFirst: false,
+      },
+    ],
   },
-
   settings: {
     react: {
       version: 'detect',

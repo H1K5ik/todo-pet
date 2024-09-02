@@ -9,12 +9,13 @@ import { config } from './config'
 
 export const App = () => {
   const windowWidth = useWindowWidth()
+
   return (
     <ThemeProvider>
       <Global $windowWidth={windowWidth} />
       <Routes>
-        <Route path='/' element={<Header />}>
-          {config ? config.map(({ path, element }) => <Route path={path} element={element} key={path} />) : ''}
+        <Route element={<Header />} path='/'>
+          {config ? config.map(({ element, path }) => <Route element={element} key={path} path={path} />) : ''}
         </Route>
       </Routes>
     </ThemeProvider>

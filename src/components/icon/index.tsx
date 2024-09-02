@@ -4,11 +4,12 @@ import React, { FC } from 'react'
 import { IItems } from './interfaces'
 import { WrapperIcons } from './styles'
 
-export const Icons: FC<IItems> = ({ onClick, src, alt }) => {
+export const Icons: FC<IItems> = ({ alt, onClick, src }) => {
   const { isLight } = useTheme()
+
   return (
     <WrapperIcons $isLight={isLight}>
-      <img src={src} onClick={onClick} alt={alt} />
+      <img alt={alt} onClick={onClick} src={src} />
     </WrapperIcons>
   )
 }

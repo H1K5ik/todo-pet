@@ -5,7 +5,7 @@ import { MainPage } from './pages/main'
 import { SettingsPage } from './pages/settings'
 
 export const config = [
-  { path: '/', element: <Navigate to={'/home'} replace /> },
+  { path: '/', element: <Navigate replace to={'/home'} /> },
   { path: 'home', element: <MainPage /> },
   { path: 'settings', element: <SettingsPage /> },
   { path: '*', element: <Navigate to={'/home'} /> },

@@ -10,9 +10,10 @@ import { Wrapper, WrapperGithub, WrapperInput } from './styles'
 import { Typography } from '../typography'
 
 export const GithubInfo: FC = () => {
-  const { isLight } = useTheme()
   const [username, setUsername] = useState('')
   const [userImage, setUserImage] = useState(null)
+
+  const { isLight } = useTheme()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value)
@@ -20,7 +21,7 @@ export const GithubInfo: FC = () => {
 
   const handleSearch = async () => {
     try {
-      const { data } = await axios.get(`${process.env.API}${username}` ?? '')
+      const { data } = await axios.get(`${process.env.API}${username}`)
       setUserImage(data.avatar_url)
     } catch (e) {
       alert(e)
@@ -31,14 +32,14 @@ export const GithubInfo: FC = () => {
   return (
     <Wrapper>
       <WrapperGithub>
-        <Typography.Settings text={'GitHub info'} color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} />
+        <Typography.Settings color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} text={'GitHub info'} />
         <WrapperInput>
-          <Input value={username} handleInputChange={handleInputChange} onKeyDown={handleSearch} width={'282px'} />
-          <Icons src={find} alt='edit-svg' onClick={handleSearch} />
+          <Input handleInputChange={handleInputChange} onKeyDown={handleSearch} value={username} width={'282px'} />
+          <Icons alt='edit-svg' onClick={handleSearch} src={find} />
         </WrapperInput>
       </WrapperGithub>
 
-      {userImage && <img src={userImage} alt='User avatar' />}
+      {userImage && <img alt='User avatar' src={userImage} />}
     </Wrapper>
   )
 }

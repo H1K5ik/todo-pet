@@ -13,7 +13,6 @@ import { IComponents, ITodo } from './interfaces'
 import { Block, BlockInput, WrapperButton } from './styles'
 
 export const Todo: FC<ITodo> = ({ children }) => {
-  const { isLight } = useTheme()
   const [components, setComponents] = useState<IComponents[]>(() => {
     const savedItems = localStorage.getItem('items')
     return savedItems ? JSON.parse(savedItems) : []
@@ -23,15 +22,16 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const [todoId, setTodoId] = useState<number>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches
   const isTablet = useMedia('(max-width: 770px)')?.matches
-
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
 
   useEffect(() => {
     localStorage.setItem(ITEMS, JSON.stringify(components))
   }, [components])
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
 
   const handleEdit = () => {
     setIsEdit(true)
@@ -86,25 +86,25 @@ export const Todo: FC<ITodo> = ({ children }) => {
   }
   return (
     <>
-      <BlockInput $isTablet={isTablet ?? false} $isMobile={isMobile ?? false}>
+      <BlockInput $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
         <Toast isOpen={isModalOpen} onClose={closeModal}>
           {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
         <Block>
-          <Typography.Input text={!isEdit ? 'Add a new task' : 'Edit task'} color={colors.HEADER_BACK_COLOR_LIGHT} />
+          <Typography.Input color={colors.HEADER_BACK_COLOR_LIGHT} text={!isEdit ? 'Add a new task' : 'Edit task'} />
           <Input
-            handleInputChange={handleInputChange}
-            value={inputValue}
-            onKeyDown={handleAddTodo}
             $isMobile={isMobile}
+            handleInputChange={handleInputChange}
+            onKeyDown={handleAddTodo}
+            value={inputValue}
           />
         </Block>
         <WrapperButton>
           <Button
-            text={!isEdit ? 'Add todo' : 'Edit'}
+            $isMobile={isMobile ?? false}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}
             onClick={!isEdit ? handleAddTodo : handleSaveEdit}
-            $isMobile={isMobile ?? false}
+            text={!isEdit ? 'Add todo' : 'Edit'}
           />
         </WrapperButton>
       </BlockInput>

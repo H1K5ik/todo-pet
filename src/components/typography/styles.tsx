@@ -29,10 +29,10 @@ const InputTextComponent: React.FC<{
   $isLight: boolean
   path?: string
   children?: React.ReactNode
-}> = ({ $isopen = false, path = '', children, $isLight, color, ...props }) => {
+}> = ({ $isLight, $isopen = false, children, color, path = '', ...props }) => {
   if ($isopen) {
     return (
-      <NavLinkStyled to={path || '#'} $isLight={$isLight} color={color} {...props}>
+      <NavLinkStyled $isLight={$isLight} color={color} to={path || '#'} {...props}>
         {children}
       </NavLinkStyled>
     )

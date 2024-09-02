@@ -10,8 +10,7 @@ import { useMedia } from 'react-media-hook'
 import { IListOfItems } from './interfaces'
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
 
-export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setInputValue, onEdit, setTodoId }) => {
-  const { isLight } = useTheme()
+export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponents, setInputValue, setTodoId }) => {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(() => {
     const savedItems = localStorage.getItem('items')
     if (savedItems) {
@@ -21,6 +20,8 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
     }
     return new Set()
   })
+
+  const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches
   const isTablet = useMedia('(max-width: 770px)')?.matches
 
@@ -78,21 +79,21 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
       <List>
         <WrapperText>
           {isMobile ? (
-            <Typography.Logo text={'Task list'} color={colors.BLACK} />
+            <Typography.Logo color={colors.BLACK} text={'Task list'} />
           ) : (
-            <Typography.Logo text={'Task list'} color={colors.BLACK} />
+            <Typography.Logo color={colors.BLACK} text={'Task list'} />
           )}
         </WrapperText>
         <WrapperList $isLight={isLight}>
           {components && components.length > 0 ? (
             components.map(({ id, text }) => (
               <Item
-                text={text ? text : DEFAULT_MESSAGE}
-                key={id}
                 isSelected={selectedItems.has(id)}
+                key={id}
                 onDelete={() => handleDelete(id)}
-                onSelect={() => handleSelect(id)}
                 onEdit={() => handleEdit(id)}
+                onSelect={() => handleSelect(id)}
+                text={text ? text : DEFAULT_MESSAGE}
               />
             ))
           ) : (
@@ -103,11 +104,11 @@ export const ListOfItems: FC<IListOfItems> = ({ components, setComponents, setIn
         </WrapperList>
         <WrapperButton $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
           <Button
-            text={'Deleted selected'}
-            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
-            onClick={handleDeleteSelected}
-            disabled={selectedItems.size === 0}
             $isMobile={isMobile ?? false}
+            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
+            disabled={selectedItems.size === 0}
+            onClick={handleDeleteSelected}
+            text={'Deleted selected'}
           />
         </WrapperButton>
       </List>

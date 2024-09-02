@@ -8,13 +8,14 @@ import { Typography } from '../typography'
 
 export const ChangeTheme: FC = () => {
   const { isLight, toggleTheme } = useTheme()
+
   return (
     <Wrapper>
-      <Typography.Settings text={'Switch Theme'} color={isLight ? colors.SWITCH_THEME_COLOR : colors.BLACK} />
-      <WrapperSelect value={isLight ? colors.LIGHT : colors.DARK} onChange={toggleTheme} $isLight={isLight}>
+      <Typography.Settings color={isLight ? colors.SWITCH_THEME_COLOR : colors.BLACK} text={'Switch Theme'} />
+      <WrapperSelect $isLight={isLight} onChange={toggleTheme} value={isLight ? colors.LIGHT : colors.DARK}>
         {allOptions
-          ? allOptions.map(({ value, text }) => (
-              <Option key={value} value={value} $isLight={isLight}>
+          ? allOptions.map(({ text, value }) => (
+              <Option $isLight={isLight} key={value} value={value}>
                 {text}
               </Option>
             ))

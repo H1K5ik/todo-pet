@@ -15,28 +15,31 @@ export const Typography: FC & {
   return <></>
 }
 
-const Header = ({ text, path }: IText) => {
+const Header = ({ path, text }: IText) => {
   const { isLight } = useTheme()
+
   return (
-    <HeaderText to={path || ''} $isLight={isLight}>
+    <HeaderText $isLight={isLight} to={path || ''}>
       {text}
     </HeaderText>
   )
 }
 
-const Input = ({ text, color = colors.WHITE, isopen = false, path }: IText) => {
+const Input = ({ color = colors.WHITE, isopen = false, path, text }: IText) => {
   const { isLight } = useTheme()
+
   return (
-    <InputText color={color} $isLight={isLight} $isopen={isopen} path={path || ''}>
+    <InputText $isLight={isLight} $isopen={isopen} color={color} path={path || ''}>
       {text}
     </InputText>
   )
 }
 
-const Logo = ({ text, color = colors.WHITE }: IText) => {
+const Logo = ({ color = colors.WHITE, text }: IText) => {
   const { isLight } = useTheme()
+
   return (
-    <LogoText color={color} $isLight={isLight}>
+    <LogoText $isLight={isLight} color={color}>
       {text}
     </LogoText>
   )
@@ -44,13 +47,15 @@ const Logo = ({ text, color = colors.WHITE }: IText) => {
 
 const Default = ({ text }: IText) => {
   const { isLight } = useTheme()
+
   return <DefaultText $isLight={isLight}>{text}</DefaultText>
 }
 
-const Settings = ({ text, color = colors.WHITE }: IText) => {
+const Settings = ({ color = colors.WHITE, text }: IText) => {
   const { isLight } = useTheme()
+
   return (
-    <InputText color={color} $isLight={isLight}>
+    <InputText $isLight={isLight} color={color}>
       {text}
     </InputText>
   )

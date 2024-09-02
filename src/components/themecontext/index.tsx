@@ -20,6 +20,7 @@ export const ThemeProvider: FC<IThemeProviderProps> = ({ children }) => {
     const isLight = localStorage.getItem(IS_LIGHT)
     return isLight ? !!JSON.parse(isLight) : true
   })
+
   const toggleTheme = () => {
     setisLight((prevIsLight) => {
       const newIsLight = !prevIsLight

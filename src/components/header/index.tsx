@@ -12,15 +12,18 @@ import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
 
 export const Header: FC = () => {
+  const [isopen, setIsOpen] = useState(false)
+
   const { isLight } = useTheme()
   const themeMode = isLight ? lightTheme : darkTheme
-  const windowWidth = useWindowWidth()
-  const [isopen, setIsOpen] = useState(false)
-  const isMobile = useMedia('(max-width: 600px)')?.matches
 
   useEffect(() => {
     document.body.style.backgroundColor = themeMode.background
   }, [themeMode])
+
+  const windowWidth = useWindowWidth()
+  const isMobile = useMedia('(max-width: 600px)')?.matches
+
   const toggleMenu = () => {
     setIsOpen(!isopen)
   }
@@ -28,15 +31,15 @@ export const Header: FC = () => {
   return (
     <>
       <WrapperHeader $isLight={isLight}>
-        <Link $isLight={isLight} $windowWidth={windowWidth} $isopen={isopen}>
+        <Link $isLight={isLight} $isopen={isopen} $windowWidth={windowWidth}>
           <Wrapper $isopen={isopen}>
             {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
           </Wrapper>
           <Wrapper $isopen={isopen}>
             {config && !isMobile ? (
-              config.map(({ text, path }) => (
+              config.map(({ path, text }) => (
                 <WrapperSettings key={text}>
-                  <Typography.Header text={text} path={path} />
+                  <Typography.Header path={path} text={text} />
                 </WrapperSettings>
               ))
             ) : (
@@ -44,9 +47,9 @@ export const Header: FC = () => {
             )}
             {config &&
               isMobile &&
-              config.map(({ text, path }) => (
-                <WrapperBurger key={text} $isopen={isopen}>
-                  <Typography.Input text={text} path={path} isopen={isopen} />
+              config.map(({ path, text }) => (
+                <WrapperBurger $isopen={isopen} key={text}>
+                  <Typography.Input isopen={isopen} path={path} text={text} />
                 </WrapperBurger>
               ))}
           </Wrapper>

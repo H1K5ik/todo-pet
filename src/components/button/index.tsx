@@ -6,17 +6,18 @@ import { IButton } from './interfaces'
 import { ButtonDesktop } from './styles'
 import { Typography } from '../typography'
 
-export const Button: FC<IButton> = ({ text, color, onClick, disabled = false, width, $isMobile }) => {
+export const Button: FC<IButton> = ({ $isMobile, color, disabled = false, onClick, text, width }) => {
   const { isLight } = useTheme()
+
   return (
     <ButtonDesktop
       $backgroundColor={color}
-      onClick={onClick}
       $isLight={isLight}
-      style={{ visibility: disabled ? 'hidden' : 'visible', width: width }}
       $isMobile={$isMobile}
+      onClick={onClick}
+      style={{ visibility: disabled ? 'hidden' : 'visible', width: width }}
     >
-      <Typography.Input text={text} color={colors.WHITE} />
+      <Typography.Input color={colors.WHITE} text={text} />
     </ButtonDesktop>
   )
 }

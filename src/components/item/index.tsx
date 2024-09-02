@@ -8,20 +8,21 @@ import { IItem } from './interfaces'
 import { CheckItem, Indicator, ItemForm, Label, Wrapper, WrapperText } from './styles'
 import { Typography } from '../typography'
 
-export const Item: FC<IItem> = ({ text, onDelete, onSelect, isSelected, onEdit }) => {
+export const Item: FC<IItem> = ({ isSelected, onDelete, onEdit, onSelect, text }) => {
   const { isLight } = useTheme()
+
   return (
     <ItemForm>
       <Wrapper>
         <Label $isLight={isLight}>
-          <CheckItem type='checkbox' checked={isSelected} onChange={onSelect} />
+          <CheckItem checked={isSelected} onChange={onSelect} type='checkbox' />
           <Indicator $isLight={isLight} />
           <WrapperText>
             <Typography.Default text={text} />
           </WrapperText>
         </Label>
-        <Icons src={edit} alt='edit-svg' onClick={onEdit} />
-        <Icons src={deleteItem} alt='delete-svg' onClick={onDelete} />
+        <Icons alt='edit-svg' onClick={onEdit} src={edit} />
+        <Icons alt='delete-svg' onClick={onDelete} src={deleteItem} />
       </Wrapper>
     </ItemForm>
   )
