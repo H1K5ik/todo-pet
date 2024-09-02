@@ -1,6 +1,11 @@
 import { colors } from '@theme'
 import { styled } from 'styled-components'
 
+export const WrapperHeader = styled.div<{ $isLight: boolean }>`
+  width: 100vw;
+  background-color: ${(props: { $isLight: boolean }) =>
+    props.$isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
+`
 export const Link = styled.div<{ $isLight: boolean; $windowWidth: number; $isopen: boolean }>`
   display: flex;
   align-items: ${(props) => (props.$isopen ? `start;` : 'center')};
@@ -19,6 +24,7 @@ export const Link = styled.div<{ $isLight: boolean; $windowWidth: number; $isope
   overflow-x: hidden;
   transition: max-height 0.2s ease-in;
 `
+
 export const Wrapper = styled.div<{ $isopen?: boolean }>`
   display: flex;
   flex-direction: ${(props) => (props.$isopen ? 'column' : 'row')};
@@ -28,10 +34,12 @@ export const Wrapper = styled.div<{ $isopen?: boolean }>`
 
   box-sizing: border-box;
 `
+
 export const WrapperSettings = styled.div`
   margin: 1em;
   box-sizing: border-box;
 `
+
 export const WrapperBurger = styled.div<{ $isopen: boolean }>`
   display: ${(props: { $isopen: boolean }) => (props.$isopen ? 'static' : 'none')};
 
@@ -39,6 +47,7 @@ export const WrapperBurger = styled.div<{ $isopen: boolean }>`
 
   box-sizing: border-box;
 `
+
 export const IconBurger = styled.div`
   font-size: 34px;
   box-sizing: border-box;

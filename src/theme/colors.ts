@@ -16,4 +16,5 @@ export const colors = {
   BLACK: '#000000',
   WHITE: '#FFFFFF',
   GRAY: '#808080',
+  TEXT_COLOR_DARK: '#F5FDFE',
 }

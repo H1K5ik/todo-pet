@@ -15,17 +15,16 @@ export const InputBox = styled.input<{
   }};
   border: none;
   border-bottom: 2px solid
-    ${(props: { $isLight: boolean; color: string }) =>
-      props.color ? props.color : props.$isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
+    ${(props: { $isLight: boolean; color: string }) => (props.$isLight ? colors.BORDER_COLOR : colors.BORDER_COLOR)};
 
   background: transparent;
 
-  color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+  color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.BLACK : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.l}
 
   &::placeholder {
-    color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.GRAY : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+    color: ${(props: { $isLight: boolean }) => (props.$isLight ? colors.GRAY : colors.TEXT_COLOR_DARK)};
     opacity: 0.6;
   }
 `

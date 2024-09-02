@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   height: 100vh;
   max-width: 350px;
   max-height: 60px;
-  margin: 7vh 0;
+  margin: 100px 40px;
 `
 export const WrapperGithub = styled.div`
   margin: 20px 0;

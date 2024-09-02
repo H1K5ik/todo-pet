@@ -48,7 +48,7 @@ const InputTextComponent: React.FC<{
 export const InputText = styled(InputTextComponent)`
   margin: 0;
 
-  color: ${(props) => (props.$isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props) => (props.$isLight ? props.color : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.m}
 `
@@ -56,32 +56,32 @@ export const InputText = styled(InputTextComponent)`
 export const LogoText = styled.div<{ color: string; $isLight: boolean }>`
   background-color: transparent;
 
-  color: ${(props) => (props.$isLight ? props.color : colors.HEADER_TEXT_COLOR_LOGO_DARK)};
+  color: ${(props) => (props.$isLight ? props.color : colors.TEXT_COLOR_DARK)};
   ${fontStyle.xl}
 
   text-align: left;
 `
 
 export const HeaderText = styled(NavLink)<{ $isLight: boolean }>`
-  color: ${(props) => (props.$isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props) => (props.$isLight ? colors.WHITE : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.xl}
 
   text-decoration: none;
 
   &.active {
-    border-bottom: 2px solid ${(props) => (props.$isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+    border-bottom: 2px solid ${(props) => (props.$isLight ? colors.WHITE : colors.GRAY)};
   }
 `
 
 export const DefaultText = styled.div<{ $isLight: boolean }>`
-  color: ${(props) => (props.$isLight ? colors.BLACK : colors.HEADER_TEXT_COLOR_DEFAULT_DARK)};
+  color: ${(props) => (props.$isLight ? colors.BLACK : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.l}
 `
 
 export const Settings = styled.div<{ color: string; $isLight: boolean }>`
-  color: ${(props) => (props.$isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK)};
+  color: ${(props) => (props.$isLight ? props.color : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.s}
 `

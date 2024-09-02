@@ -5,7 +5,6 @@ export const root = ReactDOM.createRoot(document.getElementById('root') as HTMLE
 
 export const Global = createGlobalStyle<{ $windowWidth: number }>`
   * {
-    max-width: ${(props) => (props.$windowWidth > 1140 ? `1140px;` : 'none')};
     margin: 0 auto;
     padding: 0;
 

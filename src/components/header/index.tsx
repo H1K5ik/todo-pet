@@ -7,7 +7,7 @@ import { useMedia } from 'react-media-hook'
 import { Outlet } from 'react-router-dom'
 
 import { config } from './config'
-import { IconBurger, Link, Wrapper, WrapperBurger, WrapperSettings } from './styles'
+import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperSettings } from './styles'
 import { useTheme } from '../themecontext/index'
 import { Typography } from '../typography'
 
@@ -27,29 +27,31 @@ export const Header: FC = () => {
 
   return (
     <>
-      <Link $isLight={isLight} $windowWidth={windowWidth} $isopen={isopen}>
-        <Wrapper $isopen={isopen}>
-          {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
-        </Wrapper>
-        <Wrapper $isopen={isopen}>
-          {config && !isMobile ? (
-            config.map(({ text, path }) => (
-              <WrapperSettings key={text}>
-                <Typography.Header text={text} path={path} />
-              </WrapperSettings>
-            ))
-          ) : (
-            <IconBurger onClick={toggleMenu}>{isopen ? <FaTimes /> : <FaBars />}</IconBurger>
-          )}
-          {config &&
-            isMobile &&
-            config.map(({ text, path }) => (
-              <WrapperBurger key={text} $isopen={isopen}>
-                <Typography.Input text={text} path={path} isopen={isopen} />
-              </WrapperBurger>
-            ))}
-        </Wrapper>
-      </Link>
+      <WrapperHeader $isLight={isLight}>
+        <Link $isLight={isLight} $windowWidth={windowWidth} $isopen={isopen}>
+          <Wrapper $isopen={isopen}>
+            {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
+          </Wrapper>
+          <Wrapper $isopen={isopen}>
+            {config && !isMobile ? (
+              config.map(({ text, path }) => (
+                <WrapperSettings key={text}>
+                  <Typography.Header text={text} path={path} />
+                </WrapperSettings>
+              ))
+            ) : (
+              <IconBurger onClick={toggleMenu}>{isopen ? <FaTimes /> : <FaBars />}</IconBurger>
+            )}
+            {config &&
+              isMobile &&
+              config.map(({ text, path }) => (
+                <WrapperBurger key={text} $isopen={isopen}>
+                  <Typography.Input text={text} path={path} isopen={isopen} />
+                </WrapperBurger>
+              ))}
+          </Wrapper>
+        </Link>
+      </WrapperHeader>
       <Outlet />
     </>
   )
