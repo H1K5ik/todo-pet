@@ -1,4 +1,4 @@
-import { useTheme } from '@component/themecontext'
+import { useTheme } from '@component/themeContext'
 import { DEFAULT_MESSAGE } from '@const'
 import { colors } from '@theme'
 import React, { FC } from 'react'

@@ -9,8 +9,12 @@ export const InputBox = styled.input<{
   $isMobile: boolean
 }>`
   width: ${(props: { $isTablet: boolean; $isMobile: boolean }) => {
-    if (props.$isMobile) return '280px'
-    if (props.$isTablet) return '350px'
+    if (props.$isMobile) {
+      return '280px'
+    }
+    if (props.$isTablet) {
+      return '350px'
+    }
     return '557px'
   }};
   border: none;

@@ -1,4 +1,4 @@
-import { IListOfItems } from '@component/listofitems/interfaces'
+import { IListOfItems } from '@component/listOfItems/interfaces'
 import { ReactElement } from 'react'
 
 export interface ITodo {

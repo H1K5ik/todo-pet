@@ -19,8 +19,12 @@ export const BlockInput = styled.div<{ $isTablet: boolean; $isMobile: boolean }>
   flex-direction: ${(props: { $isMobile: boolean }) => (!props.$isMobile ? 'raw' : 'column')};
 
   width: ${(props: { $isTablet: boolean; $isMobile: boolean }) => {
-    if (props.$isMobile) return '320px'
-    if (props.$isTablet) return '550px'
+    if (props.$isMobile) {
+      return '320px'
+    }
+    if (props.$isTablet) {
+      return '550px'
+    }
     return '780px'
   }};
   margin: 5em auto;

@@ -3,13 +3,19 @@ import { styled } from 'styled-components'
 
 export const WrapperButton = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   width: ${(props: { $isMobile: boolean }) => {
-    if (props.$isMobile) return '320px'
+    if (props.$isMobile) {
+      return '320px'
+    }
     return '200px'
   }};
   margin: 2vh
     ${(props: { $isTablet: boolean; $isMobile: boolean }) => {
-      if (props.$isMobile) return 'auto'
-      if (props.$isTablet) return 'auto'
+      if (props.$isMobile) {
+        return 'auto'
+      }
+      if (props.$isTablet) {
+        return 'auto'
+      }
       return '150px'
     }};
 `

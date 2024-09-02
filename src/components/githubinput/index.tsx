@@ -1,7 +1,7 @@
 import find from '@assets/find.svg'
 import { Icons } from '@component/icon'
 import { Input } from '@component/input'
-import { useTheme } from '@component/themecontext'
+import { useTheme } from '@component/themeContext'
 import { colors } from '@theme'
 import axios from 'axios'
 import React, { FC, useState } from 'react'

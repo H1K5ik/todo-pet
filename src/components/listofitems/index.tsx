@@ -1,6 +1,6 @@
 import { Button } from '@component/button'
 import { Item } from '@component/item'
-import { useTheme } from '@component/themecontext'
+import { useTheme } from '@component/themeContext'
 import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'

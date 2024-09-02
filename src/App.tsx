@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@component/themecontext'
+import { ThemeProvider } from '@component/themeContext'
 import { Global } from '@const'
 import { useWindowWidth } from '@utils/useWindow'
 import React from 'react'

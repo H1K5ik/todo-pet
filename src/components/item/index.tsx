@@ -1,7 +1,7 @@
 import deleteItem from '@assets/deleteItem.svg'
 import edit from '@assets/edit.svg'
 import { Icons } from '@component/icon'
-import { useTheme } from '@component/themecontext'
+import { useTheme } from '@component/themeContext'
 import React, { FC } from 'react'
 
 import { IItem } from './interfaces'

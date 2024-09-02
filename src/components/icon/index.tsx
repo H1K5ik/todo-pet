@@ -1,4 +1,4 @@
-import { useTheme } from '@component/themecontext'
+import { useTheme } from '@component/themeContext'
 import React, { FC } from 'react'
 
 import { IItems } from './interfaces'

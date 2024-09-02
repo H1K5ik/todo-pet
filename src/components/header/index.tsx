@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom'
 
 import { config } from './config'
 import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperSettings } from './styles'
-import { useTheme } from '../themecontext/index'
+import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
 
 export const Header: FC = () => {
