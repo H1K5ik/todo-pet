@@ -21,12 +21,12 @@ export const WrapperSelect = styled.select<{ $isLight: boolean }>`
     cursor: pointer;
   }
 `
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $isMobile: boolean }>`
   width: 100%;
   height: 100vh;
   max-width: 343px;
   max-height: 60px;
-  margin: 40px;
+  margin: 40px ${(props: { $isMobile: boolean }) => (props.$isMobile ? 'auto' : '40px')};
 `
 
 export const Option = styled.option<{ $isLight: boolean }>`

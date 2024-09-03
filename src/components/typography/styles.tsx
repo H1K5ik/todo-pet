@@ -37,7 +37,7 @@ export const DefaultText = styled.div<{ $isLight: boolean }>`
   ${fontStyle.l}
 `
 
-export const Settings = styled.div<{ color: string; $isLight: boolean }>`
+export const SettingsText = styled.div<{ color: string; $isLight: boolean }>`
   color: ${(props) => (props.$isLight ? props.color : colors.TEXT_COLOR_DARK)};
   font-style: normal;
   ${fontStyle.s}

@@ -3,7 +3,7 @@ import { colors } from '@theme'
 import React, { FC } from 'react'
 
 import { IText } from './interfaces'
-import { DefaultText, HeaderText, InputText, LogoText } from './styles'
+import { DefaultText, HeaderText, InputText, LogoText, SettingsText } from './styles'
 
 export const Typography: FC & {
   Logo: typeof Logo
@@ -55,9 +55,9 @@ const Settings = ({ color = colors.WHITE, text }: IText) => {
   const { isLight } = useTheme()
 
   return (
-    <InputText $isLight={isLight} color={color}>
+    <SettingsText $isLight={isLight} color={color}>
       {text}
-    </InputText>
+    </SettingsText>
   )
 }
 
