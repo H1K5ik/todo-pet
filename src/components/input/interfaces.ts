@@ -1,7 +1,9 @@
+import { ChangeEventHandler, KeyboardEventHandler } from 'react'
+
 export interface IInput {
-  handleInputChange?: React.ChangeEventHandler<HTMLInputElement>
+  handleInputChange?: ChangeEventHandler<HTMLInputElement>
   value: string
-  onKeyDown: React.KeyboardEventHandler<HTMLInputElement>
+  onKeyDown: KeyboardEventHandler<HTMLInputElement>
   width?: string
   color?: string
   $isMobile?: boolean

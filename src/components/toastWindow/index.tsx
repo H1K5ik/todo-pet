@@ -1,6 +1,6 @@
 import { useTheme } from '@component/themeContext'
 import React, { FC, useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { createPortal } from 'react-dom'
 
 import { IModal } from './interfaces'
 import { ToastWrapper } from './styles'
@@ -17,7 +17,7 @@ export const Toast: FC<IModal> = ({ children, isOpen, onClose }) => {
 
   const { isLight } = useTheme()
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <ToastWrapper $isLight={isLight} $isOpen={isOpen}>
       {children}
     </ToastWrapper>,

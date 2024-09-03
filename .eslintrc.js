@@ -23,8 +23,16 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:react-hooks/recommended',
     'prettier',
+    'plugin:jest/recommended',
   ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys', 'jest'],
   rules: {
     'react/sort-comp': [
       'error',
@@ -41,7 +49,7 @@ module.exports = {
       },
     ],
     'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
-    'react/sort-comp': 'off', // Временно отключаем это правило
+    'react/sort-comp': 'off',
     'import/no-unresolved': 'off',
     'no-undef': 0,
     '@typescript-eslint/no-require-imports': 0,

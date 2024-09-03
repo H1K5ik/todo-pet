@@ -3,8 +3,9 @@ import find from '@assets/find.svg'
 import { Icons } from '@component/icon'
 import { Input } from '@component/input'
 import { useTheme } from '@component/themeContext'
+import { Toast } from '@component/toastWindow'
 import { colors } from '@theme'
-import React, { FC, useState } from 'react'
+import React, { ChangeEvent, FC, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
 import { ImageGithub, Wrapper, WrapperGithub, WrapperGithubLogin, WrapperInput } from './styles'
@@ -13,11 +14,16 @@ import { Typography } from '../typography'
 export const GithubInfo: FC = () => {
   const [username, setUsername] = useState('')
   const [userImage, setUserImage] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalError, setModalError] = useState<string | unknown>(null)
 
   const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 615px)')?.matches
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value)
   }
 
@@ -25,19 +31,22 @@ export const GithubInfo: FC = () => {
     try {
       const avatar = await getGuthubAccount(username)
       setUserImage(avatar)
-    } catch (e) {
-      alert(e)
+    } catch (e: unknown) {
+      setModalError(e)
+      openModal()
       setUserImage(null)
     }
   }
-
   return (
     <Wrapper $isMobile={isMobile ?? false}>
+      <Toast isOpen={isModalOpen} onClose={closeModal}>
+        {`${modalError}`}
+      </Toast>
       <WrapperGithub>
         <Typography.Settings color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} text={'GitHub info'} />
         <WrapperInput>
           <Input handleInputChange={handleInputChange} onKeyDown={handleSearch} value={username} width={'282px'} />
-          <Icons alt='edit-svg' onClick={handleSearch} src={find} />
+          <Icons alt='search-svg' onClick={handleSearch} src={find} />
         </WrapperInput>
       </WrapperGithub>
 

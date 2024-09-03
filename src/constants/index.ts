@@ -1,7 +1,4 @@
-import ReactDOM from 'react-dom/client'
 import { createGlobalStyle } from 'styled-components'
-
-export const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 export const Global = createGlobalStyle<{ $windowWidth: number }>`
   * {

@@ -6,7 +6,7 @@ import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import { keygen } from '@utils/keygen'
-import React, { FC, useEffect, useState } from 'react'
+import React, { ChangeEvent, Children, FC, cloneElement, isValidElement, useEffect, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
 import { IComponents, ITodo } from './interfaces'
@@ -56,7 +56,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
     setInputValue('')
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
 
@@ -108,9 +108,9 @@ export const Todo: FC<ITodo> = ({ children }) => {
           />
         </WrapperButton>
       </BlockInput>
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(child, {
+      {Children.map(children, (child) =>
+        isValidElement(child)
+          ? cloneElement(child, {
               components: components,
               setComponents: setComponents,
               setInputValue: setInputValue,
