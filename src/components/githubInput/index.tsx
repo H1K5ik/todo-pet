@@ -5,8 +5,9 @@ import { Input } from '@component/input'
 import { useTheme } from '@component/themeContext'
 import { colors } from '@theme'
 import React, { FC, useState } from 'react'
+import { useMedia } from 'react-media-hook'
 
-import { Wrapper, WrapperGithub, WrapperInput } from './styles'
+import { ImageGithub, Wrapper, WrapperGithub, WrapperGithubLogin, WrapperInput } from './styles'
 import { Typography } from '../typography'
 
 export const GithubInfo: FC = () => {
@@ -14,6 +15,7 @@ export const GithubInfo: FC = () => {
   const [userImage, setUserImage] = useState(null)
 
   const { isLight } = useTheme()
+  const isMobile = useMedia('(max-width: 615px)')?.matches
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value)
@@ -30,7 +32,7 @@ export const GithubInfo: FC = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper $isMobile={isMobile ?? false}>
       <WrapperGithub>
         <Typography.Settings color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} text={'GitHub info'} />
         <WrapperInput>
@@ -39,7 +41,12 @@ export const GithubInfo: FC = () => {
         </WrapperInput>
       </WrapperGithub>
 
-      {userImage && <img alt='User avatar' src={userImage} />}
+      {userImage && (
+        <WrapperGithubLogin>
+          <Typography.Input color={isLight ? colors.BLACK : colors.SWITCH_THEME_COLOR} text={`Login: ${username}`} />
+          <ImageGithub $isMobile={isMobile ?? false} $src={userImage} />
+        </WrapperGithubLogin>
+      )}
     </Wrapper>
   )
 }
