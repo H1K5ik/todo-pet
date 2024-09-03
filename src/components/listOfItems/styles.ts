@@ -10,10 +10,7 @@ export const WrapperButton = styled.div<{ $isMobile: boolean; $isTablet: boolean
   }};
   margin: 2vh
     ${(props: { $isTablet: boolean; $isMobile: boolean }) => {
-      if (props.$isMobile) {
-        return 'auto'
-      }
-      if (props.$isTablet) {
+      if (props.$isTablet || props.$isMobile) {
         return 'auto'
       }
       return '150px'

@@ -68,43 +68,41 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
   }
 
   return (
-    <>
-      <List>
-        <WrapperText>
-          {isMobile ? (
-            <Typography.Logo color={colors.BLACK} text={'Task list'} />
-          ) : (
-            <Typography.Logo color={colors.BLACK} text={'Task list'} />
-          )}
-        </WrapperText>
-        <WrapperList $isLight={isLight}>
-          {components && components.length > 0 ? (
-            components.map(({ id, text }) => (
-              <Item
-                isSelected={selectedItems.has(id)}
-                key={id}
-                onDelete={() => handleDelete(id)}
-                onEdit={() => handleEdit(id)}
-                onSelect={() => handleSelect(id)}
-                text={text ? text : DEFAULT_MESSAGE}
-              />
-            ))
-          ) : (
-            <WrapperListText $isLight={isLight} $isTablet={isTablet ?? false}>
-              Create your first ToDo
-            </WrapperListText>
-          )}
-        </WrapperList>
-        <WrapperButton $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
-          <Button
-            $isMobile={isMobile ?? false}
-            color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
-            disabled={selectedItems.size === 0}
-            onClick={handleDeleteSelected}
-            text={'Delete selected'}
-          />
-        </WrapperButton>
-      </List>
-    </>
+    <List>
+      <WrapperText>
+        {isMobile ? (
+          <Typography.Logo color={colors.BLACK} text={'Task list'} />
+        ) : (
+          <Typography.Default color={colors.BLACK} text={'Task list'} />
+        )}
+      </WrapperText>
+      <WrapperList $isLight={isLight}>
+        {components && components.length > 0 ? (
+          components.map(({ id, text }) => (
+            <Item
+              isSelected={selectedItems.has(id)}
+              key={id}
+              onDelete={() => handleDelete(id)}
+              onEdit={() => handleEdit(id)}
+              onSelect={() => handleSelect(id)}
+              text={text ? text : DEFAULT_MESSAGE}
+            />
+          ))
+        ) : (
+          <WrapperListText $isLight={isLight} $isTablet={isTablet ?? false}>
+            Create your first ToDo
+          </WrapperListText>
+        )}
+      </WrapperList>
+      <WrapperButton $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
+        <Button
+          $isMobile={isMobile ?? false}
+          color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
+          disabled={selectedItems.size === 0}
+          onClick={handleDeleteSelected}
+          text={'Delete selected'}
+        />
+      </WrapperButton>
+    </List>
   )
 }
