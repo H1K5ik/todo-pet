@@ -1,9 +1,10 @@
 import { IComponents } from '@component/todo/interfaces'
+import { Dispatch, SetStateAction } from 'react'
 
 export interface IListOfItems {
   components?: IComponents[]
-  setComponents?: React.Dispatch<React.SetStateAction<IComponents[]>>
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>
+  setComponents?: Dispatch<SetStateAction<IComponents[]>>
+  setInputValue?: Dispatch<SetStateAction<string>>
   onEdit?: () => void
-  setTodoId?: React.Dispatch<React.SetStateAction<number | undefined>>
+  setTodoId?: Dispatch<SetStateAction<number | undefined>>
 }

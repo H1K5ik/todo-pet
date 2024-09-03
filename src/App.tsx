@@ -15,7 +15,7 @@ export const App = () => {
       <Global $windowWidth={windowWidth} />
       <Routes>
         <Route element={<Header />} path='/'>
-          {config ? config.map(({ element, path }) => <Route element={element} key={path} path={path} />) : ''}
+          {config && config.map(({ element, path }) => <Route element={element} key={path} path={path} />)}
         </Route>
       </Routes>
     </ThemeProvider>

@@ -15,11 +15,11 @@ export const Typography: FC & {
   return <></>
 }
 
-const Header = ({ isOpen, path, text }: IText) => {
+const Header = ({ isBurgerOpen, path, text }: IText) => {
   const { isLight } = useTheme()
 
   return (
-    <HeaderText $isLight={isLight} $isOpen={isOpen ?? false} to={path || ''}>
+    <HeaderText $isBurgerOpen={isBurgerOpen ?? false} $isLight={isLight} to={path || ''}>
       {text}
     </HeaderText>
   )

@@ -4,6 +4,7 @@ import { useTheme } from '@component/themeContext'
 import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
+import { getItems } from '@utils/getItemsFormLocalStorage'
 import React, { FC, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
@@ -11,15 +12,7 @@ import { IListOfItems } from './interfaces'
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'
 
 export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponents, setInputValue, setTodoId }) => {
-  const [selectedItems, setSelectedItems] = useState<Set<number>>(() => {
-    const savedItems = localStorage.getItem('items')
-    if (savedItems) {
-      const parsedItems = JSON.parse(savedItems) as Array<{ id: number; selected: boolean }>
-      const selItems = parsedItems.filter((obj) => obj.selected).map((obj) => obj.id)
-      return new Set(selItems)
-    }
-    return new Set()
-  })
+  const [selectedItems, setSelectedItems] = useState<Set<number>>(getItems())
 
   const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches

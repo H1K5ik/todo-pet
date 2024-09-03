@@ -6,13 +6,13 @@ export const WrapperHeader = styled.div<{ $isLight: boolean }>`
   background-color: ${(props: { $isLight: boolean }) =>
     props.$isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK};
 `
-export const Link = styled.div<{ $isLight: boolean; $windowWidth: number; $isOpen: boolean; $isMobile: boolean }>`
+export const Link = styled.div<{ $isLight: boolean; $windowWidth: number; $isBurgerOpen: boolean; $isMobile: boolean }>`
   display: flex;
-  align-items: ${(props) => (props.$isOpen ? `start;` : 'center')};
+  align-items: ${(props) => (props.$isBurgerOpen ? `start;` : 'center')};
   justify-content: space-between;
 
-  height: ${(props: { $isMobile: boolean; $isOpen: boolean }) =>
-    props.$isMobile ? (props.$isOpen ? `200px;` : `70px;`) : `130px;`};
+  height: ${(props: { $isMobile: boolean; $isBurgerOpen: boolean }) =>
+    props.$isMobile ? (props.$isBurgerOpen ? `200px;` : `70px;`) : `130px;`};
   max-width: ${(props) => (props.$windowWidth > 1140 ? `1140px;` : `${props.$windowWidth}px`)};
   margin: 0 auto;
 
@@ -25,9 +25,9 @@ export const Link = styled.div<{ $isLight: boolean; $windowWidth: number; $isOpe
   transition: height 0.2s ease-in-out;
 `
 
-export const Wrapper = styled.div<{ $isOpen?: boolean; $isMobile: boolean }>`
+export const Wrapper = styled.div<{ $isBurgerOpen?: boolean; $isMobile: boolean }>`
   display: flex;
-  flex-direction: ${(props) => (props.$isOpen ? 'column' : 'row')};
+  flex-direction: ${(props) => (props.$isBurgerOpen ? 'column' : 'row')};
   position: ${(props) => (props.$isMobile ? 'absolute' : 'static')};
   top: 20px;
   left: 20px;
@@ -37,9 +37,9 @@ export const Wrapper = styled.div<{ $isOpen?: boolean; $isMobile: boolean }>`
 
   box-sizing: border-box;
 `
-export const WrapperLink = styled.div<{ $isOpen?: boolean; $isMobile: boolean }>`
+export const WrapperLink = styled.div<{ $isBurgerOpen?: boolean; $isMobile: boolean }>`
   display: flex;
-  flex-direction: ${(props) => (props.$isOpen ? 'column' : 'row')};
+  flex-direction: ${(props) => (props.$isBurgerOpen ? 'column' : 'row')};
 
   margin: 0 20px;
 
@@ -51,14 +51,14 @@ export const WrapperSettings = styled.div<{ $isMobile: boolean }>`
   box-sizing: border-box;
 `
 
-export const WrapperBurger = styled.div<{ $isOpen: boolean }>`
-  display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
+export const WrapperBurger = styled.div<{ $isBurgerOpen: boolean }>`
+  display: ${(props) => (props.$isBurgerOpen ? 'flex' : 'none')};
   position: absolute;
   top: 70px;
   left: 78vw;
 
   box-sizing: border-box;
-  transform: ${(props) => (props.$isOpen ? 'translateY(0)' : 'translateY(-20px)')};
+  transform: ${(props) => (props.$isBurgerOpen ? 'translateY(0)' : 'translateY(-20px)')};
 
   transition: transform 0.3s ease-in-out;
 

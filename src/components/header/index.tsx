@@ -12,7 +12,7 @@ import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
 
 export const Header: FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false)
 
   const { isLight } = useTheme()
   const themeMode = isLight ? lightTheme : darkTheme
@@ -25,17 +25,17 @@ export const Header: FC = () => {
   const isMobile = useMedia('(max-width: 615px)')?.matches
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
+    setIsBurgerOpen(!isBurgerOpen)
   }
 
   return (
     <>
       <WrapperHeader $isLight={isLight}>
-        <Link $isLight={isLight} $isMobile={isMobile ?? false} $isOpen={isOpen} $windowWidth={windowWidth}>
-          <Wrapper $isMobile={isMobile ?? false} $isOpen={isOpen}>
+        <Link $isBurgerOpen={isBurgerOpen} $isLight={isLight} $isMobile={isMobile ?? false} $windowWidth={windowWidth}>
+          <Wrapper $isBurgerOpen={isBurgerOpen} $isMobile={isMobile ?? false}>
             {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
           </Wrapper>
-          <WrapperLink $isMobile={isMobile ?? false} $isOpen={isOpen}>
+          <WrapperLink $isBurgerOpen={isBurgerOpen} $isMobile={isMobile ?? false}>
             {config && !isMobile ? (
               config.map(({ path, text }) => (
                 <WrapperSettings $isMobile={isMobile ?? false} key={text}>
@@ -43,13 +43,13 @@ export const Header: FC = () => {
                 </WrapperSettings>
               ))
             ) : (
-              <IconBurger onClick={toggleMenu}>{isOpen ? <FaTimes /> : <FaBars />}</IconBurger>
+              <IconBurger onClick={toggleMenu}>{isBurgerOpen ? <FaTimes /> : <FaBars />}</IconBurger>
             )}
             {config &&
               isMobile &&
               config.map(({ path, text }) => (
-                <WrapperBurger $isOpen={isOpen} key={text}>
-                  <Typography.Header isOpen={isOpen} path={path} text={text} />
+                <WrapperBurger $isBurgerOpen={isBurgerOpen} key={text}>
+                  <Typography.Header isBurgerOpen={isBurgerOpen} path={path} text={text} />
                 </WrapperBurger>
               ))}
           </WrapperLink>

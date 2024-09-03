@@ -1,7 +1,7 @@
 import { useTheme } from '@component/themeContext'
 import { DEFAULT_MESSAGE } from '@const'
 import { colors } from '@theme'
-import React, { FC } from 'react'
+import React, { FC, KeyboardEvent } from 'react'
 import { useMedia } from 'react-media-hook'
 
 import { IInput } from './interfaces'
@@ -18,7 +18,7 @@ export const Input: FC<IInput> = ({
   const { isLight } = useTheme()
   const isTablet = useMedia('(max-width: 770px)')?.matches
 
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event?.key === 'Enter') {
       onKeyDown(event)
     }

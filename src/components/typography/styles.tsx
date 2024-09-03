@@ -19,10 +19,10 @@ export const LogoText = styled.div<{ color: string; $isLight: boolean }>`
   text-align: left;
 `
 
-export const HeaderText = styled(NavLink)<{ $isLight: boolean; $isOpen: boolean }>`
+export const HeaderText = styled(NavLink)<{ $isLight: boolean; $isBurgerOpen: boolean }>`
   color: ${(props) => (props.$isLight ? colors.WHITE : colors.TEXT_COLOR_DARK)};
   font-style: normal;
-  ${(props: { $isOpen: boolean }) => (props.$isOpen ? fontStyle.m : fontStyle.xl)}
+  ${(props: { $isBurgerOpen: boolean }) => (props.$isBurgerOpen ? fontStyle.m : fontStyle.xl)}
 
   text-decoration: none;
 
