@@ -1,20 +1,21 @@
 import { colors } from '@theme'
 import { keyframes, styled } from 'styled-components'
 
-export const ItemForm = styled.div`
+export const ItemForm = styled.div<{ $isMobile: boolean }>`
   width: 100vw;
-  max-width: 650px;
-  margin: 1vh auto;
+  max-width: ${(props: { $isMobile: boolean }) => (props.$isMobile ? '400px' : '650px')};
+  margin: 10px auto;
 
   overflow-wrap: break-word;
 `
 
-export const Label = styled.label<{ $isLight: boolean }>`
+export const Label = styled.label<{ $isLight: boolean; $isMobile: boolean }>`
   display: flex;
 
-  width: 557px;
+  width: 100vw;
   height: 66px;
-  margin: 0;
+  max-width: ${(props: { $isMobile: boolean }) => (props.$isMobile ? '270px' : '557px')};
+  margin: 0 auto;
   border-top: 1px solid ${colors.BORDER_COLOR};
   border-bottom: 1px solid ${colors.BORDER_COLOR};
 
@@ -41,8 +42,17 @@ export const CheckItem = styled.input`
 export const Wrapper = styled.div`
   display: flex;
 `
-export const WrapperText = styled.div`
+export const WrapperText = styled.div<{ $isMobile: boolean }>`
+  overflow: hidden;
+
+  width: ${(props: { $isMobile: boolean }) => (props.$isMobile ? '220px' : '300px')};
   margin: 1em;
+
+  white-space: nowrap;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  text-overflow: ellipsis;
 `
 const rotate = keyframes`
  from {

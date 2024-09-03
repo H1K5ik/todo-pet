@@ -1,51 +1,8 @@
 import { colors, fontStyle } from '@theme'
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styled-components'
 
-const NavLinkStyled = styled(NavLink)<{ $isLight: boolean; color: string }>`
-  color: ${(props) => (props.$isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
-  font-style: normal;
-  ${fontStyle.m}
-
-  text-decoration: none;
-
-  &.active {
-    border-bottom: 2px solid ${(props) => (props.$isLight ? colors.WHITE : colors.HEADER_TEXT_COLOR_NAV_DARK)};
-  }
-`
-
-const DivStyled = styled.div<{ $isLight: boolean; color: string }>`
-  margin: 0;
-
-  color: ${(props) => (props.$isLight ? props.color : colors.HEADER_TEXT_COLOR_NAV_DARK)};
-  font-style: normal;
-  ${fontStyle.m}
-`
-
-const InputTextComponent: React.FC<{
-  $isopen?: boolean
-  color: string
-  $isLight: boolean
-  path?: string
-  children?: React.ReactNode
-}> = ({ $isLight, $isopen = false, children, color, path = '', ...props }) => {
-  if ($isopen) {
-    return (
-      <NavLinkStyled $isLight={$isLight} color={color} to={path || '#'} {...props}>
-        {children}
-      </NavLinkStyled>
-    )
-  }
-
-  return (
-    <DivStyled $isLight={$isLight} color={color} {...props}>
-      {children}
-    </DivStyled>
-  )
-}
-
-export const InputText = styled(InputTextComponent)`
+export const InputText = styled.div<{ $isLight: boolean }>`
   margin: 0;
 
   color: ${(props) => (props.$isLight ? props.color : colors.TEXT_COLOR_DARK)};
@@ -62,10 +19,10 @@ export const LogoText = styled.div<{ color: string; $isLight: boolean }>`
   text-align: left;
 `
 
-export const HeaderText = styled(NavLink)<{ $isLight: boolean }>`
+export const HeaderText = styled(NavLink)<{ $isLight: boolean; $isOpen: boolean }>`
   color: ${(props) => (props.$isLight ? colors.WHITE : colors.TEXT_COLOR_DARK)};
   font-style: normal;
-  ${fontStyle.xl}
+  ${(props: { $isOpen: boolean }) => (props.$isOpen ? fontStyle.m : fontStyle.xl)}
 
   text-decoration: none;
 

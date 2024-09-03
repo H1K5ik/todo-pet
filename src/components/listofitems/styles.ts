@@ -26,7 +26,7 @@ export const WrapperText = styled.div`
 export const WrapperList = styled.div<{ $isLight: boolean }>`
   overflow: auto;
 
-  max-height: 320px;
+  max-height: 310px;
 
   scrollbar-color: ${(props: { $isLight: boolean }) =>
     props.$isLight
@@ -50,7 +50,7 @@ export const Block = styled.div`
 `
 export const List = styled.div`
   overflow: hidden;
-  margin-top: 2vh;
+  max-width: 1140px;
 `
 
 export const BlockInput = styled.div`

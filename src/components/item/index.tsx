@@ -3,6 +3,7 @@ import edit from '@assets/edit.svg'
 import { Icons } from '@component/icon'
 import { useTheme } from '@component/themeContext'
 import React, { FC } from 'react'
+import { useMedia } from 'react-media-hook'
 
 import { IItem } from './interfaces'
 import { CheckItem, Indicator, ItemForm, Label, Wrapper, WrapperText } from './styles'
@@ -10,14 +11,15 @@ import { Typography } from '../typography'
 
 export const Item: FC<IItem> = ({ isSelected, onDelete, onEdit, onSelect, text }) => {
   const { isLight } = useTheme()
+  const isMobile = useMedia('(max-width: 600px)')?.matches
 
   return (
-    <ItemForm>
+    <ItemForm $isMobile={isMobile ?? false}>
       <Wrapper>
-        <Label $isLight={isLight}>
+        <Label $isLight={isLight} $isMobile={isMobile ?? false}>
           <CheckItem checked={isSelected} onChange={onSelect} type='checkbox' />
           <Indicator $isLight={isLight} />
-          <WrapperText>
+          <WrapperText $isMobile={isMobile ?? false}>
             <Typography.Default text={text} />
           </WrapperText>
         </Label>

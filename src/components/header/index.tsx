@@ -7,7 +7,7 @@ import { useMedia } from 'react-media-hook'
 import { Outlet } from 'react-router-dom'
 
 import { config } from './config'
-import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperSettings } from './styles'
+import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperLink, WrapperSettings } from './styles'
 import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
 
@@ -22,7 +22,7 @@ export const Header: FC = () => {
   }, [themeMode])
 
   const windowWidth = useWindowWidth()
-  const isMobile = useMedia('(max-width: 600px)')?.matches
+  const isMobile = useMedia('(max-width: 615px)')?.matches
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -31,14 +31,14 @@ export const Header: FC = () => {
   return (
     <>
       <WrapperHeader $isLight={isLight}>
-        <Link $isLight={isLight} $isopen={isOpen} $windowWidth={windowWidth}>
-          <Wrapper $isopen={isOpen}>
+        <Link $isLight={isLight} $isMobile={isMobile ?? false} $isOpen={isOpen} $windowWidth={windowWidth}>
+          <Wrapper $isMobile={isMobile ?? false} $isOpen={isOpen}>
             {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}
           </Wrapper>
-          <Wrapper $isopen={isOpen}>
+          <WrapperLink $isMobile={isMobile ?? false} $isOpen={isOpen}>
             {config && !isMobile ? (
               config.map(({ path, text }) => (
-                <WrapperSettings key={text}>
+                <WrapperSettings $isMobile={isMobile ?? false} key={text}>
                   <Typography.Header path={path} text={text} />
                 </WrapperSettings>
               ))
@@ -48,11 +48,11 @@ export const Header: FC = () => {
             {config &&
               isMobile &&
               config.map(({ path, text }) => (
-                <WrapperBurger $isopen={isOpen} key={text}>
-                  <Typography.Input isopen={isOpen} path={path} text={text} />
+                <WrapperBurger $isOpen={isOpen} key={text}>
+                  <Typography.Header isOpen={isOpen} path={path} text={text} />
                 </WrapperBurger>
               ))}
-          </Wrapper>
+          </WrapperLink>
         </Link>
       </WrapperHeader>
       <Outlet />

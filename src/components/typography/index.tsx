@@ -15,21 +15,21 @@ export const Typography: FC & {
   return <></>
 }
 
-const Header = ({ path, text }: IText) => {
+const Header = ({ isOpen, path, text }: IText) => {
   const { isLight } = useTheme()
 
   return (
-    <HeaderText $isLight={isLight} to={path || ''}>
+    <HeaderText $isLight={isLight} $isOpen={isOpen ?? false} to={path || ''}>
       {text}
     </HeaderText>
   )
 }
 
-const Input = ({ color = colors.WHITE, isopen = false, path, text }: IText) => {
+const Input = ({ color = colors.WHITE, text }: IText) => {
   const { isLight } = useTheme()
 
   return (
-    <InputText $isLight={isLight} $isopen={isopen} color={color} path={path || ''}>
+    <InputText $isLight={isLight} color={color}>
       {text}
     </InputText>
   )

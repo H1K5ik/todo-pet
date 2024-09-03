@@ -108,7 +108,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
             color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
             disabled={selectedItems.size === 0}
             onClick={handleDeleteSelected}
-            text={'Deleted selected'}
+            text={'Delete selected'}
           />
         </WrapperButton>
       </List>
