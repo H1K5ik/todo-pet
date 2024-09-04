@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 
-import { getItems } from './getItemsFormLocalStorage'
+import { getSelectedItems } from './getSelectedItemsFromLocalStorage'
 import { keygen } from './keygen'
 import { useWindowWidth } from './useWindow'
 
@@ -8,7 +8,7 @@ describe('Test utils', () => {
   test('Should return an empty set when there are no selected items in local storage', () => {
     jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => null)
 
-    const result = getItems()
+    const result = getSelectedItems()
 
     expect(result).toEqual(new Set<number>())
   })

@@ -5,6 +5,7 @@ import { Toast } from '@component/toastWindow'
 import { Typography } from '@component/typography'
 import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
+import { getItems } from '@utils/getAllItemsFromLocalStorage'
 import { keygen } from '@utils/keygen'
 import React, { ChangeEvent, Children, FC, cloneElement, isValidElement, useEffect, useState } from 'react'
 import { useMedia } from 'react-media-hook'
@@ -13,10 +14,7 @@ import { IComponents, ITodo } from './interfaces'
 import { Block, BlockInput, WrapperButton } from './styles'
 
 export const Todo: FC<ITodo> = ({ children }) => {
-  const [components, setComponents] = useState<IComponents[]>(() => {
-    const savedItems = localStorage.getItem('items')
-    return savedItems ? JSON.parse(savedItems) : []
-  })
+  const [components, setComponents] = useState<IComponents[]>(getItems())
   const [inputValue, setInputValue] = useState<string>('')
   const [isEdit, setIsEdit] = useState<boolean>(false)
   const [todoId, setTodoId] = useState<number>()

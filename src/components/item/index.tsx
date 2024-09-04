@@ -18,7 +18,7 @@ export const Item: FC<IItem> = ({ isSelected, onDelete, onEdit, onSelect, text }
       <Wrapper>
         <Label $isLight={isLight} $isMobile={isMobile ?? false}>
           <CheckItem checked={isSelected} onChange={onSelect} type='checkbox' />
-          <Indicator $isLight={isLight} />
+          <Indicator $isLight={isLight} data-testid='indicator' />
           <WrapperText $isMobile={isMobile ?? false}>
             <Typography.Default text={text} />
           </WrapperText>

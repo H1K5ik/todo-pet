@@ -1,4 +1,4 @@
-export const getItems = () => {
+export const getSelectedItems = () => {
   const savedItems = localStorage.getItem('items')
   if (savedItems) {
     const parsedItems = JSON.parse(savedItems) as Array<{ id: number; selected: boolean }>

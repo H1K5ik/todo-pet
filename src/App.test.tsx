@@ -25,6 +25,7 @@ describe('Test App', () => {
 
     expect(queryByTestId('header')).toBeInTheDocument()
   })
+
   test('Should render the correct component when a route is accessed multiple times', () => {
     const { getByTestId, rerender } = render(
       <MemoryRouter initialEntries={['/nested-route/']}>

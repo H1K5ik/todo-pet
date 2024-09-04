@@ -9,6 +9,7 @@ import { ChangeTheme } from './index'
 jest.mock('react-media-hook', () => ({
   useMedia: jest.fn(),
 }))
+
 describe('Test changeTheme', () => {
   test('Should render the theme switcher correctly on desktop', () => {
     const { getByText } = render(
@@ -43,8 +44,6 @@ describe('Test changeTheme', () => {
     const darkThemeOption = getByText('Dark theme')
     expect(darkThemeOption).toBeInTheDocument()
   })
-
-  jest.mock('react-media-hook')
 
   test('should render the theme switcher correctly on mobile', () => {
     ;(useMedia as jest.Mock).mockReturnValueOnce({ matches: true })
