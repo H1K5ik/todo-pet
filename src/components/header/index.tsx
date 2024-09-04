@@ -30,7 +30,7 @@ export const Header: FC = () => {
 
   return (
     <>
-      <WrapperHeader $isLight={isLight}>
+      <WrapperHeader $isLight={isLight} data-testid='header'>
         <Link $isBurgerOpen={isBurgerOpen} $isLight={isLight} $isMobile={isMobile ?? false} $windowWidth={windowWidth}>
           <Wrapper $isBurgerOpen={isBurgerOpen} $isMobile={isMobile ?? false}>
             {isMobile ? <Typography.Input text={'Modsen Todo list'} /> : <Typography.Logo text={'Modsen Todo list'} />}

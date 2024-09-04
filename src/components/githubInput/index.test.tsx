@@ -22,6 +22,7 @@ describe('Test githubInput', () => {
 
     await waitFor(() => expect(queryByText('Login: nonexistent_user')).toBeNull())
   })
+
   test('Should handle empty input gracefully', async () => {
     const { getByAltText, getByPlaceholderText, queryByText } = render(
       <ThemeProvider>
@@ -37,6 +38,7 @@ describe('Test githubInput', () => {
 
     await waitFor(() => expect(queryByText('GitHub API error')).toBeNull())
   })
+
   test('Should handle case sensitivity in GitHub usernames', async () => {
     const { getByAltText, getByPlaceholderText, queryByText } = render(
       <ThemeProvider>
