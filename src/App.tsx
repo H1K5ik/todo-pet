@@ -1,3 +1,4 @@
+import { ErrorBoundary } from '@component/ErrorBoundary'
 import { ThemeProvider } from '@component/themeContext'
 import { Global } from '@const'
 import { useWindowWidth } from '@utils/useWindow'
@@ -13,11 +14,13 @@ export const App = () => {
   return (
     <ThemeProvider>
       <Global $windowWidth={windowWidth} />
-      <Routes>
-        <Route element={<Header />} path='/'>
-          {config && config.map(({ element, path }) => <Route element={element} key={path} path={path} />)}
-        </Route>
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route element={<Header />} path='/'>
+            {config && config.map(({ element, path }) => <Route element={element} key={path} path={path} />)}
+          </Route>
+        </Routes>
+      </ErrorBoundary>
     </ThemeProvider>
   )
 }
