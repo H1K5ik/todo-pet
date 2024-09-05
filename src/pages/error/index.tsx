@@ -12,9 +12,9 @@ export const ErrorPage = () => {
 
   return (
     <Wrapper>
-      <h1>Упс! Что-то пошло не так.</h1>
-      <p>Возникла ошибка, и мы работаем над ее исправлением.</p>
-      <button onClick={handleClick}>Вернуться на главную страницу</button>
+      <h1>Oops! Something went wrong.</h1>
+      <p>An error has occurred and we are working to fix it.</p>
+      <button onClick={handleClick}>Return to the main page</button>
     </Wrapper>
   )
 }
