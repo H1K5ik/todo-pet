@@ -2,6 +2,6 @@ import { ReactNode } from 'react'
 
 export interface IModal {
   isOpen: boolean
-  onClose: () => void
+  onClose?: () => void
   children: ReactNode
 }

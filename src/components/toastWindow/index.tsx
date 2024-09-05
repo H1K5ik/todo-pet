@@ -5,10 +5,14 @@ import { createPortal } from 'react-dom'
 import { IModal } from './interfaces'
 import { ToastWrapper } from './styles'
 
+const portalRoot = document.createElement('div')
+portalRoot.setAttribute('id', 'portal-root')
+document.body.appendChild(portalRoot)
+
 export const Toast: FC<IModal> = ({ children, isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
-      const timer = setTimeout(onClose, 2000)
+      const timer = setTimeout(onClose!, 2000)
       return () => {
         clearTimeout(timer)
       }
@@ -21,6 +25,6 @@ export const Toast: FC<IModal> = ({ children, isOpen, onClose }) => {
     <ToastWrapper $isLight={isLight} $isOpen={isOpen}>
       {children}
     </ToastWrapper>,
-    document.getElementById('modal-root') as HTMLElement,
+    document.getElementById('portal-root') as HTMLElement,
   )
 }
