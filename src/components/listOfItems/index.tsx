@@ -80,6 +80,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
         {components && components.length > 0 ? (
           components.map(({ id, text }) => (
             <Item
+              data-test-id={'input'}
               isSelected={selectedItems.has(id)}
               key={id}
               onDelete={() => handleDelete(id)}
@@ -89,7 +90,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
             />
           ))
         ) : (
-          <WrapperListText $isLight={isLight} $isTablet={isTablet ?? false}>
+          <WrapperListText $isLight={isLight} $isTablet={isTablet ?? false} data-test-id={'create'}>
             Create your first ToDo
           </WrapperListText>
         )}
