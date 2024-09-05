@@ -5,7 +5,7 @@ import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import { getSelectedItems } from '@utils/getSelectedItemsFromLocalStorage'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
 import { IListOfItems } from './interfaces'
@@ -13,6 +13,16 @@ import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from '
 
 export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponents, setInputValue, setTodoId }) => {
   const [selectedItems, setSelectedItems] = useState<Set<number>>(getSelectedItems())
+  const [isEmpty, setIsEmpty] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (components!.length > 0 && selectedItems.size !== 0) {
+      setIsEmpty(false)
+    } else {
+      setIsEmpty(true)
+    }
+    return
+  }, [components, selectedItems])
 
   const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches
@@ -42,10 +52,15 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
   }
 
   const handleDelete = (index: number) => {
-    if (setComponents) {
-      const newComponents = components?.filter((obj) => obj.id !== index) || []
-      setComponents(newComponents)
-      localStorage.setItem(ITEMS, JSON.stringify(newComponents))
+    if (!setComponents) return
+
+    const newComponents = components?.filter((obj) => obj.id !== index) || []
+    setComponents(newComponents)
+    localStorage.setItem(ITEMS, JSON.stringify(newComponents))
+
+    if (selectedItems.has(index)) {
+      selectedItems.delete(index)
+      setSelectedItems(new Set(selectedItems))
     }
   }
 
@@ -99,7 +114,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
         <Button
           $isMobile={isMobile ?? false}
           color={isLight ? colors.DELETE_BUTTON_COLOR : colors.HEADER_BACK_COLOR_DARK}
-          disabled={selectedItems.size === 0}
+          disabled={isEmpty}
           onClick={handleDeleteSelected}
           text={'Delete selected'}
         />
