@@ -10,6 +10,7 @@ import { useMedia } from 'react-media-hook'
 
 import { ImageGithub, Wrapper, WrapperGithub, WrapperGithubLogin, WrapperInput } from './styles'
 import { Typography } from '../typography'
+import { CustomError } from './interfaces'
 
 export const GithubInfo: FC = () => {
   const [username, setUsername] = useState('')
@@ -32,9 +33,15 @@ export const GithubInfo: FC = () => {
       const avatar = await getGuthubAccount(username)
       setUserImage(avatar)
     } catch (e: unknown) {
-      setModalError(e)
+      const error = e as CustomError
+
       openModal()
       setUserImage(null)
+      switch (error.code) {
+        case 'ERR_BAD_REQUEST': {
+          setModalError(`User with ${username ? ' name "' + username + '"' : 'empty username'} not fount`)
+        }
+      }
     }
   }
   return (
