@@ -35,6 +35,7 @@ module.exports = merge(common, {
     }),
     new webpack.DefinePlugin({
       'process.env.MODEPROD': JSON.stringify(process.env.MODEPROD),
+      'process.env.API': JSON.stringify(process.env.API),
     }),
   ],
 })
