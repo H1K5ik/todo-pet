@@ -22,7 +22,7 @@ export const Header: FC = () => {
   }, [themeMode])
 
   const windowWidth = useWindowWidth()
-  const isMobile = useMedia('(max-width: 615px)')?.matches
+  const isMobile = useMedia('(max-width: 600px)')?.matches
 
   const toggleMenu = () => {
     setIsBurgerOpen(!isBurgerOpen)

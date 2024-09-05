@@ -39,7 +39,7 @@ export const GithubInfo: FC = () => {
   }
   return (
     <Wrapper $isMobile={isMobile ?? false}>
-      <Toast isOpen={isModalOpen} onClose={closeModal}>
+      <Toast isMobile={isMobile ?? false} isOpen={isModalOpen} onClose={closeModal}>
         {`${modalError}`}
       </Toast>
       <WrapperGithub>

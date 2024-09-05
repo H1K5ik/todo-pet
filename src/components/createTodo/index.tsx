@@ -85,7 +85,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
   return (
     <>
       <BlockInput $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
-        <Toast isOpen={isModalOpen} onClose={closeModal}>
+        <Toast isMobile={isMobile ?? false} isOpen={isModalOpen} onClose={closeModal}>
           {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
         </Toast>
         <Block>

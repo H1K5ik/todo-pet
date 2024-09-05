@@ -9,7 +9,7 @@ const portalRoot = document.createElement('div')
 portalRoot.setAttribute('id', 'portal-root')
 document.body.appendChild(portalRoot)
 
-export const Toast: FC<IModal> = ({ children, isOpen, onClose }) => {
+export const Toast: FC<IModal> = ({ children, isMobile, isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(onClose!, 2000)
@@ -22,7 +22,7 @@ export const Toast: FC<IModal> = ({ children, isOpen, onClose }) => {
   const { isLight } = useTheme()
 
   return createPortal(
-    <ToastWrapper $isLight={isLight} $isOpen={isOpen}>
+    <ToastWrapper $isLight={isLight} $isMobile={isMobile} $isOpen={isOpen}>
       {children}
     </ToastWrapper>,
     document.getElementById('portal-root') as HTMLElement,
