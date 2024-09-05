@@ -25,13 +25,6 @@ module.exports = {
     'prettier',
     'plugin:jest/recommended',
   ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys', 'jest'],
   rules: {
     'react/sort-comp': [
@@ -48,8 +41,9 @@ module.exports = {
         caseSensitive: false,
       },
     ],
+    'react/prop-types': 'off',
     'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
-    'react/sort-comp': 'off',
+    'jest/expect-expect': 'off',
     'import/no-unresolved': 'off',
     'no-undef': 0,
     '@typescript-eslint/no-require-imports': 0,

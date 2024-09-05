@@ -1,4 +1,3 @@
-/* stylelint-disable value-keyword-case */
 import { darkTheme, lightTheme } from '@theme'
 import { useWindowWidth } from '@utils/useWindow'
 import React, { FC, useEffect, useState } from 'react'

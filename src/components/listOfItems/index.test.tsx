@@ -1,4 +1,3 @@
-// Import necessary libraries and components
 import { ThemeProvider } from '@component/themeContext'
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
