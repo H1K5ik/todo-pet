@@ -22,7 +22,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
 
   const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches
-  const isTablet = useMedia('(max-width: 770px)')?.matches
+  const isTablet = useMedia('(max-width: 830px)')?.matches
 
   useEffect(() => {
     localStorage.setItem(ITEMS, JSON.stringify(components))
@@ -97,7 +97,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
             value={inputValue}
           />
         </Block>
-        <WrapperButton>
+        <WrapperButton $isMobile={isMobile ?? false}>
           <Button
             $isMobile={isMobile ?? false}
             color={isLight ? colors.HEADER_BACK_COLOR_LIGHT : colors.HEADER_BACK_COLOR_DARK}

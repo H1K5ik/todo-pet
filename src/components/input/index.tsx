@@ -16,7 +16,7 @@ export const Input: FC<IInput> = ({
   width = '557px',
 }) => {
   const { isLight } = useTheme()
-  const isTablet = useMedia('(max-width: 770px)')?.matches
+  const isTablet = useMedia('(max-width: 830px)')?.matches
 
   const handleOnKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event?.key === 'Enter') {

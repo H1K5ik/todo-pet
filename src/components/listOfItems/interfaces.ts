@@ -1,4 +1,4 @@
-import { IComponents } from '@component/todo/interfaces'
+import { IComponents } from '@component/createTodo/interfaces'
 import { Dispatch, SetStateAction } from 'react'
 
 export interface IListOfItems {

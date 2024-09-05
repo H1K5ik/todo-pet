@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
-export const WrapperButton = styled.div`
-  margin: 0 auto;
+export const WrapperButton = styled.div<{ $isMobile: boolean }>`
+  margin: ${(props: { $isMobile: boolean }) => (props.$isMobile ? '0 auto' : '30px')};
 `
 
 export const Block = styled.div`

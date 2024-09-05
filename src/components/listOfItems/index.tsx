@@ -16,7 +16,7 @@ export const ListOfItems: FC<IListOfItems> = ({ components, onEdit, setComponent
 
   const { isLight } = useTheme()
   const isMobile = useMedia('(max-width: 600px)')?.matches
-  const isTablet = useMedia('(max-width: 770px)')?.matches
+  const isTablet = useMedia('(max-width: 830px)')?.matches
 
   const toggleComponentSelection = (index: number) => {
     if (setComponents && components) {
