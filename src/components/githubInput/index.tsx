@@ -8,9 +8,9 @@ import { colors } from '@theme'
 import React, { ChangeEvent, FC, useState } from 'react'
 import { useMedia } from 'react-media-hook'
 
+import { CustomError } from './interfaces'
 import { ImageGithub, Wrapper, WrapperGithub, WrapperGithubLogin, WrapperInput } from './styles'
 import { Typography } from '../typography'
-import { CustomError } from './interfaces'
 
 export const GithubInfo: FC = () => {
   const [username, setUsername] = useState('')

@@ -52,15 +52,14 @@ export const WrapperSettings = styled.div<{ $isMobile: boolean }>`
 `
 
 export const WrapperBurger = styled.div<{ $isBurgerOpen: boolean }>`
-  display: ${(props) => (props.$isBurgerOpen ? 'flex' : 'none')};
+  visibility: ${(props) => (props.$isBurgerOpen ? 'visible' : 'hidden')};
   position: absolute;
   top: 70px;
   left: 78vw;
 
   box-sizing: border-box;
-  transform: ${(props) => (props.$isBurgerOpen ? 'translateY(0)' : 'translateY(-20px)')};
-
-  transition: transform 0.3s ease-in-out;
+  transform: ${(props) => (props.$isBurgerOpen ? 'translateY(0)' : 'translateY(-60px)')};
+  transition: transform 0.2s ease-in-out;
 
   &:last-child {
     top: 120px;
