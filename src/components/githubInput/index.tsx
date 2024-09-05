@@ -40,6 +40,10 @@ export const GithubInfo: FC = () => {
       switch (error.code) {
         case 'ERR_BAD_REQUEST': {
           setModalError(`User with ${username ? ' name "' + username + '"' : 'empty username'} not fount`)
+          break
+        }
+        default: {
+          setModalError(e)
         }
       }
     }
