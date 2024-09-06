@@ -4,7 +4,7 @@ import { keyframes, styled } from 'styled-components'
 export const ItemForm = styled.div<{ $isMobile: boolean }>`
   width: 100vw;
   max-width: ${(props: { $isMobile: boolean }) => (props.$isMobile ? '400px' : '650px')};
-  margin: 10px auto;
+  margin: 5px auto;
 
   overflow-wrap: break-word;
 `

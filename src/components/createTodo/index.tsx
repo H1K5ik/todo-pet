@@ -20,13 +20,13 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const [todoId, setTodoId] = useState<number>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { isLight } = useTheme()
-  const isMobile = useMedia('(max-width: 600px)')?.matches
-  const isTablet = useMedia('(max-width: 830px)')?.matches
-
   useEffect(() => {
     localStorage.setItem(ITEMS, JSON.stringify(components))
   }, [components])
+
+  const { isLight } = useTheme()
+  const isMobile = useMedia('(max-width: 600px)')?.matches
+  const isTablet = useMedia('(max-width: 830px)')?.matches
 
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)

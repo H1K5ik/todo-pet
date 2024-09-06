@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@component/ErrorBoundary'
+import { ErrorBoundary } from '@component/errorBoundary'
 import { ThemeProvider } from '@component/themeContext'
 import { Global } from '@const'
 import { useWindowWidth } from '@utils/useWindow'
