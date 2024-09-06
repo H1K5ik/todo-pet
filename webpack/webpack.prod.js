@@ -8,7 +8,7 @@ require('dotenv').config()
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
-  mode: process.env.modeProd,
+  mode: process.env.REACT_APP_MODEPROD,
   output: {
     filename: '[name].[contenthash].js',
     path: common.output.path,
@@ -34,7 +34,9 @@ module.exports = merge(common, {
       filename: '[name].[contenthash].css',
     }),
     new webpack.DefinePlugin({
-      'process.env.MODEPROD': JSON.stringify(process.env.MODEPROD),
+      'process.env.REACT_APP_MODEPROD': JSON.stringify(process.env.REACT_APP_MODEPROD),
+      'process.env.REACT_APP_API': JSON.stringify(process.env.REACT_APP_API),
+      'process.env': JSON.stringify(process.env),
     }),
   ],
 })

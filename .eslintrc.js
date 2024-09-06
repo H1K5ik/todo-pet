@@ -19,41 +19,68 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
+    'plugin:jest/recommended',
   ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys', 'jest', 'simple-import-sort'],
+  overrides: [
+    // override "simple-import-sort" config
+    {
+      files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
+      rules: {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            groups: [
+              ['^react'],
+              ['^@?\\w'],
+              ['^(@|components)(/.*|$)'],
+              ['^\\u0000'],
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              ['^.+\\.?(css)$'],
+            ],
+          },
+        ],
+      },
+    },
+  ],
   rules: {
-    'import/no-unresolved': ['off'],
-    'no-undef': 0,
-    '@typescript-eslint/no-require-imports': 0,
-    'sort-imports': [
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+    'react/sort-comp': [
       'error',
       {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: true,
+        order: ['static-methods', 'instance-variables', 'lifecycle', 'everything-else', 'render'],
       },
     ],
-    'import/order': [
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'sort-destructure-keys/sort-destructure-keys': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', ['sibling', 'parent'], 'index', 'unknown'],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
+        caseSensitive: false,
+      },
+    ],
+    'react/prop-types': 'off',
+    'no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
+    'jest/expect-expect': 'off',
+    'import/no-unresolved': 'off',
+    'no-undef': 0,
+    '@typescript-eslint/no-require-imports': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    'no-console': 'error',
+    'react/jsx-sort-props': [
+      'error',
+      {
+        ignoreCase: true,
+        shorthandFirst: false,
       },
     ],
   },
-
   settings: {
     react: {
       version: 'detect',

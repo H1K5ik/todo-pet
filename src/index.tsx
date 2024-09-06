@@ -1,11 +1,14 @@
-import { Global, root } from '@const'
 import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 
-import { Header } from './components/header'
+import { App } from './App'
+
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement as HTMLElement)
 
 root.render(
-  <>
-    <Global />
-    <Header />
-  </>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
 )
