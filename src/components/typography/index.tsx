@@ -1,6 +1,7 @@
+import React, { FC } from 'react'
+
 import { useTheme } from '@component/themeContext'
 import { colors } from '@theme'
-import React, { FC } from 'react'
 
 import { IText } from './interfaces'
 import { DefaultText, HeaderText, InputText, LogoText, SettingsText } from './styles'

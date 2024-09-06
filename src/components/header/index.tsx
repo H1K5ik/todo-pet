@@ -1,14 +1,16 @@
-import { darkTheme, lightTheme } from '@theme'
-import { useWindowWidth } from '@utils/useWindow'
 import React, { FC, useEffect, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useMedia } from 'react-media-hook'
 import { Outlet } from 'react-router-dom'
 
-import { config } from './config'
-import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperLink, WrapperSettings } from './styles'
+import { darkTheme, lightTheme } from '@theme'
+import { useWindowWidth } from '@utils/useWindow'
+
 import { useTheme } from '../themeContext/index'
 import { Typography } from '../typography'
+
+import { config } from './config'
+import { IconBurger, Link, Wrapper, WrapperBurger, WrapperHeader, WrapperLink, WrapperSettings } from './styles'
 
 export const Header: FC = () => {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)

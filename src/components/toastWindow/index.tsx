@@ -1,6 +1,7 @@
-import { useTheme } from '@component/themeContext'
 import React, { FC, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+
+import { useTheme } from '@component/themeContext'
 
 import { IModal } from './interfaces'
 import { ToastWrapper } from './styles'

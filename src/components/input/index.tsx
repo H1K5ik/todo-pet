@@ -1,8 +1,9 @@
+import React, { FC, KeyboardEvent } from 'react'
+import { useMedia } from 'react-media-hook'
+
 import { useTheme } from '@component/themeContext'
 import { DEFAULT_MESSAGE } from '@const'
 import { colors } from '@theme'
-import React, { FC, KeyboardEvent } from 'react'
-import { useMedia } from 'react-media-hook'
 
 import { IInput } from './interfaces'
 import { InputBox } from './styles'

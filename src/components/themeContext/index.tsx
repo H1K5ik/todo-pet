@@ -1,5 +1,6 @@
+import React, { createContext, FC, useContext, useState } from 'react'
+
 import { IS_LIGHT } from '@const'
-import React, { FC, createContext, useContext, useState } from 'react'
 
 import { IThemeContext, IThemeProviderProps } from './interfaces'
 

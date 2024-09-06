@@ -1,3 +1,6 @@
+import React, { ChangeEvent, FC, useState } from 'react'
+import { useMedia } from 'react-media-hook'
+
 import { getGuthubAccount } from '@api'
 import find from '@assets/find.svg'
 import { Icons } from '@component/icon'
@@ -5,12 +8,11 @@ import { Input } from '@component/input'
 import { useTheme } from '@component/themeContext'
 import { Toast } from '@component/toastWindow'
 import { colors } from '@theme'
-import React, { ChangeEvent, FC, useState } from 'react'
-import { useMedia } from 'react-media-hook'
+
+import { Typography } from '../typography'
 
 import { CustomError } from './interfaces'
 import { ImageGithub, Wrapper, WrapperGithub, WrapperGithubLogin, WrapperInput } from './styles'
-import { Typography } from '../typography'
 
 export const GithubInfo: FC = () => {
   const [username, setUsername] = useState('')

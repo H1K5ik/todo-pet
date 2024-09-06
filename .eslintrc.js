@@ -25,8 +25,32 @@ module.exports = {
     'prettier',
     'plugin:jest/recommended',
   ],
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys', 'jest'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'sort-destructure-keys', 'jest', 'simple-import-sort'],
+  overrides: [
+    // override "simple-import-sort" config
+    {
+      files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
+      rules: {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            groups: [
+              ['^react'],
+              ['^@?\\w'],
+              ['^(@|components)(/.*|$)'],
+              ['^\\u0000'],
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              ['^.+\\.?(css)$'],
+            ],
+          },
+        ],
+      },
+    },
+  ],
   rules: {
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     'react/sort-comp': [
       'error',
       {
@@ -49,27 +73,6 @@ module.exports = {
     '@typescript-eslint/no-require-imports': 0,
     '@typescript-eslint/no-explicit-any': 0,
     'no-console': 'error',
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-        allowSeparatedGroups: true,
-      },
-    ],
-    'import/order': [
-      'error',
-      {
-        groups: ['builtin', 'external', 'internal', ['sibling', 'parent'], 'index', 'unknown'],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-      },
-    ],
     'react/jsx-sort-props': [
       'error',
       {

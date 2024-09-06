@@ -1,6 +1,7 @@
+import React from 'react'
+
 import { ChangeTheme } from '@component/changeTheme'
 import { GithubInfo } from '@component/githubInput'
-import React from 'react'
 
 import { Wrapper } from './styles'
 

@@ -1,3 +1,6 @@
+import React, { FC, useEffect, useState } from 'react'
+import { useMedia } from 'react-media-hook'
+
 import { Button } from '@component/button'
 import { Item } from '@component/item'
 import { useTheme } from '@component/themeContext'
@@ -5,8 +8,6 @@ import { Typography } from '@component/typography'
 import { DEFAULT_MESSAGE, ITEMS } from '@const'
 import { colors } from '@theme'
 import { getSelectedItems } from '@utils/getSelectedItemsFromLocalStorage'
-import React, { FC, useEffect, useState } from 'react'
-import { useMedia } from 'react-media-hook'
 
 import { IListOfItems } from './interfaces'
 import { List, WrapperButton, WrapperList, WrapperListText, WrapperText } from './styles'

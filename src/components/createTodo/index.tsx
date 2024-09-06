@@ -1,3 +1,6 @@
+import React, { ChangeEvent, Children, cloneElement, FC, isValidElement, useEffect, useState } from 'react'
+import { useMedia } from 'react-media-hook'
+
 import { Button } from '@component/button'
 import { Input } from '@component/input'
 import { useTheme } from '@component/themeContext'
@@ -7,8 +10,6 @@ import { ITEMS, MAX_TEXT_LENGTH } from '@const'
 import { colors } from '@theme'
 import { getItems } from '@utils/getAllItemsFromLocalStorage'
 import { keygen } from '@utils/keygen'
-import React, { ChangeEvent, Children, FC, cloneElement, isValidElement, useEffect, useState } from 'react'
-import { useMedia } from 'react-media-hook'
 
 import { IComponents, ITodo } from './interfaces'
 import { Block, BlockInput, WrapperButton } from './styles'

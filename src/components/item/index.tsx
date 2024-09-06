@@ -1,13 +1,15 @@
+import React, { FC } from 'react'
+import { useMedia } from 'react-media-hook'
+
 import deleteItem from '@assets/deleteItem.svg'
 import edit from '@assets/edit.svg'
 import { Icons } from '@component/icon'
 import { useTheme } from '@component/themeContext'
-import React, { FC } from 'react'
-import { useMedia } from 'react-media-hook'
+
+import { Typography } from '../typography'
 
 import { IItem } from './interfaces'
 import { CheckItem, Indicator, ItemForm, Label, Wrapper, WrapperText } from './styles'
-import { Typography } from '../typography'
 
 export const Item: FC<IItem> = ({ isSelected, onDelete, onEdit, onSelect, text }) => {
   const { isLight } = useTheme()

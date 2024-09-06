@@ -1,5 +1,6 @@
-import { colors, fontStyle } from '@theme'
 import { NavLink } from 'react-router-dom'
+
+import { colors, fontStyle } from '@theme'
 import { styled } from 'styled-components'
 
 export const InputText = styled.div<{ $isLight: boolean }>`

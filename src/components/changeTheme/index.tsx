@@ -1,11 +1,13 @@
-import { useTheme } from '@component/themeContext'
-import { colors } from '@theme'
 import React, { FC } from 'react'
 import { useMedia } from 'react-media-hook'
 
+import { useTheme } from '@component/themeContext'
+import { colors } from '@theme'
+
+import { Typography } from '../typography'
+
 import { allOptions } from './config'
 import { Option, Wrapper, WrapperSelect } from './styles'
-import { Typography } from '../typography'
 
 export const ChangeTheme: FC = () => {
   const { isLight, toggleTheme } = useTheme()

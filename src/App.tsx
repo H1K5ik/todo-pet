@@ -1,9 +1,10 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+
 import { ErrorBoundary } from '@component/errorBoundary'
 import { ThemeProvider } from '@component/themeContext'
 import { Global } from '@const'
 import { useWindowWidth } from '@utils/useWindow'
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/header'
 import { config } from './config'

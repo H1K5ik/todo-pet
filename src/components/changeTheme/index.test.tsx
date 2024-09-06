@@ -1,8 +1,10 @@
+import React from 'react'
+import { useMedia } from 'react-media-hook'
+
 import { ThemeProvider } from '@component/themeContext'
 import { render } from '@testing-library/react'
-import React from 'react'
+
 import '@testing-library/jest-dom'
-import { useMedia } from 'react-media-hook'
 
 import { ChangeTheme } from './index'
 
