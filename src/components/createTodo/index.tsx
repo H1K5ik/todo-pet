@@ -62,10 +62,11 @@ export const Todo: FC<ITodo> = ({ children }) => {
   const handleSaveEdit = () => {
     const newText = inputValue.trim()
     const index = todoId || 0
+
     if (components && setComponents && setInputValue) {
       const newComponents = [...components]
 
-      if (newText.length > MAX_TEXT_LENGTH) {
+      if (newText.length > MAX_TEXT_LENGTH || newText) {
         setInputValue(``)
         openModal()
       } else {
@@ -87,7 +88,7 @@ export const Todo: FC<ITodo> = ({ children }) => {
     <>
       <BlockInput $isMobile={isMobile ?? false} $isTablet={isTablet ?? false}>
         <Toast isMobile={isMobile ?? false} isOpen={isModalOpen} onClose={closeModal}>
-          {`Todo task text must be less than ${MAX_TEXT_LENGTH} characters`}
+          {`Todo task text must be less than ${MAX_TEXT_LENGTH} and bigger than 1 characters`}
         </Toast>
         <Block>
           <Typography.Input color={colors.HEADER_BACK_COLOR_LIGHT} text={!isEdit ? 'Add a new task' : 'Edit task'} />
