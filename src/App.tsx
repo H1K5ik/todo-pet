@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { ErrorBoundary } from '@component/errorBoundary'
+import { ErrorBoundary } from '@component/errorsBoundary'
 import { ThemeProvider } from '@component/themeContext'
 import { Global } from '@const'
 import { useWindowWidth } from '@utils/useWindow'
