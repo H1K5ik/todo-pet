@@ -1,12 +1,5 @@
 # Тестовое задание Todo List
 
-https://todo-list-git-dev-h1k5iks-projects.vercel.app/home
-
-## Содержание
-
-- [Техническое задание](#Техническое-задание)
-- [Используемые технологии](#Используемые-технологии)
-
 ## Техническое задание
 
 Необходимо реализовать React-приложение ToDo list.
@@ -19,10 +12,6 @@ https://todo-list-git-dev-h1k5iks-projects.vercel.app/home
 - Удаление отмеченных задач;
 - Получение данных о пользователе с GitHub;
 - Возможность смены темы приложения.
-
-### Пример графического представления:
-
-Ссылка на макет: [ToDo list](https://www.figma.com/design/vDAg1ykKrPYKJEW4fMO5aU/Modsen-Todo-List?node-id=0-3&t=yUcMTRERJh9AQvEp-0)
 
 ### Также проект предполагает:
 
